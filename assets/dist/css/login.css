@@ -1,0 +1,9 @@
+body {
+    background: url(https://www.grainchain.com/sites/default/files/flour-baking-background-with-egg,-rolling-pin-and-wheat-ear-000069728007_Medium_3.jpg) no-repeat fixed !important;
+    background-size: cover;
+    background-position: 50%;
+}
+.login-logo a, .register-logo a{
+    color:#fff !important;
+    text-shadow: 1px 1px 1px #3a3a3a !important;
+}
