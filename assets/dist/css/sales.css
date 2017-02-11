@@ -1,0 +1,172 @@
+body {
+    overflow:hidden;
+}
+.content-wrapper, .main-footer{
+    margin-left:0px !important;
+}
+section.navbar-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #3c8dbc;
+    z-index: 99;
+}
+
+section.customer {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+section.customer label {
+    color: #fff;
+    font-family: serif;
+}
+
+section.customer p {
+    color: #fff;
+    font-family: serif;
+}
+
+section.customer section.lb {
+    margin-right: 10%;
+}
+section.sidebar-sales {
+    padding: 10px;
+    background: #fff;
+    min-height: 517px;
+}
+
+section.sales-content {
+    padding-top: 10px;
+    border-top: 1px solid #ecf0f5;
+}
+
+section.sales-content section.item {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ecf0f5;
+    padding: 10px;
+}
+
+section.sales-content section.item p {
+    padding: 0;
+    margin: 0;
+    font-family: serif;
+}
+section.sales-content section.item .cantidad, section.sales-content section.item .tax {
+    background:#fff;
+    padding:5px 10px 5px 10px;
+    margin-right: 10px;
+}
+section.sales-content section.item .name {
+    width: 50%;
+    word-break: break-all;
+    text-align: center;
+    margin-right: 10px;
+}
+
+section.sales-content section.action {
+    border: 1px solid #c3c3c3;
+    padding: 2px 5px 2px 5px;
+    border-radius: 50%;
+    font-size: 10px;
+}
+section.sales-content section.action a {
+    color:#696969;
+    text-decoration: none
+    
+}
+
+section.sales-content section.price {
+    margin-right: 10px;
+}
+section.products {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+a.item {
+    position: relative;
+    display: block;
+    width: 23%;
+    margin: 5px;
+}
+
+section.item-header {
+}
+
+img {
+    position: relative;
+    width: 100%;
+}
+
+section.item-body h3 {
+    font-size: 18px;
+    margin: 5px;
+    padding: 0;
+}
+.action ul {
+    margin: 0;
+    display: flex;
+    list-style: none;
+    border-left: 1px solid rgba(230, 230, 230, 0.36);
+}
+
+.action ul a {
+    display: flex;
+    padding: 10px 10px 10px 25px;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+section.detail {
+    position: absolute;
+    top: -150%;
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    background: #ecf0f5;
+    outline: 1px solid #fff;
+}
+
+section.paying {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+}
+
+section.btn-pay {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+section.paying p {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button.btn.btn-primary {}
+
+section.btn-pay button {
+    width: 70%;
+    background: #008d4c !important;
+    border: none;
+    border-radius: 0;
+}

@@ -60,7 +60,6 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = "account/login/index";
 $route['register'] = "account/register/index";
 $route['register/confirm/email'] = "account/confirm/email";
-$route['login/forgot/email'] = "account/forgot/email";
 $route['login/forgot/password'] = "account/forgot/password";
 $route['login/forgot/password/confirm'] = "account/forgot/password_confirm";
 $route['login/reset/password'] = "account/reset/password";

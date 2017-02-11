@@ -25,11 +25,18 @@ class Template {
     private function _content($param = array()){
         $this->CI->load->view("template/".$param['view_content'], $param);
     }
+    
+    private function _sidebar_menu($param = array()){
+        $this->CI->load->view("template/sidebar_menu", $param);
+    }
     /**
      * @param = array('title' => "", "css"=>"","js"=>"","breadcrums"=>"", "title_page"=>"","view_content"=>"");
      * */
     public function view($param = array()){
         $this->_header($param);
+        if (isset($param['sidebar_menu']) && $param['sidebar_menu'] == true){
+            $this->_sidebar_menu($param);
+        }
         $this->_content($param);
         $this->_footer($param);
     }

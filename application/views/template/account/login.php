@@ -1,50 +1,50 @@
 <body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
+<section class="login-box">
+  <section class="login-logo">
     <a href="<?=base_url();?>"><b>Trigo</b> Dashboard</a>
-  </div>
+  </section>
   <!-- /.login-logo -->
-  <div class="login-box-body">
+  <section class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
     <form action="../../index2.html" method="post">
-      <div class="form-group has-feedback">
+      <section class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
+      </section>
+      <section class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
+      </section>
+      <section class="row">
+        <section class="col-xs-8">
+          <section class="checkbox icheck">
             <label>
               <input type="checkbox"> Remember Me
             </label>
-          </div>
-        </div>
+          </section>
+        </section>
         <!-- /.col -->
-        <div class="col-xs-4">
+        <section class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
+        </section>
         <!-- /.col -->
-      </div>
+      </section>
     </form>
 
-    <div class="social-auth-links text-center">
+    <section class="social-auth-links text-center">
       <p>- OR -</p>
       <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
         Facebook</a>
       <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
         Google+</a>
-    </div>
+    </section>
     <!-- /.social-auth-links -->
 
     <a href="/login/forgot/password">I forgot my password</a><br>
     <a href="/register" class="text-center">Register a new membership</a>
 
-  </div>
+  </section>
   <!-- /.login-box-body -->
-</div>
+</section>
 <!-- /.login-box -->

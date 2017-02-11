@@ -21,7 +21,7 @@ class Register extends CI_Controller {
 	        'js' => array(
 	        	'src' => 'js/config/iCheck.js'
 	        ),
-	        'sidebar-menu'=> false
+	        'sidebar_menu'=> false
 	    );
 	    $this->load->library("template");
 	}
