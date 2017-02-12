@@ -22,7 +22,11 @@
                     <section class="box-body">
                         <section class="row">
                             <section class="col-md-12">
-                                <?php echo validation_errors(); ?>
+                                <?php if (!is_null($this->session->flashdata('error')) && $this->session->flashdata('error') === TRUE): ?>
+                                <section class="alert alert-danger">
+                                    <p>No haz hecho ningun cambio.</p>
+                                </section>
+                                <?php endif;?>
                             </section>
                         </section>
                         <section class="row">

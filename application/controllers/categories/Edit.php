@@ -52,19 +52,15 @@ class Edit extends CI_Controller {
 	public function confirm(){
 	    $this->form_validation->set_rules('id', 'Category', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
-	        $this->template->view($this->page_config);
+	    	$this->session->set_flashdata('error', true);
+	        redirect('product/category/edit/'.$this->input->post('id'));
 	    }else{
 	        $this->session->set_flashdata('category_success', false);
 	        redirect('product/categories');
 	    }
 	}
 	public function id_isExisted($str){
-	    $this->load->model('model_category');
-	    if (!$this->model_category->category_id_isExisted($str)){
-	        return TRUE;
-	    }else{
-	        return $this->update_category();
-	    }
+        return $this->update_category();
 	}
 	public function update_category(){
 	    $this->load->model('model_category');
