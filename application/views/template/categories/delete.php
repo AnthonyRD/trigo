@@ -19,13 +19,13 @@
                     <!-- /.box-header -->
                     <section class="box-body">
                         <section class="alert alert-warning">
-                            <p>Realmente desea eliminar la categoria "<strong>Almuerzo</strong>"?</p>
+                            <p>Realmente desea eliminar la categoria "<strong><?=$data->name?></strong>"?</p>
                         </section>
                         <form action="confirm" method="POST">
                             <section class="row">
                                 <section class="col-md-offset-10 col-md-2">
                                     <section class="form-group">
-                                        <button type="submit" class="btn btn-danger" name="id" value="1">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger" name="id" value="<?=$data->id?>">Eliminar</button>
                                     </section>
                                 </section>
                             </section>
