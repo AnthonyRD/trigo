@@ -126,3 +126,15 @@ $route['employe/details/(:num)'] = "employes/details/index/$1";
  * Reports Router
  * */
 $route['reports'] = "reports/index/index";
+/**
+ * Categories Router
+ * */
+$route['product/categories'] = "categories/index/index";
+$route['product/category/create'] = "categories/create/index";
+$route['product/category/create/confirm'] = "categories/create/confirm";
+$route['product/category/delete/(:num)'] = "categories/delete/index/$1";
+$route['product/category/delete/confirm'] = "categories/delete/confirm";
+$route['product/category/edit/(:num)'] = "categories/edit/index/$1";
+$route['product/category/edit/confirm'] = "categories/edit/confirm";
+$route['product/category/details/(:num)'] = "categories/details/index/$1";
+ 

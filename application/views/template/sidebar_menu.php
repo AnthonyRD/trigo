@@ -113,7 +113,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/products"><i class="fa fa-list-ol"></i> Administrar</a></li>
-            <li><a href="/product/category"><i class="fa fa-certificate"></i> Categorias</a></li>
+            <li><a href="/product/categories"><i class="fa fa-certificate"></i> Categorias</a></li>
           </ul>
         </li>
         <li>

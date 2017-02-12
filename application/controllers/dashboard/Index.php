@@ -11,6 +11,7 @@ class Index extends CI_Controller {
 	        'view_content' => "dashboard/index",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css'
+	            
 	        ),
 	        'plugin_js' => array(
 	        	'js' => 'fastclick/fastclick.js'

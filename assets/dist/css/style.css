@@ -1,0 +1,28 @@
+.categories-header a {
+    position: relative;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #808080;
+}
+.categories-header ul {
+    position: relative;
+    margin: 15px;
+    width: 100%;
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+    padding: 0px;
+    background: #fff;
+    margin-left: 0;
+}
+.categories-header ul li:first-child a i {
+    color:green;
+}
+thead {
+        background: #efefef;
+}
+.table-hover>tbody>tr:hover,.table-hover>tbody>tr:focus {
+    background-color: #1ea2ef;
+    color: #fff;
+}
