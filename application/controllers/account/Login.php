@@ -27,8 +27,6 @@ class Login extends CI_Controller {
 	}
 	public function index()
 	{
-		
-		
 		$this->template->view($this->page_config);
 	}
 }

@@ -41,7 +41,7 @@ class Model_supplier extends CI_Model {
         }
     }
     public function get_supplier($str){
-        $this->db->select('*');
+        $this->db->select('address.id as aid,supplier.id, name, RNC, email, address.address_line_1, address.address_line_2, contact_name, Details, address.zip_code, address.country, address.state, telephone, cellphone, address.number');
         $this->db->limit(1);
         $this->db->where('supplier.id', $str);
         $this->db->join('address', 'address.id = supplier.address_id');
@@ -52,15 +52,17 @@ class Model_supplier extends CI_Model {
             return NULL;
         }
     }
-    public function update_supplier($data = array(), $str){
-        $this->db->from('supplier');
-        $this->db->join('address', 'address.id = supplier.address_id');
-        $this->db->where('supplier.id', $str);
-        $this->db->update('supplier', $data);
-        if ($this->db->affected_rows() > 0){
-            return TRUE;
-        }else{
-            return FALSE;
+    public function update_supplier($data = array(), $str, $str_address){
+        $address = $this->model_address->update_address($data['address'], $str_address);
+        if ($address){
+            unset($data['address']);
+            $this->db->where('id', $str);
+            $this->db->update('supplier', $data);
+            if ($this->db->affected_rows() > 0){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
         }
     }
 }

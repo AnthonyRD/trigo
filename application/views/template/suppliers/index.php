@@ -22,11 +22,11 @@
         <section class="content">
           <section class="row">
             <section class="col-md-12">
-              <?php if (!is_null($this->session->flashdata('supplier_success')) && $this->session->flashdata('category_success') === TRUE):?>
+              <?php if (!is_null($this->session->flashdata('supplier_success')) && $this->session->flashdata('supplier_success') === TRUE):?>
                 <section class="alert alert-success">
                   <p>Todo a salido bien!</p>
                 </section>
-              <?php elseif(!is_null($this->session->flashdata('supplier_success')) && $this->session->flashdata('category_success') === FALSE):?>
+              <?php elseif(!is_null($this->session->flashdata('supplier_success')) && $this->session->flashdata('supplier_success') === FALSE):?>
                 <section class="alert alert-danger">
                   <p>Algo salio mal!</p>
                 </section>

@@ -30,7 +30,7 @@
                             </section>
                         </section>
                         <section class="row">
-                            <form action="create/confirm" method="post">
+                            <form action="confirm" method="post">
                                 <section class="col-md-12">
                                     <section class="row">
                                          <section class="col-md-12">
@@ -39,8 +39,9 @@
                                     </section>
                                     <section class="row">
                                         <section class="col-md-6">
-                                            <section class="form-group">
+                                            <section class="form-group hide">
                                                 <input type="hidden" name="id" value="<?=$data->id?>"/>
+                                                <input type="hidden" name="address_id" value="<?=$data->aid?>"/>
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Nombre</label>

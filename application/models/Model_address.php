@@ -14,4 +14,9 @@ class Model_address extends CI_Model {
             return FALSE;
         }
     }
+    public function update_address($data = array(), $str){
+        $this->db->where('id', $str);
+        $this->db->update('address', $data);
+        return TRUE;
+    }
 }

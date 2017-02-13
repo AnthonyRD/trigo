@@ -72,14 +72,16 @@ class Edit extends CI_Controller {
 	        'telephone' => $this->input->post('telephone'),
 	        'cellphone' => $this->input->post('cellphone'),
 	        'Details' => $this->input->post('details'),
-            'address_line_1' => $this->input->post('address_1'),
-            'address_line_2' => $this->input->post('address_2'),
-            'number' => $this->input->post('number'),
-            'country' => $this->input->post('country'),
-            'state' => $this->input->post('state'),
-            'zip_code' => $this->input->post('zip_code')
+	        'address' => array(
+	            'address_line_1' => $this->input->post('address_1'),
+	            'address_line_2' => $this->input->post('address_2'),
+	            'number' => $this->input->post('number'),
+	            'country' => $this->input->post('country'),
+	            'state' => $this->input->post('state'),
+	            'zip_code' => $this->input->post('zip_code')
+	        )
 	    );
-	    if ($this->model_supplier->update_supplier($data, $this->input->post("id"))){
+	    if ($this->model_supplier->update_supplier($data, $this->input->post("id"), $this->input->post('address_id'))){
 	        $this->session->set_flashdata('supplier_success',true);
 	        redirect('suppliers');
 	    }
