@@ -17,6 +17,15 @@ class Model_supplier extends CI_Model {
             return FALSE;
         }
     }
+    public function supplier_id_isExisted($str){
+        $this->db->where('id', $str);
+        $query = $this->db->get('supplier');
+        if ($query->num_rows() > 0){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
     public function insert_supplier($data = array()){
         $address_id = $this->model_address->insert_address($data['address']);
         if ($address_id !== FALSE){
@@ -65,4 +74,20 @@ class Model_supplier extends CI_Model {
             }
         }
     }
+    public function delete_supplier($str, $str_address){
+        $address = $this->model_address->delete_address($str_address);
+        if ($address){
+            $this->db->where('id', $str);
+            $this->db->delete('supplier');
+            if ($this->db->affected_rows() > 0){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+        }else{
+            return FALSE;
+        }
+        
+    }
+    
 }

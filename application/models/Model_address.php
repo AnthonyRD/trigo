@@ -19,4 +19,13 @@ class Model_address extends CI_Model {
         $this->db->update('address', $data);
         return TRUE;
     }
+    public function delete_address($str){
+        $this->db->where('id', $str);
+        $this->db->delete('address');
+        if ($this->db->affected_rows() > 0){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
 }
