@@ -20,7 +20,7 @@
   <?="<link rel='stylesheet' href='".base_url()."assets/dist/".$value_href."'/>"?>
   <?php endforeach; endif;?>
   <!-- Theme style -->
-  <link rel="stylesheet" href="/assets/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>/assets/dist/css/AdminLTE.min.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

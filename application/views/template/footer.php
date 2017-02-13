@@ -205,9 +205,9 @@
 </section>
 <?php endif; ?>
 <!-- jQuery 2.2.3 -->
-<script src="/assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?=base_url()?>/assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=base_url()?>/assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Load JS -->
 <?php if (isset($plugin_js)):foreach($plugin_js as $key_src => $value_src):?>
 <?="<script src='".base_url()."assets/plugins/".$value_src."'></script>"?>
