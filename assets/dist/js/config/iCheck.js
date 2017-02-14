@@ -32,4 +32,18 @@ $(function () {
         location.href = "/supplier/delete/"+radio;
       }
   });
+  $("#edit_product").on('click', function(e){
+    e.preventDefault();
+    var radio = $("input[type='radio']:checked").val();
+    if (typeof radio !== 'undefined'){
+      location.href = "/product/edit/"+radio;
+    }
+  });
+  $("#delete_product").on('click', function(e){
+      e.preventDefault();
+      var radio = $("input[type='radio']:checked").val();
+      if (typeof radio !== 'undefined'){
+        location.href = "/product/delete/"+radio;
+      }
+  });
 });

@@ -59,7 +59,6 @@
                             <td>
                               <section class="radio icheck">
                                 <label><input type="radio" name="iCheck" value="<?=$value->id?>"></label>
-                                </section>
                               </section>
                             </td>
                             <td><?=$value->name?></td>

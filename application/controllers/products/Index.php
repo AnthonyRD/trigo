@@ -10,14 +10,24 @@ class Index extends CI_Controller {
 	        'title_page' => "Products",
 	        'view_content' => "products/index",
 	        'css' => array(
-	            'css/skins/_all-skins.min.css'
+	            'css/skins/_all-skins.min.css',
+	            'css/style.css'
+	        ),
+	        'plugin_css' => array(
+	            'datatables/dataTables.bootstrap.css',
+	            'iCheck/square/blue.css'
 	        ),
 	        'plugin_js' => array(
-	        	'js' => 'fastclick/fastclick.js'
+	        	'fastclick/fastclick.js',
+	        	'datatables/jquery.dataTables.min.js',
+	        	'datatables/dataTables.bootstrap.min.js',
+	        	'iCheck/icheck.min.js'
 	        ),
 	        'js' => array(
 	            'js/app.min.js',
-	            'js/demo.js'
+	            'js/demo.js',
+	            'js/config/dataTables.js',
+	            'js/config/iCheck.js'
 	        ),
 	        'sidebar_menu'=> true
 	    );
@@ -25,6 +35,11 @@ class Index extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->model('model_product');
+		$data = array(
+			'data' => $this->model_product->get_products()
+		);
+		$this->page_config += $data;
 		$this->template->view($this->page_config);
 	}
 }
