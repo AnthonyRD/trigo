@@ -71,48 +71,25 @@
                 </section>
                 <section class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Almuerzo</a></li>
-                        <li><a href="#">Bebidas</a></li>
-                        <li><a href="#">Sopas</a></li>
-                        <li><a href="#">Picaderas</a></li>
+                        <?php foreach($categories as $key => $value):?>
+                        <li><a href="#"><?=$value->name?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </section>
             </nav>
             <section class="row">
                 <section class="col-sm-12">
                     <section class="products">
-                        <a href="#" class="item">
+                        <?php foreach($products as $key => $value): ?>
+                        <a href="#" class="item" data-item='<?=json_encode($value)?>'>
                             <section class="item-header">
-                                <img src="../assets/dist/img/sales/01.png"/>
+                                <img src="/uploads/<?=$value->image_url?>"/>
                             </section>
                             <section class="item-body">
-                                <h3>Salchichas</h3>
+                                <h3><?=$value->name?></h3>
                             </section>
                         </a>
-                        <a href="#" class="item">
-                            <section class="item-header">
-                                <img src="../assets/dist/img/sales/01.png"/>
-                            </section>
-                            <section class="item-body">
-                                <h3>Salchichas</h3>
-                            </section>
-                        </a>
-                        <a href="#" class="item">
-                            <section class="item-header">
-                                <img src="../assets/dist/img/sales/01.png"/>
-                            </section>
-                            <section class="item-body">
-                                <h3>Salchichas</h3>
-                            </section>
-                        </a>
-                        <a href="#" class="item">
-                            <section class="item-header">
-                                <img src="../assets/dist/img/sales/01.png"/>
-                            </section>
-                            <section class="item-body">
-                                <h3>Salchichas</h3>
-                            </section>
-                        </a>
+                        <?php endforeach; ?>
                     </section>
                 </section>
             </section>

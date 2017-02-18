@@ -25,11 +25,11 @@
                                 <section class="col-md-6">
                                     <section class="form-group">
                                         <label>Nombre</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Nombre del producto" value="<?=$data->name?>"/>
+                                        <input type="text" name="name" class="form-control" placeholder="Nombre del producto" value="<?=$data->name?>" required/>
                                     </section>
                                     <section class="form-group">
                                         <label>Precio</label>
-                                        <input type="text" name="price" class="form-control" placeholder="Precio del producto" value="<?=$data->description?>" />
+                                        <input type="number" name="price" class="form-control" placeholder="Precio del producto" value="<?=$data->price?>" required/>
                                     </section>
                                     <section class="form-group">
                                         <label>Cargo por impuesto</label>

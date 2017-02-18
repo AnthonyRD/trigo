@@ -100,8 +100,7 @@ class Edit extends CI_Controller {
 	        'mesurement_unit' => $this->input->post('mesurement_unit'),
 	        'id_category' => $this->input->post('category'),
 	        'charge_tax' => $this->input->post('charge_tax'),
-	        'suplier_id' => $this->input->post('supplier'),
-	        'entry_date' => date('Y-m-d H:i:s')
+	        'suplier_id' => $this->input->post('supplier')
 	    );
 	    if (is_null($this->image_url)) unset($data['image_url']);
 	    if ($this->model_product->update_product($data, $this->input->post("id"), $this->input->post('address_id'))){

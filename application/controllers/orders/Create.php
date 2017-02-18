@@ -14,19 +14,26 @@ class Create extends CI_Controller {
 	            'css/sales.css'
 	        ),
 	        'plugin_js' => array(
-	        	'js' => 'fastclick/fastclick.js'
+	        	'fastclick/fastclick.js',
+	        	'jQuery/jquery-2.2.3.min.js'
 	        ),
 	        'js' => array(
-	            'js/app.min.js',
-	            'js/demo.js',
-	            'js/sales.js'
+	        	'js/jquery.storageapi.min.js',
+	            'js/config/sales.js'
+	            
 	        ),
 	        'sidebar_menu'=> false
 	    );
+	    $this->load->model(array('model_product', 'model_category'));
 	    $this->load->library("template");
 	}
 	public function index()
 	{
+		$data = array(
+			'products' => $this->model_product->get_products(),
+			'categories' => $this->model_category->get_categories()
+		);
+		$this->page_config += $data;
 		$this->template->view($this->page_config);
 	}
 }
