@@ -23,13 +23,13 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Web Developer
@@ -77,7 +77,7 @@
       <!-- Sidebar user panel -->
       <section class="user-panel">
         <section class="pull-left image">
-          <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </section>
         <section class="pull-left info">
           <p>Alexander Pierce</p>
