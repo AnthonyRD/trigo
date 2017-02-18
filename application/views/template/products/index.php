@@ -66,7 +66,7 @@
                             </td>
                             <td><?=$value->name?></td>
                             <td><?=$value->description?></td>
-                            <td><img src="./../uploads/<?=$value->image_url?>" width="45"/></td>
+                            <td><img src="<?=base_url()?>uploads/<?=$value->image_url?>" width="45"/></td>
                             <td><?=$value->reorder_level?></td>
                             <td><?=$value->entry_date?></td>
                             <td><?=$value->last_entry?></td>

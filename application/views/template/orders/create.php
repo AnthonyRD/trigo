@@ -83,7 +83,7 @@
                         <?php foreach($products as $key => $value): ?>
                         <a href="#" class="item" data-item='<?=json_encode($value)?>'>
                             <section class="item-header">
-                                <img src="/uploads/<?=$value->image_url?>"/>
+                                <img src="<?=base_url()?>uploads/<?=$value->image_url?>"/>
                             </section>
                             <section class="item-body">
                                 <h3><?=$value->name?></h3>
