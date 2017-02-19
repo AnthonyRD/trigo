@@ -6,18 +6,28 @@ class Index extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Customers List",
-	        'title_page' => "Customers",
+	        'title' => "Lista de clientes",
+	        'title_page' => "Clientes",
 	        'view_content' => "customers/index",
 	        'css' => array(
-	            'css/skins/_all-skins.min.css'
+	            'css/skins/_all-skins.min.css',
+	            'css/style.css'
+	        ),
+	        'plugin_css' => array(
+	            'datatables/dataTables.bootstrap.css',
+	            'iCheck/square/blue.css'
 	        ),
 	        'plugin_js' => array(
-	        	'js' => 'fastclick/fastclick.js'
+	        	'fastclick/fastclick.js',
+	        	'datatables/jquery.dataTables.min.js',
+	        	'datatables/dataTables.bootstrap.min.js',
+	        	'iCheck/icheck.min.js'
 	        ),
 	        'js' => array(
 	            'js/app.min.js',
-	            'js/demo.js'
+	            'js/demo.js',
+	            'js/config/dataTables.js',
+	            'js/config/iCheck.js'
 	        ),
 	        'sidebar_menu'=> true
 	    );
@@ -25,6 +35,11 @@ class Index extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->model('model_customer');
+		$data = array(
+			'data' => $this->model_customer->get_customers()
+		);
+		$this->page_config += $data;
 		$this->template->view($this->page_config);
 	}
 }

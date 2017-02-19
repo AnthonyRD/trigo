@@ -67,12 +67,13 @@ $route['login/reset/password/confirm'] = "account/reset/password_confirm";
 /**
  * Customers Rauter
  * */
-$route['customers/create'] = "customers/create/index";
-$route['customers/delete/(:num)'] = "customers/delete/index/$1";
-$route['customers/delete/confirm'] = "customers/delete/confirm";
-$route['customers/details/(:num)'] = "customers/details/index/$1";
-$route['customers/edit/(:num)'] = "customers/edit/index/$1";
-$route['customers/edit/confirm'] = "customers/edit/confirm";
+$route['customer/create'] = "customers/create/index";
+$route['customer/create/confirm'] = "customers/create/confirm";
+$route['customer/delete/(:num)'] = "customers/delete/index/$1";
+$route['customer/delete/confirm'] = "customers/delete/confirm";
+$route['customer/details/(:num)'] = "customers/details/index/$1";
+$route['customer/edit/(:num)'] = "customers/edit/index/$1";
+$route['customer/edit/confirm'] = "customers/edit/confirm";
 $route['customers'] = "customers/index/index";
 /**
  * Dashboard Raouter
@@ -137,4 +138,11 @@ $route['product/category/delete/confirm'] = "categories/delete/confirm";
 $route['product/category/edit/(:num)'] = "categories/edit/index/$1";
 $route['product/category/edit/confirm'] = "categories/edit/confirm";
 $route['product/category/details/(:num)'] = "categories/details/index/$1";
+
+/**
+ * Call request page
+ * */
+$route['ajax/customer/getall'] = "ajax/customers/getall";
+$route['ajax/customer/get/([a-zA-Z0-9]+)'] = "ajax/customers/get/$1";
+$route['ajax/customer/search'] = "ajax/customers/search";
  

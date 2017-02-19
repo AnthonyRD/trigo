@@ -1,5 +1,5 @@
 <body class="hold-transition skin-blue sidebar-mini">
-<section class="wrapper">
+<section class="wrapper" style="overflow:hidden">
 
   <header class="main-header">
     <!-- Logo -->
@@ -58,7 +58,7 @@
   </header>
   <section class="content-wrapper">
     <section class="row">
-        <section class="col-sm-9">
+        <section class="col-md-9 col-sm-8 col-xs-6">
             <nav class="navbar navbar-default">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <section class="navbar-header">
@@ -95,18 +95,18 @@
             </section>
             <section class="navbar-bottom">
                 <section class="row">
-                    <section class="col-sm-9">
+                    <section class="col-md-9 col-sm-8 col-xs-6">
                         <section class="customer">
                             <section class="lb">
                                 <label>Customer</label>
                                 <p>Walk-in Customer</p>
                             </section>
                             <section class="btn-ctm">
-                                <button class="btn btn-primary">New</button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#search-customer">New</button>
                             </section>
                         </section>
                     </section>
-                    <section class="col-sm-3">
+                    <section class="col-md-3 col-sm-4 col-xs-6">
                         <section class="action">
                             <ul>
                                 <li><a href="#"><i class="fa fa-sign-out"></i> Type</a></li>
@@ -116,19 +116,19 @@
                         </section>
                         <section class="detail">
                             <section class="paying">
-                                <p class="subtotal"><span>Subtotal: </span><span>0.00</span></p>
-                                <p class="tax"><span>Impuesto: </span><span>0.00</span></p>
-                                <p class="total"><span>Total: </span><span>0.00</span></p>
+                                <p class="subtotal"><span>Subtotal: </span><span id="subtotal">0.00</span></p>
+                                <p class="tax"><span>Impuesto: </span><span id="tax">0.00</span></p>
+                                <p class="total"><span>Total: </span><span id="total">0.00</span></p>
                             </section>
                             <section class="btn-pay">
-                                <button class="btn btn-primary">0.00</button>
+                                <button class="btn btn-primary" id="total">0.00</button>
                             </section>
                         </section>
                     </section>
                 </section>
             </section>
         </section>
-        <section class="col-sm-3">
+        <section class="col-md-3 col-sm-4 col-xs-6">
             <section class="sidebar-sales">
                 <section class="sales">
                     <section class="sales-header">
@@ -137,26 +137,35 @@
                         </section>
                     </section>
                     <section class="sales-content">
-                        <section class="item">
-                            <section class="cantidad">
-                                <p>1</p>
-                            </section>
-                            <section class="name">
-                                <p>Salchicas</p>
-                            </section>
-                            <section class="tax">
-                                <p>8.01</p>
-                            </section>
-                            <section class="price">
-                                <p>10.55</p>
-                            </section>
-                            <section class="action">
-                                <a href="#"><i class="fa fa-close"></i></a>
-                            </section>
-                        </section>
                     </section>
                 </section>
             </section>
         </section>
     </section>
   </section>
+    <section class="modal fade" tabindex="-1" role="dialog" id="search-customer">
+      <section class="modal-dialog" role="document">
+        <section class="modal-content">
+          <section class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Buscar cliente</h4>
+          </section>
+          <section class="modal-body">
+            <form action="" method="POST">
+                <section class="row">
+                    <section class="col-md-12">
+                        <secton class="form-group">
+                            <label for="">Buscar cliente</label>
+                            <select class="js-example-basic-single js-states form-control"></select>
+                            
+                        </secton>
+                    </section>
+                </section>
+            </form>
+          </section>
+          <section class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </section>
+        </section><!-- /.modal-content -->
+      </section><!-- /.modal-dialog -->
+    </section><!-- /.modal -->

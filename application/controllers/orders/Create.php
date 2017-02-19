@@ -11,7 +11,8 @@ class Create extends CI_Controller {
 	        'view_content' => "orders/create",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
-	            'css/sales.css'
+	            'css/sales.css',
+	            'css/select2.min.css'
 	        ),
 	        'plugin_js' => array(
 	        	'fastclick/fastclick.js',
@@ -19,7 +20,8 @@ class Create extends CI_Controller {
 	        ),
 	        'js' => array(
 	        	'js/jquery.storageapi.min.js',
-	            'js/config/sales.js'
+	            'js/config/sales.js',
+	            'js/select2.full.min.js'
 	            
 	        ),
 	        'sidebar_menu'=> false

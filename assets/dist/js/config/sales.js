@@ -23,7 +23,6 @@ function setStorage(data){
     var get_all = storage.get('item');
     var indexCount = null;
     var cObject = [];
-    console.log(get_all);
     if (get_all !== null){
         $.each(get_all, function(index, value){
             if (value.name == data.name){
@@ -38,7 +37,7 @@ function setStorage(data){
         get_all[indexCount].unidad += 1;
         storage.set('item', get_all);
     }
-    if (get_all !== null && indexCount == null){
+    if (get_all !== null && indexCount == null && data !== null){
         get_all.push(data);
         storage.set('item', get_all);
     }
@@ -49,32 +48,42 @@ function addItem(data){
     var temp = null;
     var impuesto = 0;
     var item = "";
-    console.log(get_all);
+    var totalImpuesto = 0;
+    var totalSubtotal = 0;
+    var total = 0;
     if (get_all !== null){
         $.each(get_all, function(index, value){
             temp = itemHTML.replace('{cantidad}', value.unidad);
             temp = temp.replace('{name}', value.name);
-            impuesto = (value.price%15);
+            impuesto = (value.price*15/100);
             temp = temp.replace('{tax}', impuesto);
             temp = temp.replace('{price}', value.price);
             temp = temp.replace('{index}', index);
             item += temp;
             temp = null;
+            totalImpuesto = impuesto*value.unidad;
+            totalSubtotal = value.price*value.unidad;
         });
-
+        total = totalImpuesto+totalSubtotal;
+        $("#subtotal").html(totalSubtotal.toFixed(2));
+        $("#tax").html(totalImpuesto.toFixed(2));
+        $("#total").html(total.toFixed(2));
         contentItem.html(item);
     }
     
 }
 function removeItem(index){
 var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section><section class="name"><p>{name}</p></section><section class="tax"><p>{tax}</p></section><section class="price"><p>{price}</p></section><section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-close"></i></a></section></section>';
-    var get_all = storage.get('item');
-    get_all = get_all.indexOf(index);
+    var gets = storage.get('item');
+    gets.splice(index, 1);
     var temp = null;
     var impuesto = 0;
     var item = "";
-    if (get_all !== null){
-        $.each(get_all, function(index, value){
+    var totalImpuesto = 0;
+    var totalSubtotal = 0;
+    var total = 0;
+    if (gets !== null){
+        $.each(gets, function(index, value){
             temp = itemHTML.replace('{cantidad}', value.unidad);
             temp = temp.replace('{name}', value.name);
             impuesto = (value.price%15);
@@ -83,8 +92,14 @@ var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p
             temp = temp.replace('{index}', index);
             item += temp;
             temp = null;
+            totalImpuesto = impuesto*value.unidad;
+            totalSubtotal = value.price*value.unidad;
         });
-
+        storage.set('item', gets);
+        total = totalImpuesto+totalSubtotal;
+        $("#subtotal").html(totalSubtotal.toFixed(2));
+        $("#tax").html(totalImpuesto.toFixed(2));
+        $("#total").html(total.toFixed(2));
         contentItem.html(item);
     }
 }
@@ -92,8 +107,7 @@ $(item).on('click', function(event){
     event.preventDefault();
     var data = JSON.parse(this.dataset.item);
     
-    data = 
-        {
+    data = {
             price: data.price,
             name: data.name,
             impuesto: null,
@@ -104,4 +118,7 @@ $(item).on('click', function(event){
     setStorage(data);
     addItem();
     
-})
+});
+$(document).on('ready', function(){
+    addItem(null);
+});

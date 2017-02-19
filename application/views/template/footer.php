@@ -215,5 +215,22 @@
 <?php if (isset($js)):foreach($js as $key_src => $value_src):?>
 <?="<script src='".base_url()."assets/dist/".$value_src."'></script>"?>
 <?php endforeach; endif;?>
+<!-- CDN JS-->
+<?php if (isset($cdn)):foreach($cdn as $key_href => $value_href):?>
+<?="<script src='$value_href'></script>"?>
+<?php endforeach; endif;?>
+<script>
+$('select').select2({
+  ajax: {
+    url: '<?=base_url()?>ajax/customer/search/',
+    method: 'POST',
+    processResults: function (data) {
+      return {
+        results: data
+      };
+    }
+  }
+});
+</script>
 </body>
 </html>
