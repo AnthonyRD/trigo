@@ -23,7 +23,7 @@ class Customers extends CI_Controller {
     }
     public function search(){
         $data = array(
-            'data' => $this->model_customer->get_search_customer('w')
+            'data' => $this->model_customer->get_search_customer($this->input->post('search'))
         );
         $this->load->view('template/ajax/response', $data);
     }

@@ -67,7 +67,7 @@ function addItem(data){
         total = totalImpuesto+totalSubtotal;
         $("#subtotal").html(totalSubtotal.toFixed(2));
         $("#tax").html(totalImpuesto.toFixed(2));
-        $("#total").html(total.toFixed(2));
+        $("#total, #total-btn").html(total.toFixed(2));
         contentItem.html(item);
     }
     
@@ -86,7 +86,7 @@ var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p
         $.each(gets, function(index, value){
             temp = itemHTML.replace('{cantidad}', value.unidad);
             temp = temp.replace('{name}', value.name);
-            impuesto = (value.price%15);
+            impuesto = (value.price*15/100);
             temp = temp.replace('{tax}', impuesto);
             temp = temp.replace('{price}', value.price);
             temp = temp.replace('{index}', index);
@@ -99,7 +99,7 @@ var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p
         total = totalImpuesto+totalSubtotal;
         $("#subtotal").html(totalSubtotal.toFixed(2));
         $("#tax").html(totalImpuesto.toFixed(2));
-        $("#total").html(total.toFixed(2));
+        $("#total, #total-btn").html(total.toFixed(2));
         contentItem.html(item);
     }
 }
@@ -108,6 +108,7 @@ $(item).on('click', function(event){
     var data = JSON.parse(this.dataset.item);
     
     data = {
+            id: data.id,
             price: data.price,
             name: data.name,
             impuesto: null,
@@ -122,3 +123,56 @@ $(item).on('click', function(event){
 $(document).on('ready', function(){
     addItem(null);
 });
+$("#pay").click(function(){
+    var payType = $("input[name='pay-type']").val();
+    
+});
+$("#total-btn").click(function () {
+    var item = null;
+    var itemT = null;
+    var subtotal = 0;
+    var impuesto = 0;
+    var total = 0;
+    var itemPay = '<tr><td>{{nameProduct}}</td><td>{{qty}}</td><td>{{prece}}</td><td>{{total}}</td></tr>';
+    if (storage.get('tipo') !== null){
+        $("#payModal").modal('show');
+        $.each(storage.get('item'), function(index, value){
+            subtotal += (value.price*value.unidad);
+            impuesto += ((value.price*15/100)*value.unidad);
+            console.log(impuesto);
+            itemT = itemPay.replace("{{nameProduct}}", value.name);
+            itemT = itemT.replace("{{qty}}", value.unidad);
+            itemT = itemT.replace("{{prece}}", value.price);
+            itemT = itemT.replace("{{total}}", (value.price*value.unidad));
+            item += itemT;
+        });
+        total = (subtotal + impuesto);
+        $(".itemPay").html(item);
+        $(".subtotalPay").html(subtotal.toFixed(2));
+        $(".impuesto").html(impuesto.toFixed(2));
+        $(".toPay").html(total.toFixed(2));
+    }else{
+        $("#tipo").modal('show');
+    }
+});
+$("#add-customer").click(function(){
+   var customer = $('ul.typeahead li.active').data('value');
+   if (customer != ""){
+       storage.set('customer', customer);
+       $("#customer").html(customer);
+       $("#search-customer").modal('hide');
+   }
+});
+$("#add-type").click(function(){
+   var type = $("input[name='tipo']").val();
+   if (type != ""){
+       storage.set("tipo",type);
+       $("#tipo").modal('hide');
+   }
+});
+$(".button-pay").click(function(){
+    if(!$(this).hasClass('active')){
+        $(".button-pay").toggleClass('active');
+    }
+
+})

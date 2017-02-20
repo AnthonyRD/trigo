@@ -90,7 +90,7 @@ class Model_customer extends CI_Model {
         
     }
     public function get_search_customer($str){
-        $this->db->select('name');
+        $this->db->select('id, name');
         $this->db->like('name', $str, 'both');
         $query = $this->db->get('customer');
         if ($query->num_rows() > 0){
