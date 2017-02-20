@@ -55,7 +55,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 /**
- * Account Rauter
+ * Account Router
  * */
 $route['login'] = "account/login/index";
 $route['register'] = "account/register/index";
@@ -65,7 +65,7 @@ $route['login/forgot/password/confirm'] = "account/forgot/password_confirm";
 $route['login/reset/password'] = "account/reset/password";
 $route['login/reset/password/confirm'] = "account/reset/password_confirm";
 /**
- * Customers Rauter
+ * Customers Router
  * */
 $route['customer/create'] = "customers/create/index";
 $route['customer/create/confirm'] = "customers/create/confirm";
@@ -80,7 +80,7 @@ $route['customers'] = "customers/index/index";
  * */
 $route['dashboard'] = "dashboard/index/index";
 /**
- * Products Rauter
+ * Products Router
  * */
 $route['products'] = "products/index/index";
 $route['product/create'] = "products/create/index";
@@ -102,7 +102,7 @@ $route['supplier/edit/(:num)'] = "suppliers/edit/index/$1";
 $route['supplier/edit/confirm'] = "suppliers/edit/confirm";
 $route['suppliers/details/(:num)'] = "suppliers/details/index/$1";
 /**
- * Orders Rauter
+ * Orders Router
  * */
 $route['orders'] = "orders/index/index";
 $route['order/create'] = "orders/create/index";
@@ -111,18 +111,18 @@ $route['order/delete/(:num)'] = "orders/delete/index/$1";
 $route['order/delete/confirm'] = "orders/delete/confirm";
 $route['order/edit/(:num)'] = "orders/edit/index/$1";
 $route['order/edit/confirm'] = "orders/edit/confirm";
-$route['order/details/(:num)'] = "suppliers/details/index/$1";
+$route['order/details/(:num)'] = "orders/details/index/$1";
 /**
- * Employes Router
+ * Employees Router
  * */
-$route['employes'] = "employes/index/index";
-$route['employe/create'] = "employes/create/index";
-$route['employe/create/confirm'] = "employes/create/confirm";
-$route['employe/delete/(:num)'] = "employes/delete/index/$1";
-$route['employe/delete/confirm'] = "employes/delete/confirm";
-$route['employe/edit/(:num)'] = "employes/edit/index/$1";
-$route['employe/edit/confirm'] = "employes/edit/confirm";
-$route['employe/details/(:num)'] = "employes/details/index/$1";
+$route['employees'] = "employees/index/index";
+$route['employee/create'] = "employees/create/index";
+$route['employee/create/confirm'] = "employees/create/confirm";
+$route['employee/delete/(:num)'] = "employees/delete/index/$1";
+$route['employee/delete/confirm'] = "employees/delete/confirm";
+$route['employee/edit/(:num)'] = "employees/edit/index/$1";
+$route['employee/edit/confirm'] = "employees/edit/confirm";
+$route['employees/details/(:num)'] = "employees/details/index/$1";
 /**
  * Reports Router
  * */
@@ -145,4 +145,7 @@ $route['product/category/details/(:num)'] = "categories/details/index/$1";
 $route['ajax/customer/getall'] = "ajax/customers/getall";
 $route['ajax/customer/get/([a-zA-Z0-9]+)'] = "ajax/customers/get/$1";
 $route['ajax/customer/search'] = "ajax/customers/search";
- 
+/****/
+$route['ajax/employee/getall'] = "ajax/employees/getall";
+$route['ajax/employee/get/([a-zA-Z0-9]+)'] = "ajax/employees/get/$1";
+$route['ajax/employee/search'] = "ajax/employees/search"; 

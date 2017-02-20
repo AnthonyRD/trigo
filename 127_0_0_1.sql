@@ -53,7 +53,7 @@ INSERT INTO `address` (`id`, `address_line_1`, `address_line_2`, `number`, `coun
 CREATE TABLE IF NOT EXISTS `customer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
-  `las_name` varchar(200) NOT NULL,
+  `last_name` varchar(200) NOT NULL,
   `telephone` varchar(12) NOT NULL,
   `cellphone` varchar(12) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `department` (
 CREATE TABLE IF NOT EXISTS `employee` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `lastname` varchar(200) NOT NULL,
+  `last_name` varchar(200) NOT NULL,
   `telephone` varchar(12) NOT NULL,
   `cellphone` varchar(12) NOT NULL,
   `email` varchar(1000) NOT NULL,

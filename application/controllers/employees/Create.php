@@ -39,9 +39,8 @@ class Create extends CI_Controller {
 	}
 	public function index()
 	{
-	    $this->load->model(array('model_supplier', 'model_category'));
-	    $data = array(
-	        'address' => $this->model_address->get_addresses(),
+	    $this->load->model(array('model_department', 'model_position'));
+	    $data = array(	        
     	    'department' => $this->model_department->get_departments(),
 			'position' => $this->model_position->get_positions()    	        
 	    );
@@ -98,15 +97,25 @@ class Create extends CI_Controller {
 			'email' => $this->input->post('email'),			
 			'status' => $this->input->post('status'),
 	        'image_url' => $this->image_url['file_name'],	        
-	        'department_id' => $this->input->post('department'),
-			'position_id' => $this->input->post('position'),
-			'address_id' => $this->input->post('address'),
-	        'start_date' => date('Y-m-d H:i:s')
+	        'department' => $this->input->post('department'),
+			'position' => $this->input->post('position'),			
+	        'start_date' => date('Y-m-d H:i:s'),
+	        'address' => array(
+	            'address_line_1' => $this->input->post('address_1'),
+	            'address_line_2' => $this->input->post('address_2'),
+	            'number' => $this->input->post('number'),
+	            'country' => $this->input->post('country'),
+	            'state' => $this->input->post('state'),
+	            'zip_code' => $this->input->post('zip_code')
+	        )
 	    );
 	    if ($this->model_employee->insert_employee($data)){
 	        $this->session->set_flashdata('employee_success',true);
 	        redirect('employees');
-	    }
+	    } else {
+
+			redirect('mymistake');
+		}
 	    return FALSE;
 	}
 }

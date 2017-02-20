@@ -15,7 +15,7 @@
           <li><a href="/employee/create"><i class="fa fa-plus"></i> New Employee</a></li>
           <li><a href="#" id="edit_employee"><i class="fa fa-edit"></i> Edit</a></li>
           <li><a href="#" id="delete_employee"><i class="fa fa-trash"></i> Delete</a></li>
-          <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->
+          <li><a href="#" id="view"><i class="fa fa-info"></i> Details</a></li> 
         </ul>
       </section>
       <section class="categories-content">
@@ -24,11 +24,11 @@
             <section class="col-md-12">
               <?php if (!is_null($this->session->flashdata('employee_success')) && $this->session->flashdata('employee_success') === TRUE):?>
                 <section class="alert alert-success">
-                  <p>Todo a salido bien!</p>
+                  <p>Empeado grabado con éxito!</p>
                 </section>
               <?php elseif(!is_null($this->session->flashdata('employee_success')) && $this->session->flashdata('employee_success') === FALSE):?>
                 <section class="alert alert-danger">
-                  <p>Algo salio mal!</p>
+                  <p>Algo salió mal. Favor revisar los datos.</p>
                 </section>
               <?php endif;?>
             </section>
@@ -37,7 +37,7 @@
           <section class="col-md-12">
             <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Lista de empleados</h3>
+                        <h3 class="box-title">Lista de Empleados</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -46,32 +46,29 @@
                           <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th>Imagen</th>
-                            <th>Reoerder Level</th>
-                            <th>Entry date</th>
-                            <th>Last Entry</th>
-                            <th>Nombre del suplidor</th>
-                            <th>Nombre categoria</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Celular</th>
+                            <th>Email</th>
+                            <th>Departamento</th>
+                            <th>Posicion</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <?php if (isset($data) && !(is_null($data))): foreach($data as $key => $value): ?>
+                          <?php if (isset($data) && !is_null($data)): foreach($data as $key => $value): ?>
                           <tr>
                             <td>
                               <section class="radio icheck">
                                 <label><input type="radio" name="iCheck" value="<?=$value->id?>"></label>
-                                </section>
                               </section>
                             </td>
                             <td><?=$value->name?></td>
-                            <td><?=$value->description?></td>
-                            <td><img src="<?=base_url()?>uploads/<?=$value->image_url?>" width="45"/></td>
-                            <td><?=$value->reorder_level?></td>
-                            <td><?=$value->entry_date?></td>
-                            <td><?=$value->last_entry?></td>
-                            <td><?=$value->suppier_name?></td>
-                            <td><?=$value->name_category?></td>
+                            <td><?=$value->last_name?></td>                            
+                            <td><?=$value->telephone?></td>
+                            <td><?=$value->cellphone?></td>
+                            <td><?=$value->email?></td>
+                            <td><?=$value->department?></td>
+                            <td><?=$value->position?></td>
                           </tr>
                           <?php endforeach;endif;?>
                         </tbody>
