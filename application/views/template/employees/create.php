@@ -29,7 +29,7 @@
                             </section>
                         </section>
                         <section class="row">
-                            <form action="create/confirm" method="post">
+                            <form action="/employee/create/confirm" method="post" enctype="multipart/form-data">
                                 <section class="col-md-12">
                                     <section class="row">
                                          <section class="col-md-12">
@@ -44,21 +44,21 @@
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Apellido</label>
-                                                <input type="email" name="email" class="form-control" placeholder="Apellido" required/>
+                                                <input type="text" name="last_name" class="form-control" placeholder="Apellido" required/>
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Email</label>
-                                                <input type="text" name="contact_name" class="form-control" placeholder="Email" required/>
+                                                <input type="text" name="email" class="form-control" placeholder="Email" required/>
                                             </section>
                                              <section class="form-group">
                                                 <label for="">Telefono Fijo</label>
-                                                <input type="text" name="rnc" class="form-control" placeholder="Telefono Fijo"/>
+                                                <input type="text" name="telephone" class="form-control" placeholder="Telefono Fijo"/>
                                             </section>
                                         </section>
                                         <section class="col-md-6">                                           
                                             <section class="form-group">
                                                 <label for="">Telefono Movil</label>
-                                                <input type="text" name="telephone" class="form-control" placeholder="Telefono Movil" required/>
+                                                <input type="text" name="cellphone" class="form-control" placeholder="Telefono Movil" required/>
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Departamento</label>

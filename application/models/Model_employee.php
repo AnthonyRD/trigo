@@ -5,7 +5,7 @@ class Model_employee extends CI_Model {
     public function __construct(){
         parent::__construct();
         $this->load->database();
-        $this->load->model('model_address');
+        $this->load->model(array('model_address', 'model_department', 'model_position'));
     }
     public function employee_name_validation($str){
         $this->db->where('name', $str);
@@ -30,29 +30,9 @@ class Model_employee extends CI_Model {
         $address_id = $this->model_address->insert_address($data['address']);
         $department_id = $this->model_department->insert_department($data['department']);
         $position_id = $this->model_position->insert_position($data['position']);
-        if ($address_id !== FALSE){
+        if ($address_id !== FALSE && $department_id !== FALSE && $position_id !== FALSE){
             unset($data['address']);
             $data['address_id'] = $address_id;
-            $this->db->insert('employee', $data);
-            if ($this->db->affected_rows() > 0){
-                return TRUE;
-            }else{
-                return FALSE;
-            }
-        }
-        if ($department_id !== FALSE){
-            unset($data['department']);
-            $data['department_id'] = $department_id;
-            $this->db->insert('employee', $data);
-            if ($this->db->affected_rows() > 0){
-                return TRUE;
-            }else{
-                return FALSE;
-            }
-        }
-        if ($position_id !== FALSE){
-            unset($data['position']);
-            $data['position_id'] = $position_id;
             $this->db->insert('employee', $data);
             if ($this->db->affected_rows() > 0){
                 return TRUE;

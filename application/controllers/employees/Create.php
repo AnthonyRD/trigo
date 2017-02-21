@@ -49,11 +49,15 @@ class Create extends CI_Controller {
 	}
 	public function confirm(){
 	    $this->form_validation->set_rules('name', 'Nombre', 'callback_name_check');
-	    $this->form_validation->set_rules('image_url', 'Imagen', 'callback_do_upload');
+	    if ($this->input->post('image_url') !== null){
+	    	$this->form_validation->set_rules('image_url', 'Imagen', 'callback_do_upload');
+	    }else{
+	    	$this->add_employee();
+	    }
 	    if ($this->form_validation->run() === FALSE){
 	        $this->template->view($this->page_config);
 	    }else{
-	        $this->session->set_flashdata('error', true);
+	        $this->session->set_flashdata('error', TRUE);
 	        redirect('employee/create');
 	    }
 	}
@@ -95,8 +99,7 @@ class Create extends CI_Controller {
 			'telephone' => $this->input->post('telephone'),
 			'cellphone' => $this->input->post('cellphone'),
 			'email' => $this->input->post('email'),			
-			'status' => $this->input->post('status'),
-	        'image_url' => $this->image_url['file_name'],	        
+			'status' => $this->input->post('status'),	        
 	        'department' => $this->input->post('department'),
 			'position' => $this->input->post('position'),			
 	        'start_date' => date('Y-m-d H:i:s'),
@@ -109,6 +112,9 @@ class Create extends CI_Controller {
 	            'zip_code' => $this->input->post('zip_code')
 	        )
 	    );
+	    if (!empty($this->image_url)){
+	    	$data['image_url'] = $this->image_url['file_name'];
+	    }
 	    if ($this->model_employee->insert_employee($data)){
 	        $this->session->set_flashdata('employee_success',true);
 	        redirect('employees');
