@@ -80,11 +80,11 @@
                                         <section class="col-md-8">
                                             <section class="form-group">
                                                 <label for="">Direccion #1</label>
-                                                <input type="text" name="address_1" class="form-control" value="<?=$data->address_line_1?>" placeholder="Direccion #1" required/>
+                                                <input type="text" name="address_1" class="form-control" value="<?=$data->address_1?>" placeholder="Direccion #1" required/>
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Direccion #2</label>
-                                                <input type="text" name="address_2" class="form-control" value="<?=$data->address_line_2?>" placeholder="Direccion #2"/>
+                                                <input type="text" name="address_2" class="form-control" value="<?=$data->address_2?>" placeholder="Direccion #2"/>
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Estado</label>

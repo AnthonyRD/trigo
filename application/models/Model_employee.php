@@ -5,9 +5,9 @@ class Model_employee extends CI_Model {
     public function __construct(){
         parent::__construct();
         $this->load->database();
-        $this->load->model(array('model_address', 'model_department', 'model_position'));
+        $this->load->model('model_address');
     }
-    public function employee_name_validation($str){
+    public function category_name_validation($str){
         $this->db->where('name', $str);
         $this->db->limit(1);
         $query = $this->db->get("employee");
@@ -28,9 +28,7 @@ class Model_employee extends CI_Model {
     }
     public function insert_employee($data = array()){
         $address_id = $this->model_address->insert_address($data['address']);
-        $department_id = $this->model_department->insert_department($data['department']);
-        $position_id = $this->model_position->insert_position($data['position']);
-        if ($address_id !== FALSE && $department_id !== FALSE && $position_id !== FALSE){
+        if ($address_id !== FALSE){
             unset($data['address']);
             $data['address_id'] = $address_id;
             $this->db->insert('employee', $data);
@@ -39,8 +37,7 @@ class Model_employee extends CI_Model {
             }else{
                 return FALSE;
             }
-        }
-        else{
+        }else{
             return FALSE;
         }
     }
@@ -53,11 +50,12 @@ class Model_employee extends CI_Model {
         }
     }
     public function get_employee($str){
-        $this->db->select('a.id as id,a.id, name, lastname, telephone, cellphone, email, d.address_line_1, d.address_line_2, 
-                            b.name, start_date, a.status, c.name, image_url');
+        $this->db->select('a.id as id,a.id, a.name employee_name, a.last_name, a.telephone, a.cellphone, a.email, 
+                           d.address_line_1, d.address_line_2, d.state, d.zip_code, d.country, d.number,
+                           b.name department_name, a.start_date, a.status, c.name, a.image_url');
         $this->db->limit(1);
         $this->db->from('employee a'); 
-        $this->db->join('deparment b', 'a.deparment_id=b.id', 'left');
+        $this->db->join('department b', 'a.department_id=b.id', 'left');
         $this->db->join('position c', 'c.id=a.position_id', 'left');
         $this->db->join('address d', 'd.id = employee.address_id', 'left');
         $this->db->where('employee.id', $str);        
@@ -68,10 +66,8 @@ class Model_employee extends CI_Model {
             return NULL;
         }
     }
-    public function update_employee($data = array(), $str, $str_address, $str_department, $str_position){
+    public function update_employee($data = array(), $str, $str_address){
         $address = $this->model_address->update_address($data['address'], $str_address);
-        $department = $this->model_department->update_address($data['department'], $str_department);
-        $position = $this->model_position->update_address($data['position'], $str_position);
         if ($address){
             unset($data['address']);
             $this->db->where('id', $str);
@@ -82,31 +78,9 @@ class Model_employee extends CI_Model {
                 return FALSE;
             }
         }
-        if ($department){
-            unset($data['department']);
-            $this->db->where('id', $str);
-            $this->db->update('employee', $data);
-            if ($this->db->affected_rows() > 0){
-                return TRUE;
-            }else{
-                return FALSE;
-            }
-        }
-        if ($position){
-            unset($data['position']);
-            $this->db->where('id', $str);
-            $this->db->update('employee', $data);
-            if ($this->db->affected_rows() > 0){
-                return TRUE;
-            }else{
-                return FALSE;
-            }
-        }
     }
-    public function delete_employee($str, $str_address, $str_department, $str_position){
+    public function delete_employee($str, $str_address){
         $address = $this->model_address->delete_address($str_address);
-        $department = $this->model_department->delete_department($str_department);
-        $position = $this->model_position->delete_address($str_position);
         if ($address){
             $this->db->where('id', $str);
             $this->db->delete('employee');
@@ -115,26 +89,7 @@ class Model_employee extends CI_Model {
             }else{
                 return FALSE;
             }
-        }
-        if ($department){
-            $this->db->where('id', $str);
-            $this->db->delete('employee');
-            if ($this->db->affected_rows() > 0){
-                return TRUE;
-            }else{
-                return FALSE;
-            }
-        }
-        if ($position){
-            $this->db->where('id', $str);
-            $this->db->delete('employee');
-            if ($this->db->affected_rows() > 0){
-                return TRUE;
-            }else{
-                return FALSE;
-            }
-        }
-        else{
+        }else{
             return FALSE;
         }
         

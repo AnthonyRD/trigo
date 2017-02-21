@@ -23,13 +23,13 @@
                             <section class="col-md-12">
                                 <?php if (!is_null($this->session->flashdata('error'))):?>
                                 <section class="alert alert-danger">
-                                    <p>El nombre del empleado ya existe.</p>
+                                    <p>El empleado ya existe.</p>
                                 </section>
                                 <?php endif; ?>
                             </section>
                         </section>
                         <section class="row">
-                            <form action="/employee/create/confirm" method="post" enctype="multipart/form-data">
+                            <form action="/trigo/employee/create/confirm" method="post" enctype="multipart/form-data">
                                 <section class="col-md-12">
                                     <section class="row">
                                          <section class="col-md-12">
@@ -40,7 +40,7 @@
                                         <section class="col-md-6">
                                             <section class="form-group">
                                                 <label for="">Nombre</label>
-                                                <input type="text" name="name" class="form-control" placeholder="Nombre" required/>
+                                                <input type="text" name="employee_name" class="form-control" placeholder="Nombre" required/>
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Apellido</label>
@@ -53,6 +53,13 @@
                                              <section class="form-group">
                                                 <label for="">Telefono Fijo</label>
                                                 <input type="text" name="telephone" class="form-control" placeholder="Telefono Fijo"/>
+                                            </section>
+					    <section class="form-group">
+                                                <label for="">Status</label>
+                                                <select name="status" class="form-control">
+                                                    <option value="0">Activo</option>
+                                                    <option value="1">Inactivo</option>
+                                                </select>
                                             </section>
                                         </section>
                                         <section class="col-md-6">                                           
@@ -69,11 +76,11 @@
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Posición</label>
-                                                <select name="department" class="form-control">
+                                                <select name="position" class="form-control">
                                                     <option value="0">Posición 1</option>
                                                     <option value="1">Posición 2</option>
                                                 </select>
-                                            </section>
+                                            </section>					   
                                             <section class="form-group">
                                                 <label>Foto del Empleado</label>
                                                 <input type="file" name="image_url" class="form-control" />
@@ -114,19 +121,7 @@
                                                 <input type="text" name="zip_code" class="form-control" placeholder="Zip Code"/>
                                             </section>
                                         </section>
-                                    </section>
-                                    <section class="row">
-                                         <section class="col-md-12">
-                                              <h2 class="page-header">Observaciones</h2>
-                                         </section>
-                                    </section>
-                                    <section class="row">
-                                        <section class="col-md-12">
-                                            <section class="form-group">
-                                                <textarea name="details" class="form-control" placeholder="Observaciones"></textarea>
-                                            </section>
-                                        </section>
-                                    </section>
+                                    </section>                                   
                                     <section class="row">
                                         <section class="col-md-offset-10 col-md-2">
                                             <section class="form-group">

@@ -8,7 +8,7 @@ class Delete extends CI_Controller {
 		$this->page_config = array(
 	        'title' => "Delete employee",
 	        'title_page' => "Delete Employee",
-	        'view_content' => "employee/delete",
+	        'view_content' => "employees/delete",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
 	            'css/style.css'
@@ -67,9 +67,10 @@ class Delete extends CI_Controller {
 	}
 	public function delete_employee(){
 	    $this->load->model('model_employee');
-	    if ($this->model_employee->delete_employee($this->input->post("id"))){
+	    if ($this->model_supplier->delete_supplier($this->input->post("id"), 
+		$this->input->post('address_id'))){
 	        $this->session->set_flashdata('employee_success',true);
-	        redirect('employees');
+	        redirect('employee');
 	    }
 	    return FALSE;
 	}

@@ -61,11 +61,7 @@
                 </section>
               </li>
             </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          </li>          
         </ul>
       </section>
     </nav>
@@ -115,7 +111,7 @@
             <li><a href="/products"><i class="fa fa-list-ol"></i> Administrar</a></li>
             <li><a href="/product/categories"><i class="fa fa-certificate"></i> Categorias</a></li>
           </ul>
-        </li>
+        </li>       
         <li>
           <a href="/customers">
             <i class="fa fa-users"></i> <span>Clientes</span>
@@ -147,6 +143,22 @@
           <a href="/order/create">
             <i class="fa fa-shopping-cart"></i> <span>Venta</span>
           </a>
+        </li>
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-gears"></i>
+            <span>COnfiguraciones</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/departments"><i class="fa fa-cubes"></i> Departamentos</a></li>
+            <li><a href="/positions"><i class="fa fa-book"></i> Posiciones</a></li>                        
+            <li><a href="/employees"><i class="fa fa-asterisk"></i> Empleados</a></li>   
+            <li><a href="/roles"><i class="fa fa-user"></i> Roles</a></li>         
+            <li><a href="/users"><i class="fa fa-users"></i> Usuarios</a></li>            
+          </ul>
         </li>
       </ul>
     </section>
