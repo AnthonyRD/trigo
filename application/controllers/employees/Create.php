@@ -60,7 +60,7 @@ class Create extends CI_Controller {
 	public function add_employee(){
 	    $this->load->model('model_employee');
 	     $data = array(
-	        'name' => $this->input->post('name'),
+	        'name' => $this->input->post('employee_name'),
 	        'last_name' => $this->input->post('last_name'),
 			'telephone' => $this->input->post('telephone'),
 			'cellphone' => $this->input->post('cellphone'),
