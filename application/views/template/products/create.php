@@ -6,9 +6,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Categories</a></li>
-        <li class="active">New Create</li>
+        <li><a href="#">Productos</a></li>        
+        <li class="active">Agregar Producto</li>
       </ol>
     </section>
     <section class="content">
@@ -16,7 +15,7 @@
             <section class="col-md-12">
                 <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Crear nuevo producto</h3>
+                        <h3 class="box-title">Agregar Producto</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -32,9 +31,9 @@
                                         <input type="number" name="price" class="form-control" placeholder="Precio del producto" required/>
                                     </section>
                                     <section class="form-group">
-                                        <label>Cargo por impuesto</label>
+                                        <label>¿Cargar impuesto?</label>
                                         <section class="checkbox icheck">
-                                            <label><input type="checkbox" name="charge_tax"></label>
+                                            <label><input type="checkbox" name="charge_tax" checked></label>
                                         </section>
                                     </section>
                                     <section class="form-group">
@@ -48,7 +47,7 @@
                                 </section>
                                 <section class="col-md-6">
                                     <section class="form-group">
-                                        <label>Categoria</label>
+                                        <label>Categoría</label>
                                         <select name="category" class="form-control">
                                             <?php foreach($category as $key => $value):?>
                                             <option value="<?=$value->id?>"><?=$value->name?></option>
@@ -72,7 +71,7 @@
                             <section class="row">
                                 <section class="col-md-12">
                                     <section class="form-group">
-                                        <label>Descripcion del producto</label>
+                                        <label>Descripción del producto</label>
                                         <textarea name="description" class="form-control" placeholder="Descripcion"></textarea>
                                     </section>
                                 </section>

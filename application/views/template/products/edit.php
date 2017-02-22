@@ -6,9 +6,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Categories</a></li>
-        <li class="active">New Create</li>
+        <li><a href="#">Productos</a></li>        
+        <li class="active">Agregar Producto</li>
       </ol>
     </section>
     <section class="content">
@@ -32,7 +31,7 @@
                                         <input type="number" name="price" class="form-control" placeholder="Precio del producto" value="<?=$data->price?>" required/>
                                     </section>
                                     <section class="form-group">
-                                        <label>Cargo por impuesto</label>
+                                        <label>¿Cargar por impuesto?</label>
                                         <section class="checkbox icheck">
                                             <label><input type="checkbox" name="charge_tax" <?=($data->charge_tax !== "")?'checked':'';?>></label>
                                         </section>

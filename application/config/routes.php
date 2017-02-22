@@ -102,6 +102,28 @@ $route['supplier/edit/(:num)'] = "suppliers/edit/index/$1";
 $route['supplier/edit/confirm'] = "suppliers/edit/confirm";
 $route['suppliers/details/(:num)'] = "suppliers/details/index/$1";
 /**
+ * Departments Router
+ * */
+$route['departments'] = "departments/index/index";
+$route['department/create'] = "departments/create/index";
+$route['department/create/confirm'] = "departments/create/confirm";
+$route['department/delete/(:num)'] = "departments/delete/index/$1";
+$route['department/delete/confirm'] = "departments/delete/confirm";
+$route['department/edit/(:num)'] = "departments/edit/index/$1";
+$route['department/edit/confirm'] = "departments/edit/confirm";
+$route['departments/details/(:num)'] = "departments/details/index/$1";
+/**
+ * Positions Router
+ * */
+$route['positions'] = "positions/index/index";
+$route['position/create'] = "positions/create/index";
+$route['position/create/confirm'] = "positions/create/confirm";
+$route['position/delete/(:num)'] = "positions/delete/index/$1";
+$route['position/delete/confirm'] = "positions/delete/confirm";
+$route['position/edit/(:num)'] = "positions/edit/index/$1";
+$route['position/edit/confirm'] = "positions/edit/confirm";
+$route['positions/details/(:num)'] = "positions/details/index/$1";
+/**
  * Orders Router
  * */
 $route['orders'] = "orders/index/index";
@@ -123,6 +145,17 @@ $route['employee/delete/confirm'] = "employees/delete/confirm";
 $route['employee/edit/(:num)'] = "employees/edit/index/$1";
 $route['employee/edit/confirm'] = "employees/edit/confirm";
 $route['employees/details/(:num)'] = "employees/details/index/$1";
+/**
+ * Users Router
+ * */
+$route['users'] = "users/index/index";
+$route['user/create'] = "users/create/index";
+$route['user/create/confirm'] = "users/create/confirm";
+$route['user/delete/(:num)'] = "users/delete/index/$1";
+$route['user/delete/confirm'] = "users/delete/confirm";
+$route['user/edit/(:num)'] = "users/edit/index/$1";
+$route['user/edit/confirm'] = "users/edit/confirm";
+$route['users/details/(:num)'] = "users/details/index/$1";
 /**
  * Reports Router
  * */
@@ -146,6 +179,6 @@ $route['ajax/customer/getall'] = "ajax/customers/getall";
 $route['ajax/customer/get/([a-zA-Z0-9]+)'] = "ajax/customers/get/$1";
 $route['ajax/customer/search'] = "ajax/customers/search";
 /****/
-$route['ajax/employee/getall'] = "ajax/employees/getall";
-$route['ajax/employee/get/([a-zA-Z0-9]+)'] = "ajax/employees/get/$1";
-$route['ajax/employee/search'] = "ajax/employees/search"; 
+//$route['ajax/employee/getall'] = "ajax/employees/getall";
+//$route['ajax/employee/get/([a-zA-Z0-9]+)'] = "ajax/employees/get/$1";
+//$route['ajax/employee/search'] = "ajax/employees/search"; 

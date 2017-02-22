@@ -12,10 +12,10 @@
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/employee/create"><i class="fa fa-plus"></i> New Employee</a></li>
-          <li><a href="/employee/edit" id="edit_employee"><i class="fa fa-edit"></i> Edit</a></li>
-          <li><a href="/employee/delete" id="delete_employee"><i class="fa fa-trash"></i> Delete</a></li>
-          <li><a href="/employee/details" id="view"><i class="fa fa-info"></i> Details</a></li> 
+          <li><a href="/employee/create"><i class="fa fa-plus"></i>Agregar Empleado</a></li>
+          <li><a href="#" id="edit_employee"><i class="fa fa-edit"></i> Editar</a></li>
+          <li><a href="#" id="delete_employee"><i class="fa fa-trash"></i> Eliminar</a></li>
+          <li><a href="#" id="view"><i class="fa fa-info"></i> Detalles</a></li> 
         </ul>
       </section>
       <section class="categories-content">
@@ -52,6 +52,7 @@
                             <th>Email</th>
                             <th>Departamento</th>
                             <th>Posicion</th>
+                            <th>Status</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -59,16 +60,17 @@
                           <tr>
                             <td>
                               <section class="radio icheck">
-                                <label><input type="radio" name="iCheck" value="<?=$value->id?>"></label>
+                                <label><input type="radio" name="iCheck" value="<?=$value->employee_id?>"></label>
                               </section>
                             </td>
-                            <td><?=$value->name?></td>
+                            <td><?=$value->employee_name?></td>
                             <td><?=$value->last_name?></td>                            
                             <td><?=$value->telephone?></td>
                             <td><?=$value->cellphone?></td>
                             <td><?=$value->email?></td>
-                            <td><?=$value->department_id?></td>
-                            <td><?=$value->position_id?></td>
+                            <td><?=$value->department_name?></td>
+                            <td><?=$value->position_name?></td>
+                            <td><?=$value->employee_status == 'A' ? "Activo" : 'Inactivo'?></td>
                           </tr>
                           <?php endforeach;endif;?>
                         </tbody>

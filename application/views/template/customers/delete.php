@@ -6,7 +6,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Customers</li>
+        <li class="active">Clientes</li>
       </ol>
     </section>
     <section class="content">

@@ -6,9 +6,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Categories</a></li>
-        <li class="active">New Create</li>
+        <li><a href="#">Clientes</a></li>        
+        <li class="active">Agregar Cliente</li>
       </ol>
     </section>
     <section class="content">
@@ -16,7 +15,7 @@
             <section class="col-md-12">
                 <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Crear nuevo producto</h3>
+                        <h3 class="box-title">Agregar Cliente</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -37,11 +36,11 @@
                                         <input type="text" name="last_name" class="form-control" placeholder="Apellido" />
                                     </section>
                                     <section class="form-group">
-                                        <label for="">Telefono Fijo</label>
+                                        <label for="">Teléfono Fijo</label>
                                         <input type="text" name="telephone" class="form-control" placeholder="Numero de telefono fijo" />
                                     </section>
                                     <section class="form-group">
-                                        <label for="">Telefono Movil</label>
+                                        <label for="">Teléfono Móvil</label>
                                         <input type="text" name="cellphone" class="form-control" placeholder="Numero de telefono movil" />
                                     </section>
                                 </section>
@@ -53,7 +52,8 @@
                                     <section class="form-group">
                                         <label for="">Origen</label>
                                         <select name="origin" class="form-control">
-                                            <option value="0">Oridin 0</option>
+                                            <option value="0">Nacional</option>
+                                            <option value="1">Internacional</option>
                                         </select>
                                     </section>
                                     <section class="form-group">
@@ -70,11 +70,11 @@
                             <section class="row">
                                 <section class="col-md-8">
                                     <section class="form-group">
-                                        <label for="">Direccion #1</label>
+                                        <label for="">Dirección #1</label>
                                         <input type="text" name="address_1" class="form-control" placeholder="Direccion #1" required/>
                                     </section>
                                     <section class="form-group">
-                                        <label for="">Direccion #2</label>
+                                        <label for="">Dirección #2</label>
                                         <input type="text" name="address_2" class="form-control" placeholder="Direccion #2"/>
                                     </section>
                                     <section class="form-group">
@@ -84,11 +84,11 @@
                                 </section>
                                 <section class="col-md-4">
                                     <section class="form-group">
-                                        <label for="">Pais</label>
+                                        <label for="">País</label>
                                         <input type="text" name="country" class="form-control" placeholder="Pais donde recide" />
                                     </section>
                                     <section class="form-group">
-                                        <label for="">Numero de Edificio</label>
+                                        <label for="">Número de Edificio</label>
                                         <input type="text" name="number" class="form-control" placeholder="Numero del edificio o casa"/>
                                     </section>
                                     <section class="form-group">

@@ -23,7 +23,7 @@
                             <section class="col-md-12">
                                 <?php if (!is_null($this->session->flashdata('error'))):?>
                                 <section class="alert alert-danger">
-                                    <p>No ha realizados cambios.</p>
+                                    <p>No ha realizado cambios.</p>
                                 </section>
                                 <?php endif; ?>
                             </section>
@@ -38,7 +38,7 @@
                                     </section>
                                     <section class="row">
                                         <section class="col-md-6">
-					    <section class="form-group hide">
+					                <section class="form-group hide">
                                                 <input type="hidden" name="id" value="<?=$data->id?>"/>
                                                 <input type="hidden" name="address_id" value="<?=$data->id?>"/>
                                             </section>
@@ -58,13 +58,13 @@
                                                 <label for="">Telefono Fijo</label>
                                                 <input type="text" name="telephone" class="form-control" placeholder="Telefono Fijo" value="<?=$data->telephone?>"/>
                                             </section>
-					    <section class="form-group">
+					                        <section class="form-group">
                                                 <label for="">Status</label>
                                                 <select name="status" class="form-control">
-                                                    <option value="0">Activo</option>
-                                                    <option value="1">Inactivo</option>
+                                                <option value="A"<?=$data->employee_status == 'A' ? ' selected="selected"' : '';?>>Activo</option>
+                                                <option value="I"<?=$data->employee_status == 'I' ? ' selected="selected"' : '';?>>Inactivo</option>                                                    
                                                 </select>
-                                            </section>
+                                            </section> 
                                         </section>
                                         <section class="col-md-6">                                           
                                             <section class="form-group">
@@ -99,11 +99,11 @@
                                     <section class="row">
                                         <section class="col-md-8">
                                             <section class="form-group">
-                                                <label for="">Direccion #1</label>
+                                                <label for="">Dirección #1</label>
                                                 <input type="text" name="address_1" class="form-control" value="<?=$data->address_line_1?>" placeholder="Direccion #1" required/>
                                             </section>
                                             <section class="form-group">
-                                                <label for="">Direccion #2</label>
+                                                <label for="">Dirección #2</label>
                                                 <input type="text" name="address_2" class="form-control" value="<?=$data->address_line_2?>" placeholder="Direccion #2"/>
                                             </section>
                                             <section class="form-group">
@@ -113,11 +113,11 @@
                                         </section>
                                         <section class="col-md-4">
                                             <section class="form-group">
-                                                <label for="">Pais</label>
+                                                <label for="">País</label>
                                                 <input type="text" name="country" class="form-control" placeholder="Pais donde reside" value="<?=$data->country?>"/>
                                             </section>
                                             <section class="form-group">
-                                                <label for="">Numero de Edificio</label>
+                                                <label for="">Número de Edificio</label>
                                                 <input type="text" name="number" class="form-control" placeholder="Numero del edificio o casa" value="<?=$data->number?>"/>
                                             </section>
                                             <section class="form-group">

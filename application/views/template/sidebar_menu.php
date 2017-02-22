@@ -35,22 +35,7 @@
                   Alexander Pierce - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <section class="row">
-                  <section class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </section>
-                  <section class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </section>
-                  <section class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </section>
-                </section>
-                <!-- /.row -->
-              </li>
+              </li>                           
               <!-- Menu Footer-->
               <li class="user-footer">
                 <section class="pull-left">
@@ -147,7 +132,7 @@
          <li class="treeview">
           <a href="#">
             <i class="fa fa-gears"></i>
-            <span>COnfiguraciones</span>
+            <span>Configuraciones</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -155,8 +140,7 @@
           <ul class="treeview-menu">
             <li><a href="/departments"><i class="fa fa-cubes"></i> Departamentos</a></li>
             <li><a href="/positions"><i class="fa fa-book"></i> Posiciones</a></li>                        
-            <li><a href="/employees"><i class="fa fa-asterisk"></i> Empleados</a></li>   
-            <li><a href="/roles"><i class="fa fa-user"></i> Roles</a></li>         
+            <li><a href="/employees"><i class="fa fa-asterisk"></i> Empleados</a></li>               
             <li><a href="/users"><i class="fa fa-users"></i> Usuarios</a></li>            
           </ul>
         </li>

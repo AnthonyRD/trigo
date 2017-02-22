@@ -42,7 +42,7 @@ class Create extends CI_Controller {
 	}
 	public function confirm(){
 	    $this->form_validation->set_rules('name', 'Nombre', 'callback_name_check',
-	        array("name_check" => 'El nombre de la categoria ya existe.')
+	        array("name_check" => 'El nombre del cliente ya existe.')
 	    );
 	    if ($this->form_validation->run() === FALSE){
 	        $this->template->view($this->page_config);

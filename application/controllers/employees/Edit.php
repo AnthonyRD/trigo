@@ -53,7 +53,7 @@ class Edit extends CI_Controller {
 	    $this->form_validation->set_rules('id', 'employee', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
 	    	$this->session->set_flashdata('error', true);
-	        redirect('employee/edit/'.$this->input->post('id'));
+	        redirect('employee/edit/'.$this->input->post('employee_id'));
 	    }else{
 	        $this->session->set_flashdata('employee_success', false);
 	        redirect('employees');

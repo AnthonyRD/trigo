@@ -42,7 +42,14 @@ class Model_employee extends CI_Model {
         }
     }
     public function get_employees(){
-        $query = $this->db->get('employee');
+    $this->db->select('a.id as employee_id, a.name employee_name, a.last_name, a.telephone, a.cellphone, a.email, 
+                           a.start_date,a.image_url, a.status employee_status, b.name department_name, c.name position_name,
+                           d.address_line_1, d.address_line_2, d.state, d.zip_code, d.country, d.number');        
+        $this->db->from('employee a'); 
+        $this->db->join('department b', 'a.department_id=b.id', 'left');
+        $this->db->join('position c', 'c.id=a.position_id', 'left');
+        $this->db->join('address d', 'd.id = a.address_id', 'left');          
+        $query = $this->db->get();
         if ($query->num_rows() > 0){
             return $query->result();
         }else{
@@ -50,9 +57,9 @@ class Model_employee extends CI_Model {
         }
     }
     public function get_employee($str){
-        $this->db->select('a.id as id,a.id, a.name employee_name, a.last_name, a.telephone, a.cellphone, a.email, 
-                           d.address_line_1, d.address_line_2, d.state, d.zip_code, d.country, d.number,
-                           b.name department_name, a.start_date, a.status, c.name, a.image_url');
+        $this->db->select('a.id as employee_id, a.name employee_name, a.last_name, a.telephone, a.cellphone, a.email, 
+                           a.start_date,a.image_url, a.status employee_status, b.name department_name, c.name position_name,
+                           d.address_line_1, d.address_line_2, d.state, d.zip_code, d.country, d.number');
         $this->db->limit(1);
         $this->db->from('employee a'); 
         $this->db->join('department b', 'a.department_id=b.id', 'left');

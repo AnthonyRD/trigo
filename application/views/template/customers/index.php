@@ -6,13 +6,13 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Customers</li>
+        <li class="active">Clientes</li>
       </ol>
     </section>
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/product/create"><i class="fa fa-plus"></i> Nuevo cliente</a></li>
+          <li><a href="/product/create"><i class="fa fa-plus"></i> Agregar cliente</a></li>
           <li><a href="#" id="edit_product"><i class="fa fa-edit"></i> Editar</a></li>
           <li><a href="#" id="delete_product"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->
@@ -47,12 +47,12 @@
                             <th>#</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
-                            <th>Telefono</th>
-                            <th>Movil</th>
+                            <th>Teléfono</th>
+                            <th>Móvil</th>
                             <th>Email</th>
                             <th>Origen</th>
                             <th>Fecha de nacimiento</th>
-                            <th>Direccion</th>
+                            <th>Dirección</th>
                           </tr>
                         </thead>
                         <tbody>
