@@ -74,6 +74,20 @@ $(function() {
             location.href = "/position/delete/" + radio;
         }
     });
+    $("#edit_user").on('click', function(e) {
+        e.preventDefault();
+        var radio = $("input[type='radio']:checked").val();
+        if (typeof radio !== 'undefined') {
+            location.href = "/user/edit/" + radio;
+        }
+    });
+    $("#delete_user").on('click', function(e) {
+        e.preventDefault();
+        var radio = $("input[type='radio']:checked").val();
+        if (typeof radio !== 'undefined') {
+            location.href = "/user/delete/" + radio;
+        }
+    });
     $("#edit_product").on('click', function(e) {
         e.preventDefault();
         var radio = $("input[type='radio']:checked").val();

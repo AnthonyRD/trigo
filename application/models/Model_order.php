@@ -9,8 +9,8 @@ class Model_order extends CI_Model {
         $this->load->model('model_customer');
     }
     public function order_create($data = array()){
-        $data['order']['customer_id'] = $this->model_customer->get_id($data['customer']);
-        $this->db->insert('orders', $data['order']);
+        $data['orders']['customer_id'] = $this->model_customer->get_id($data['customer']);
+        $this->db->insert('orders', $data['orders']);
         if ($this->db->affected_rows() > 0){
             $order_id = $this->db->insert_id();
             $data['order_detail']['order_id'] = $order_id;
