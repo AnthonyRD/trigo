@@ -134,6 +134,7 @@ $route['order/delete/confirm'] = "orders/delete/confirm";
 $route['order/edit/(:num)'] = "orders/edit/index/$1";
 $route['order/edit/confirm'] = "orders/edit/confirm";
 $route['order/details/(:num)'] = "orders/details/index/$1";
+$route['order/print'] = "orders/create/prints";
 /**
  * Employees Router
  * */
@@ -178,7 +179,10 @@ $route['product/category/details/(:num)'] = "categories/details/index/$1";
 $route['ajax/customer/getall'] = "ajax/customers/getall";
 $route['ajax/customer/get/([a-zA-Z0-9]+)'] = "ajax/customers/get/$1";
 $route['ajax/customer/search'] = "ajax/customers/search";
+
 /****/
 //$route['ajax/employee/getall'] = "ajax/employees/getall";
 //$route['ajax/employee/get/([a-zA-Z0-9]+)'] = "ajax/employees/get/$1";
 //$route['ajax/employee/search'] = "ajax/employees/search"; 
+/****/
+$route['ajax/order/create'] = "ajax/orders/create";

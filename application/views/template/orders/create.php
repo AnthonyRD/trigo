@@ -342,79 +342,24 @@ section#my0 {
     display: flex;
     justify-content: center;
 }
-    </style>
-<style media="print">
-    .wrapper {
-        display:none;
-    }
-    .print {
-        position:fixed;
-        z-index:99999999999999;
-        display: block;
-        
-    }
-th {border: none;}
-
-table {
-    position: relative;
+.loading {
+    
+    position: absolute;
+    top: 0;
+    z-index: 99999;
     width: 100%;
-    height: auto;
-    display: block;
-}
-
-thead {
-    position: relative;
-    width: 100%;
-    display: block;
-    border-top: 2px solid;
-    border-bottom: 2px solid;
-}
-
-tr {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-}
-
-th:first-child {
-    width: 60%;
-}
-th {
-    width: 20%;
-}
-
-tbody {
-    position: relative;
-    width: 100%;
-    display: block;
-    border-bottom: 2px solid;
-}
-
-td:first-child {
-    width: 60%;
-}
-
-td {
-    width: 20%;
-}
-.headPay {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.31);
+    justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    display: none;
+
 }
-.column {
-    display: flex;
-    flex-flow:column;
-    justify-content:center;
-    align-items:center;
+.loading .icon-loading {
+    color: #fff;
 }
-#pay {
-    display:none;
-}
-</style>
+    </style>
+<?php if(!isset($print)): ?>
 <body class="hold-transition skin-blue sidebar-mini">
 <section class="wrapper" style="overflow:hidden">
 
@@ -599,7 +544,7 @@ td {
                         <section class="col-md-12">
                             <h4>Seleccione un tipo</h4>
                             <section class="form-group">
-                                <select name="tipo" class="form-control selectpicker" data-live-search="true">
+                                <select name="tipo" class="form-control" id="input-tipo">
                                     <option value="0">Orders Type</option>
                                     <option value="1">Eat In</option>
                                     <option value="2">To Go</option>
@@ -710,12 +655,215 @@ td {
                     </section>
                 </section>
                 <section class="modal-footer" id="my0">
-                    <button type="button" class="btn btn-default" id="pay">Pay</button>
+                    <button type="button" class="btn btn-default" id="confirm">Confirmar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </section>
             </section><!-- /.modal-content -->
         </section><!-- /.modal-dialog -->
     </section><!-- /.modal -->
+<div class="modal fade" id="confirmM" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Efectivo</h4>
+        </div>
+        <div class="modal-body">
+          <section class="row">
+              <section class="col-md-12">
+                  <section class="form-group">
+                      <label for="">Efectivo a cuanto apagar</label>
+                      <input type="text" name="efectivo" class="form-control" placeholder="Efectivo" />
+                  </section>
+              </section>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="efectivo">Pagar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="cobro-invoice" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Invoice</h4>
+        </div>
+        <div class="modal-body">
+          <section class="row">
+                        <section class="col-md-8 col-md-offset-2">
+                            <section class="row">
+                                <section class="invoic">
+                                    <section class="headPay" style="display:none">
+                                        <section class="column">
+                                            <span>Served by: Williams</span>
+                                            <span>2017-02-06</span>
+                                        </section>
+                                        <section class="column">
+                                            <span>Orders</span>
+                                            <span>Invoice #: 01</span>
+                                        </section>
+                                        <section class="column">
+                                            <span>REG-012</span>
+                                            <span>12:53</span>
+                                        </section>
+                                    </section>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="itemPay">
+                                            
+                                        </tbody>
+                                    </table>
+                                    <section class="tfooter">
+                                        <section class="tpaymend">
+                                            <section class="ttotal">
+                                                <span>Sub Total: </span>
+                                                <span class="subtotalPay">0.00</span>
+                                            </section>
+                                            <section class="ttendered">
+                                                <span>Impuesto:</span>
+                                                <span class="impuesto">0.00</span>
+                                            </section>
+                                            <section class="texchanged">
+                                                <span>Total a pagar:</span>
+                                                <span class="toPay">0.00</span>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="row">
+                                    <section class="col-md-12">
+                                        <section class="paymend-details">
+                                            <section class="total">
+                                                <span>Pago con: </span>
+                                                <span class="pago">0.00</span>
+                                            </section>
+                                            <section class="tendered">
+                                                <span>Devuelta:</span>
+                                                <span class="color-red devuelta">0.00</span>
+                                            </section>
+                                            <section class="exchanged">
+                                                <span>Total pagado:</span>
+                                                <span class="color-green toPay">0.00</span>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="cobro">Pagar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="loading">
+    <section class="icon-loading">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    </section>
+</section>
+<?php else: ?>
+<style>
+    .wrapper {
+        display:none;
+    }
+    .print {
+        position:fixed;
+        z-index:99999999999999;
+        display: block;
+        
+    }
+th {border: none;}
+
+table {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+thead {
+    position: relative;
+    width: 100%;
+    display: block;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+}
+
+tr {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+th:first-child {
+    width: 60%;
+}
+th {
+    width: 20%;
+}
+
+tbody {
+    position: relative;
+    width: 100%;
+    display: block;
+    border-bottom: 2px solid;
+}
+
+td:first-child {
+    width: 60%;
+}
+
+td {
+    width: 20%;
+}
+.headPay {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.column {
+    display: flex;
+    flex-flow:column;
+    justify-content:center;
+    align-items:center;
+}
+#pay {
+    display:none;
+}
+.box-print {
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    width:100%;
+    height:100%;
+        margin-top: 100px;
+}
+.box-print .print {
+    width:167mm;
+    height:173mm;
+}
+</style>
+<section class="box-print">
 <section class="print">
 
     <section class="headPay">
@@ -741,7 +889,7 @@ td {
                 <th>Total</th>
             </tr>
         </thead>
-        <tbody class="itemPay">
+        <tbody class="itemPays">
         </tbody>
     </table>
     <section class="tfooter">
@@ -761,3 +909,41 @@ td {
         </section>
     </section>
 </section>
+</section>
+<script type="text/javascript">
+    window.onload = function(){
+    var item = null;
+    var itemT = null;
+    var subtotal = 0;
+    var impuesto = 0;
+    var total = 0;
+    var itemPay = '<tr><td>{{nameProduct}}</td><td>{{qty}}</td><td>{{prece}}</td><td>{{total}}</td></tr>';
+    var totalStorage = storage.get('total');
+    if (storage.get('tipo') !== null){
+        if(totalStorage != 0){
+            $("#payModal").modal('show');
+            $.each(storage.get('item'), function(index, value){
+                subtotal += (value.price*value.unidad);
+                impuesto += ((value.price*15/100)*value.unidad);
+                console.log(impuesto);
+                itemT = itemPay.replace("{{nameProduct}}", value.name);
+                itemT = itemT.replace("{{qty}}", value.unidad);
+                itemT = itemT.replace("{{prece}}", value.price);
+                itemT = itemT.replace("{{total}}", (value.price*value.unidad));
+                item += itemT;
+            });
+            total = (subtotal + impuesto);
+            $(".itemPay, .itemPays").html(item);
+            $(".subtotalPay").html(subtotal.toFixed(2));
+            $(".impuesto").html(impuesto.toFixed(2));
+            $(".toPay").html(total.toFixed(2));
+        }else{
+            alert('No hay ningun articulo en la cesta');
+        }
+    }else{
+        $("#tipo").modal('show');
+    }
+        window.print();
+    }
+</script>
+<?php endif; ?>

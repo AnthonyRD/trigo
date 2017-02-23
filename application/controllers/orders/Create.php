@@ -36,4 +36,11 @@ class Create extends CI_Controller {
 		$this->page_config += $data;
 		$this->template->view($this->page_config);
 	}
+	public function prints(){
+		$data = array(
+			'print' => TRUE
+		);
+		$this->page_config += $data;
+		$this->template->view($this->page_config);
+	}
 }

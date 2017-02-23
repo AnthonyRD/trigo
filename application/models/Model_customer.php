@@ -99,5 +99,14 @@ class Model_customer extends CI_Model {
             return NULL;
         }
     }
+    public function get_id($str){
+        $this->db->where('name', $str);
+        $query = $this->db->get('customer');
+        if ($query->num_rows() > 0){
+            return $query->row()->id;
+        }else{
+            return FALSE;
+        }
+    }
     
 }
