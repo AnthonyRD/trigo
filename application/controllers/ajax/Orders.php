@@ -16,11 +16,13 @@ class Orders extends CI_Controller {
                 
           ),
           'order' => array(
-                'date' => date('Y-m-d'),
+                'date' => date("Y-m-d H:i:s"),
                 'subtotal' => $this->input->post('subtotal'),
                 'tax' => $this->input->post('tax'),
-                'status' => 'active',
+                'status' => ($this->input->post('payment_type') != '1') ? 'active': '',
                 'payment_date' => date('Y-m-d'),
+                'customer_id' => null,
+                'payment_type' => $this->input->post('payment_type')
                 
           ),
           'order_detail' => array(

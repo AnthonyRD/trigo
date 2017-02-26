@@ -22,12 +22,12 @@ section.customer {
 
 section.customer label {
     color: #fff;
-    font-family: serif;
+    font-family: cursive;
 }
 
 section.customer p {
     color: #fff;
-    font-family: serif;
+    font-family: cursive;
 }
 
 section.customer section.lb {
@@ -169,4 +169,8 @@ section.btn-pay button {
     background: #008d4c !important;
     border: none;
     border-radius: 0;
+}
+.navbar-default {
+    width:104%;
+    background-color:#fff !important;
 }

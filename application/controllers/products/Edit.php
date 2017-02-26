@@ -62,7 +62,7 @@ class Edit extends CI_Controller {
 	    }
 	}
 	public function id_isExisted($str){
-        if (empty($this->input->post('image_url'))){
+        if (empty($_FILE['image_url'])){
             return $this->update_product();
         }else{
             return do_upload();

@@ -24,14 +24,15 @@ class Create extends CI_Controller {
 	        ),
 	        'sidebar_menu'=> false
 	    );
-	    $this->load->model(array('model_product', 'model_category'));
+	    $this->load->model(array('model_product', 'model_category', 'model_order'));
 	    $this->load->library("template");
 	}
 	public function index()
 	{
 		$data = array(
 			'products' => $this->model_product->get_products(),
-			'categories' => $this->model_category->get_categories()
+			'categories' => $this->model_category->get_categories(),
+			'order_type' => $this->model_order->get_order_type()
 		);
 		$this->page_config += $data;
 		$this->template->view($this->page_config);

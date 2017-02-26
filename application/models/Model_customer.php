@@ -42,6 +42,7 @@ class Model_customer extends CI_Model {
         }
     }
     public function get_customers(){
+        $this->db->select('customer.id as id, customer.name, customer.last_name, customer.telephone, customer.cellphone, customer.email, customer.type, customer.orgin, customer.birthdate, address.address_line_1, address.address_line_2, address.number, address.country, address.state, address.zip_code');
         $this->db->join('address', 'customer.address_id = address.id');
         $query = $this->db->get('customer');
         if ($query->num_rows() > 0){
@@ -52,6 +53,7 @@ class Model_customer extends CI_Model {
     }
     public function get_customer($str){
         $this->db->limit(1);
+        $this->db->select('customer.id as id, customer.name, customer.last_name, customer.telephone, customer.cellphone, customer.email, customer.type, customer.orgin, customer.birthdate, address.address_line_1, address.address_line_2, address.number, address.country, address.state, address.zip_code');
         $this->db->where('customer.id', $str);
         $this->db->join('address', 'address.id = customer.address_id');
         $query = $this->db->get('customer');

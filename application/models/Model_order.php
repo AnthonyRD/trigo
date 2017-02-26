@@ -9,8 +9,8 @@ class Model_order extends CI_Model {
         $this->load->model('model_customer');
     }
     public function order_create($data = array()){
-        $data['orders']['customer_id'] = $this->model_customer->get_id($data['customer']);
-        $this->db->insert('orders', $data['orders']);
+        $data['order']['customer_id'] = $this->model_customer->get_id($data['customer']);
+        $this->db->insert('orders', $data['order']);
         if ($this->db->affected_rows() > 0){
             $order_id = $this->db->insert_id();
             $data['order_detail']['order_id'] = $order_id;
@@ -33,6 +33,15 @@ class Model_order extends CI_Model {
             return TRUE;
         }else{
             return FALSE;
+        }
+    }
+    public function get_order_type(){
+        $this->db->where('active', '1');
+        $query = $this->db->get('order_type');
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
         }
     }
 }

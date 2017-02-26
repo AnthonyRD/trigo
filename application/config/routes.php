@@ -186,3 +186,5 @@ $route['ajax/customer/search'] = "ajax/customers/search";
 //$route['ajax/employee/search'] = "ajax/employees/search"; 
 /****/
 $route['ajax/order/create'] = "ajax/orders/create";
+/****/
+$route['ajax/product/getall'] = "ajax/products/getall";
