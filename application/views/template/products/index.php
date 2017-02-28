@@ -6,15 +6,15 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Customers</li>
+        <li class="active">Productos</li>
       </ol>
     </section>
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/product/create"><i class="fa fa-plus"></i> New product</a></li>
-          <li><a href="#" id="edit_product"><i class="fa fa-edit"></i> Edit</a></li>
-          <li><a href="#" id="delete_product"><i class="fa fa-trash"></i> Delete</a></li>
+          <li><a href="/product/create"><i class="fa fa-plus"></i> Agregar Producto</a></li>
+          <li><a href="#" id="edit_product"><i class="fa fa-edit"></i> Editar</a></li>
+          <li><a href="#" id="delete_product"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->
         </ul>
       </section>
@@ -24,11 +24,11 @@
             <section class="col-md-12">
               <?php if (!is_null($this->session->flashdata('product_success')) && $this->session->flashdata('product_success') === TRUE):?>
                 <section class="alert alert-success">
-                  <p>Todo a salido bien!</p>
+                  <p>Todo ha salido bien!</p>
                 </section>
               <?php elseif(!is_null($this->session->flashdata('product_success')) && $this->session->flashdata('product_success') === FALSE):?>
                 <section class="alert alert-danger">
-                  <p>Algo salio mal!</p>
+                  <p>Algo salió mal!</p>
                 </section>
               <?php endif;?>
             </section>
@@ -46,13 +46,13 @@
                           <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Descripcion</th>
+                            <th>Descripción</th>
                             <th>Imagen</th>
-                            <th>Reoerder Level</th>
-                            <th>Entry date</th>
-                            <th>Last Entry</th>
-                            <th>Nombre del suplidor</th>
-                            <th>Nombre categoria</th>
+                            <th>Punto de Reorden</th>
+                            <th>Fcha de ingreso</th>
+                            <th>Última entrada</th>
+                            <th>Suplidor</th>
+                            <th>Categoría</th>
                           </tr>
                         </thead>
                         <tbody>

@@ -31,7 +31,7 @@
                                         <input type="number" name="price" class="form-control" placeholder="Precio del producto" value="<?=$data->price?>" required/>
                                     </section>
                                     <section class="form-group">
-                                        <label>¿Cargar por impuesto?</label>
+                                        <label>¿Cargar impuesto?</label>
                                         <section class="checkbox icheck">
                                             <label><input type="checkbox" name="charge_tax" <?=($data->charge_tax !== "")?'checked':'';?>></label>
                                         </section>
@@ -47,7 +47,7 @@
                                 </section>
                                 <section class="col-md-6">
                                     <section class="form-group">
-                                        <label>Categoria</label>
+                                        <label>Categoría</label>
                                         <select name="category" class="form-control">
                                             <?php foreach($category as $key => $value):?>
                                             <?php if($data->name_category == $value->name):?>
@@ -77,14 +77,14 @@
                             <section class="row">
                                 <section class="col-md-12">
                                     <section class="form-group">
-                                        <label>Descripcion del producto</label>
+                                        <label>Descripción del producto</label>
                                         <textarea name="description" class="form-control" placeholder="Descripcion"><?=$data->description?></textarea>
                                     </section>
                                 </section>
                             </section>
                             <section class="row">
                                 <section class="col-md-2 col-md-offset-10">
-                                    <button class="btn btn-default" type="submit">Añadir producto</button>
+                                    <button class="btn btn-default" type="submit">Actualziar producto</button>
                                 </section>
                             </section>
                             <section class="row">

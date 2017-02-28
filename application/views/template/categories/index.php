@@ -6,15 +6,15 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Customers</li>
+        <li class="active">Categorías</li>
       </ol>
     </section>
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/product/category/create"><i class="fa fa-plus"></i> New Category</a></li>
-          <li><a href="#" id="edit"><i class="fa fa-edit"></i> Edit</a></li>
-          <li><a href="#" id="delete"><i class="fa fa-trash"></i> Delete</a></li>
+          <li><a href="/product/category/create"><i class="fa fa-plus"></i> Crear Categoría</a></li>
+          <li><a href="#" id="edit"><i class="fa fa-edit"></i> Editar</a></li>
+          <li><a href="#" id="delete"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->
         </ul>
       </section>
@@ -24,11 +24,11 @@
             <section class="col-md-12">
               <?php if (!is_null($this->session->flashdata('category_success')) && $this->session->flashdata('category_success') === TRUE):?>
                 <section class="alert alert-success">
-                  <p>Todo a salido bien!</p>
+                  <p>Todo ha salido bien!</p>
                 </section>
               <?php elseif(!is_null($this->session->flashdata('category_success')) && $this->session->flashdata('category_success') === FALSE):?>
                 <section class="alert alert-danger">
-                  <p>Algo salio mal!</p>
+                  <p>Algo salió mal!</p>
                 </section>
               <?php endif;?>
             </section>
@@ -37,7 +37,7 @@
           <section class="col-md-12">
             <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Lista de categorias</h3>
+                        <h3 class="box-title">Lista de categorías</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -46,7 +46,7 @@
                           <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Descripcion</th>
+                            <th>Descripción</th>
                           </tr>
                         </thead>
                         <tbody>

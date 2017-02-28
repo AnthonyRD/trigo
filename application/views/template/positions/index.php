@@ -12,7 +12,7 @@
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/puesto/create"><i class="fa fa-plus"></i> Nuevo Puesto</a></li>
+          <li><a href="/position/create"><i class="fa fa-plus"></i> Nuevo Puesto</a></li>
           <li><a href="#" id="edit_position"><i class="fa fa-edit"></i> Editar</a></li>
           <li><a href="#" id="delete_position"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->
@@ -22,11 +22,11 @@
         <section class="content">
           <section class="row">
             <section class="col-md-12">
-              <?php if (!is_null($this->session->flashdata('puesto_success')) && $this->session->flashdata('puesto_success') === TRUE):?>
+              <?php if (!is_null($this->session->flashdata('position_success')) && $this->session->flashdata('position_success') === TRUE):?>
                 <section class="alert alert-success">
-                  <p>Todo ha salido bien!</p>
+                  <p>Puesto agregado con éxito!</p>
                 </section>
-              <?php elseif(!is_null($this->session->flashdata('puesto_success')) && $this->session->flashdata('puesto_success') === FALSE):?>
+              <?php elseif(!is_null($this->session->flashdata('position_success')) && $this->session->flashdata('position_success') === FALSE):?>
                 <section class="alert alert-danger">
                   <p>Algo salio mal! Revisar Datos.</p>
                 </section>

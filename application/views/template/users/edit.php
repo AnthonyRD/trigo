@@ -7,7 +7,7 @@
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li><a href="#">Usuarios</a></li>        
-        <li class="active">Editar Usuario</li>
+        <li class="active">Actualizar Usuario</li>
       </ol>
     </section>
     <section class="content">
@@ -15,7 +15,7 @@
             <section class="col-md-12">
                 <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Editar Usuario</h3>
+                        <h3 class="box-title">Actualizar Usuario</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -57,7 +57,7 @@
                             </section>                          
                             <section class="row">
                                 <section class="col-md-2 col-md-offset-10">
-                                    <button class="btn btn-default" type="submit">Editar Usuario</button>
+                                    <button class="btn btn-default" type="submit">Actualizar Usuario</button>
                                 </section>
                             </section>
                         </form>                          

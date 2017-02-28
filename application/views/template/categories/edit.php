@@ -6,9 +6,9 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Categories</a></li>
-        <li class="active">Editar Categoria</li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Categorías</a></li>
+        <li class="active">Editar Categoría</li>
       </ol>
     </section>
     <section class="content">
@@ -16,7 +16,7 @@
             <section class="col-md-12">
                 <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Editar Categoria</h3>
+                        <h3 class="box-title">Editar Categoría</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -24,7 +24,7 @@
                             <section class="col-md-12">
                                 <?php if (!is_null($this->session->flashdata('error')) && $this->session->flashdata('error') === TRUE): ?>
                                 <section class="alert alert-danger">
-                                    <p>No haz hecho ningun cambio.</p>
+                                    <p>No haz realizado ningún cambio.</p>
                                 </section>
                                 <?php endif;?>
                             </section>
@@ -40,18 +40,18 @@
                                         <input type="text" name="name" class="form-control" placeholder="Nombre categoria" value="<?=$data->name?>"/>
                                     </section>
                                     <section class="form-group">
-                                        <label for="">Descripcion</label>
+                                        <label for="">Descripción</label>
                                         <textarea name="descripcion" class="form-control" placeholder="Una breve descripcion de esta categoria"><?=$data->description?></textarea>
                                     </section>
                                     <section class="form-group">
-                                        <button type="submit" class="btn btn-primary">Añadir categoria</button>
+                                        <button type="submit" class="btn btn-primary">Actualizar categoría</button>
                                     </section>
                                 </form>
                             </section>
                             <section class="col-md-6">
                                 <div class="alert alert-info alert-dismissible">
-                                    <h4><i class="icon fa fa-info"></i> Informacion!</h4>
-                                    Esta categoria sera usada para clasificar sus producto de venta a los clientes respectivos.
+                                    <h4><i class="icon fa fa-info"></i> Información!</h4>
+                                    Esta categoría será usada para clasificar sus productos de venta a los clientes respectivos.
                                   </div>
                             </section>
                         </section>

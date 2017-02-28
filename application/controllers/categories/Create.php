@@ -6,8 +6,8 @@ class Create extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Create new category",
-	        'title_page' => "Create new category",
+	        'title' => "Crear Categoría",
+	        'title_page' => "Crear Categoría",
 	        'view_content' => "categories/create",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',

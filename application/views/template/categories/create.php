@@ -6,9 +6,9 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Categories</a></li>
-        <li class="active">New Create</li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Categorías</a></li>
+        <li class="active">Crear Categoría</li>
       </ol>
     </section>
     <section class="content">
@@ -16,7 +16,7 @@
             <section class="col-md-12">
                 <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Crear nueva categoria</h3>
+                        <h3 class="box-title">Crear nueva categoría</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -30,21 +30,21 @@
                                 <form action="create/confirm" method="post">
                                     <section class="form-group">
                                         <label for="">Nombre</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Nombre categoria"/>
+                                        <input type="text" name="name" class="form-control" placeholder="Nombre categoría"/>
                                     </section>
                                     <section class="form-group">
-                                        <label for="">Descripcion</label>
-                                        <textarea name="descripcion" class="form-control" placeholder="Una breve descripcion de esta categoria"></textarea>
+                                        <label for="">Descripción</label>
+                                        <textarea name="descripcion" class="form-control" placeholder="Una breve descripción de esta categoria"></textarea>
                                     </section>
                                     <section class="form-group">
-                                        <button type="submit" class="btn btn-primary">Añadir categoria</button>
+                                        <button type="submit" class="btn btn-primary">Añadir categoríaa</button>
                                     </section>
                                 </form>
                             </section>
                             <section class="col-md-6">
                                 <div class="alert alert-info alert-dismissible">
-                                    <h4><i class="icon fa fa-info"></i> Informacion!</h4>
-                                    Esta categoria sera usada para clasificar sus producto de venta a los clientes respectivos.
+                                    <h4><i class="icon fa fa-info"></i> Información!</h4>
+                                    Esta categoría será utilizada para clasificar sus productos de venta a los clientes.
                                   </div>
                             </section>
                         </section>

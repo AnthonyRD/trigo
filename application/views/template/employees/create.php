@@ -70,16 +70,20 @@
                                             <section class="form-group">
                                                 <label for="">Departamento</label>
                                                 <select name="department" class="form-control">
-                                                    <option value="0">Derpartamento 1</option>
-                                                    <option value="1">Derpartamento 1</option>
-                                                </select>
+                                                <option value=""></option>
+                                                <?php foreach($department as $key => $value):?>
+                                                <option value="<?=$value->id?>"><?=$value->name?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                             </section>
                                             <section class="form-group">
-                                                <label for="">Posición</label>
-                                                <select name="position" class="form-control">
-                                                    <option value="0">Posición 1</option>
-                                                    <option value="1">Posición 2</option>
-                                                </select>
+                                            <label for="">Puesto</label>
+                                            <select name="position" class="form-control">
+                                                <option value=""></option>
+                                                <?php foreach($position as $key => $value):?>
+                                                <option value="<?=$value->id?>"><?=$value->name?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                             </section>					   
                                             <section class="form-group">
                                                 <label>Foto del Empleado</label>

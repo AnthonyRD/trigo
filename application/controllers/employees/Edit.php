@@ -38,11 +38,13 @@ class Edit extends CI_Controller {
 	}
 	public function index($str = NULL)
 	{
-	    if (!is_null($str)){
-	        $this->load->model("model_employee");
-	        $data = array(
-	            'data' => $this->model_employee->get_employee($str)
-	        );
+	    if (!is_null($str)){	        
+			$this->load->model(array('model_employee','model_department', 'model_position'));
+	         $data = array(
+    	        'model_department' => $this->model_department->get_departments(),    	        
+    	        'model_position' => $this->model_position->get_positions(),
+				'model_employee' => $this->model_employee->get_employee($str)
+    	    );
 	        $this->page_config += $data;
 	    }else{
 	        redirect('employees');
@@ -50,7 +52,7 @@ class Edit extends CI_Controller {
 	    $this->template->view($this->page_config);
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('id', 'employee', 'callback_id_isExisted');
+	    $this->form_validation->set_rules('id', 'Employee', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
 	    	$this->session->set_flashdata('error', true);
 	        redirect('employee/edit/'.$this->input->post('employee_id'));
@@ -83,8 +85,7 @@ class Edit extends CI_Controller {
 	            'zip_code' => $this->input->post('zip_code')
 	        )
 	    );
-	    if ($this->model_employee->update_employee($data, $this->input->post("id"), 
-		    $this->input->post('address_id'))){
+	     if ($this->model_product->update_employee($data, $this->input->post("employee_id"), $this->input->post('address_id'))){
 	        $this->session->set_flashdata('employee_success',true);
 	        redirect('employees');
 	    }

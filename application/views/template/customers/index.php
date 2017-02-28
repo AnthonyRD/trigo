@@ -12,9 +12,9 @@
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/product/create"><i class="fa fa-plus"></i> Agregar cliente</a></li>
-          <li><a href="#" id="edit_product"><i class="fa fa-edit"></i> Editar</a></li>
-          <li><a href="#" id="delete_product"><i class="fa fa-trash"></i> Eliminar</a></li>
+          <li><a href="/customer/create"><i class="fa fa-plus"></i> Agregar cliente</a></li>
+          <li><a href="#" id="edit_customer"><i class="fa fa-edit"></i> Editar</a></li>
+          <li><a href="#" id="delete_customer"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->
         </ul>
       </section>
@@ -24,11 +24,11 @@
             <section class="col-md-12">
               <?php if (!is_null($this->session->flashdata('customer_success')) && $this->session->flashdata('customer_success') === TRUE):?>
                 <section class="alert alert-success">
-                  <p>Todo a salido bien!</p>
+                  <p>Cliente grabado con 'exito!</p>
                 </section>
               <?php elseif(!is_null($this->session->flashdata('customer_success')) && $this->session->flashdata('customer_success') === FALSE):?>
                 <section class="alert alert-danger">
-                  <p>Algo salio mal!</p>
+                  <p>Algo salió mal! Verificar datos.</p>
                 </section>
               <?php endif;?>
             </section>

@@ -29,7 +29,7 @@
                             </section>
                         </section>
                         <section class="row">
-                            <form action="confirm" method="post" enctype="multipart/form-data">
+                            <form action="confirm" method="POST" enctype="multipart/form-data">
                                 <section class="col-md-12">
                                     <section class="row">
                                          <section class="col-md-12">
@@ -74,16 +74,18 @@
                                             <section class="form-group">
                                                 <label for="">Departamento</label>
                                                 <select name="department" class="form-control">
-                                                    <option value="0">Derpartamento 1</option>
-                                                    <option value="1">Derpartamento 1</option>
-                                                </select>
+                                                <?php foreach($department as $key => $value):?>
+                                                <option value="<?=$value->id?>"  <?=$data->id == $value->id ? ' selected="selected"' : '';?>><?=$value->name?></option>
+                                                <?php endforeach; ?>
+                                            </select>   
                                             </section>
                                             <section class="form-group">
-                                                <label for="">Posición</label>
-                                                <select name="position" class="form-control">
-                                                    <option value="0">Posición 1</option>
-                                                    <option value="1">Posición 2</option>
-                                                </select>
+                                            <label>Posición</label>
+                                            <select name="position" class="form-control">
+                                                <?php foreach($position as $key => $value):?>
+                                                <option value="<?=$value->id?>"  <?=$data->id == $value->id ? ' selected="selected"' : '';?>><?=$value->name?></option>
+                                                <?php endforeach; ?>
+                                            </select>                                               
                                             </section>					   
                                             <section class="form-group">
                                                 <label>Foto del Empleado</label>

@@ -38,6 +38,13 @@ class Create extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->model(array('model_employee', 'model_department', 'model_position'));
+	    $data = array(
+	         'model_department' => $this->model_department->get_departments(),
+    	     'model_employee' => $this->model_employee->get_employees(),
+    	     'model_position' => $this->model_position->get_positions($str)
+	    );
+	    $this->page_config += $data;
 		$this->template->view($this->page_config);
 	}
 	public function confirm(){
