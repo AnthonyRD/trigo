@@ -27,7 +27,7 @@ class Model_product extends CI_Model {
         }
     }
     public function get_products(){
-        $this->db->select('product.id, product.price, product.name, product.description, product.charge_tax, product.image_url, product.mesurement_unit, product.reorder_level, product.entry_date, product.last_entry, supplier.name as suppier_name, product_category.name as name_category');
+        $this->db->select('product.id as id, product.price, product.name, product.description, product.charge_tax, product.image_url, product.mesurement_unit, product.reorder_level, product.entry_date, product.last_entry, supplier.name as suppier_name, product_category.name as name_category');
         $this->db->join('supplier', 'supplier.id = product.suplier_id');
         $this->db->join('product_category', 'product_category.id = product.id_category');
         $query = $this->db->get('product');
@@ -47,7 +47,7 @@ class Model_product extends CI_Model {
     }
     public function get_product($str){
         $this->db->where('product.id', $str);
-        $this->db->select('product.id, product.name, product.price, product.description, product.charge_tax, product.image_url, product.mesurement_unit, product.reorder_level, product.entry_date, product.last_entry, supplier.name as suppier_name, product_category.name as name_category');
+        $this->db->select('product.id as id, product.name, product.price, product.description, product.charge_tax, product.image_url, product.mesurement_unit, product.reorder_level, product.entry_date, product.last_entry, supplier.name as suppier_name, product_category.name as name_category');
         $this->db->join('supplier', 'supplier.id = product.suplier_id');
         $this->db->join('product_category', 'product_category.id = product.id_category');
         $this->db->limit(1);
@@ -73,6 +73,23 @@ class Model_product extends CI_Model {
             return TRUE;
         }else{
             return FALSE;
+        }
+    }
+    public function get_ajax_products($str, $category){
+        if ($str != ""){
+            $this->db->like('product.name', trim($str));
+        }
+        if ($category != ""){
+            $this->db->where('product_category.name', trim($category));
+        }
+        $this->db->select('product.id, product.price, product.name, product.description, product.charge_tax, product.image_url, product.mesurement_unit, product.reorder_level, product.entry_date, product.last_entry, supplier.name as suppier_name, product_category.name as name_category');
+        $this->db->join('supplier', 'supplier.id = product.suplier_id');
+        $this->db->join('product_category', 'product_category.id = product.id_category');
+        $query = $this->db->get('product');
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
         }
     }
 }

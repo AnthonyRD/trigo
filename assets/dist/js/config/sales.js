@@ -19,7 +19,27 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
     }
     return -1
 });
+function clear(){
+    var cero = 0;
+    var cliente = storage.get('customer');
+    localStorage.clear();
+    storage.set('customer', cliente);
+    $(contentItem).html("");
+    $("#subtotal, .subtotalPay").html(cero.toFixed(2));
+    $("#tax, .impuesto").html(cero.toFixed(2));
+    $("#total, #total-btn, .toPay").html(cero.toFixed(2));
+}
+function cancel(){
+    var cero = 0;
+    localStorage.clear();
+    $(contentItem).html("");
+    $("#subtotal, .subtotalPay").html(cero.toFixed(2));
+    $("#tax, .impuesto").html(cero.toFixed(2));
+    $("#total, #total-btn, .toPay").html(cero.toFixed(2));
+    $("#customer").html("Default");
+}
 function setStorage(data){
+    
     var get_all = storage.get('item');
     var indexCount = null;
     var cObject = [];
@@ -61,8 +81,8 @@ function addItem(data){
             temp = temp.replace('{index}', index);
             item += temp;
             temp = null;
-            totalImpuesto = impuesto*value.unidad;
-            totalSubtotal = value.price*value.unidad;
+            totalImpuesto += impuesto*value.unidad;
+            totalSubtotal += value.price*value.unidad;
         });
         total = totalImpuesto+totalSubtotal;
         storage.set('total', total);
@@ -72,13 +92,13 @@ function addItem(data){
         $("#tax, .impuesto").html(totalImpuesto.toFixed(2));
         $("#total, #total-btn, .toPay").html(total.toFixed(2));
         contentItem.html(item);
-        if (storage.get('customer') == null){
+    }
+            if (storage.get('customer') == null){
             storage.set('customer', 'Default');
             $("#customer").html(storage.get('customer'));
         }else{
             $("#customer").html(storage.get('customer'));
         }
-    }
     
 }
 function removeItem(index){
@@ -132,7 +152,7 @@ function PopupCenter(url, title, w, h) {
         newWindow.focus();
     }
 }
-$(item).on('click', function(event){
+$(document).on('click', '.products a' , function(event){
     event.preventDefault();
     var data = JSON.parse(this.dataset.item);
     
@@ -145,6 +165,7 @@ $(item).on('click', function(event){
             category: data.name_category,
             supplier: data.suppier_name
         };
+    
     setStorage(data);
     addItem();
     
@@ -156,38 +177,46 @@ $("#pay").click(function(){
     var payType = $("input[name='pay-type']").val();
     
 });
-$("#total-btn").click(function () {
-    var item = null;
-    var itemT = null;
-    var subtotal = 0;
-    var impuesto = 0;
-    var total = 0;
-    var itemPay = '<tr><td>{{nameProduct}}</td><td>{{qty}}</td><td>{{prece}}</td><td>{{total}}</td></tr>';
-    var totalStorage = storage.get('total');
-    if (storage.get('tipo') !== null){
-        if(totalStorage != 0){
-            $("#payModal").modal('show');
-            $.each(storage.get('item'), function(index, value){
-                subtotal += (value.price*value.unidad);
-                impuesto += ((value.price*15/100)*value.unidad);
-                console.log(impuesto);
-                itemT = itemPay.replace("{{nameProduct}}", value.name);
-                itemT = itemT.replace("{{qty}}", value.unidad);
-                itemT = itemT.replace("{{prece}}", value.price);
-                itemT = itemT.replace("{{total}}", (value.price*value.unidad));
-                item += itemT;
-            });
-            total = (subtotal + impuesto);
-            $(".itemPay, .itemPays").html(item);
-            $(".subtotalPay").html(subtotal.toFixed(2));
-            $(".impuesto").html(impuesto.toFixed(2));
-            $(".toPay").html(total.toFixed(2));
+function prm(){
+    var cero = parseInt($("#total-btn").html());
+    if (cero > 0){
+        var item = null;
+        var itemT = null;
+        var subtotal = 0;
+        var impuesto = 0;
+        var total = 0;
+        var itemPay = '<tr><td>{{nameProduct}}</td><td>{{qty}}</td><td>{{prece}}</td><td>{{total}}</td></tr>';
+        var totalStorage = storage.get('total');
+        if (storage.get('tipo') !== null){
+            if(totalStorage != 0){
+                $("#payModal").modal('show');
+                $.each(storage.get('item'), function(index, value){
+                    subtotal += (value.price*value.unidad);
+                    impuesto += ((value.price*15/100)*value.unidad);
+                    console.log(value);
+                    itemT = itemPay.replace("{{nameProduct}}", value.name);
+                    itemT = itemT.replace("{{qty}}", value.unidad);
+                    itemT = itemT.replace("{{prece}}", value.price);
+                    itemT = itemT.replace("{{total}}", (value.price*value.unidad));
+                    item += itemT;
+                });
+                total = (subtotal + impuesto);
+                $(".itemPay, .itemPays").html(item);
+                $(".subtotalPay").html(subtotal.toFixed(2));
+                $(".impuesto").html(impuesto.toFixed(2));
+                $(".toPay").html(total.toFixed(2));
+            }else{
+                alert('No hay ningun articulo en la cesta');
+            }
         }else{
-            alert('No hay ningun articulo en la cesta');
+            $("#tipo").modal('show');
         }
     }else{
-        $("#tipo").modal('show');
+        alert('Primero debes añadir un item a la cesta');
     }
+}
+$("#total-btn").click(function () {
+ prm();
 });
 $("#add-customer").click(function(){
    var customer = $('ul.typeahead li.active').data('value');
@@ -202,6 +231,8 @@ $("#add-type").click(function(){
    if (type != ""){
        storage.set("tipo",type);
        $("#tipo").modal('hide');
+       $("#payModal").modal('show');
+       prm();
    }
 });
 $(".button-pay").click(function(){
@@ -211,8 +242,23 @@ $(".button-pay").click(function(){
 
 });
 $("#confirm").click(function(){
-    $("#payModal").modal("hide");
-    $("#confirmM").modal('show');
+    var type = $(".active input[name='pay-type']").val();
+    storage.set('payment_type', type);
+    if (type == "1"){
+        $("#payModal").modal("hide");
+        $("#confirmM").modal('show', {
+  backdrop: 'static',
+  keyboard: false
+});
+    }else if (type == "3"){
+        $("#payModal").modal("hide");
+        $("#hs").addClass('hide');
+        $("#cobro-invoice").modal('show',{
+  backdrop: 'static',
+  keyboard: false
+});
+    }
+    
 });
 $("#efectivo").click(function(){
     var efectivo = $("input[name='efectivo']");
@@ -233,12 +279,14 @@ $("#efectivo").click(function(){
     }
 });
 $("#cobro").click(function(){
+    var customer = (storage.get('customer') == null) ? 'Default' : storage.get('customer');
     var data = {
         order: storage.get('item'),
         tipo: storage.get('tipo'),
-        customer: storage.get('customer'),
+        customer: customer,
         subtotal: storage.get('subtotal'),
-        tax: storage.get('tax')
+        tax: storage.get('tax'),
+        payment_type: storage.get('payment_type')
     };
     $.ajax('/ajax/order/create', {
         method: 'POST',
@@ -248,7 +296,7 @@ $("#cobro").click(function(){
           $(".loading").css('display', 'flex');  
         },
         success: function(resp){
-            
+            $("#hs").removeClass('hide');
         },
         error: function(resp){
             $(".loading").css("display", 'none');
@@ -263,5 +311,56 @@ $("#cobro").click(function(){
             }
         }
     });
-    
+});
+function result(category, str){
+    $.ajax('/ajax/product/getall',{
+       method:'POST',
+       data: {category: category, str: str},
+       dataType: 'json',
+       success: function(res){
+            if (res != null){
+                var itemHTML = '<a href="#" class="item" data-item=\'{{data}}\'><section class="item-header"><img src="/uploads/{{img}}"/></section><section class="item-body"><h3>{{name}}</h3></section></a>';
+                var item = "";  
+                var itemTEMP = "";
+                $.each(res, function(index, value){
+                    itemTEMP = itemHTML.replace('{{data}}', JSON.stringify(value));
+                    itemTEMP = itemTEMP.replace('{{img}}', value.image_url);
+                    itemTEMP = itemTEMP.replace('{{name}}', value.name);
+                    item += itemTEMP;
+                });
+                $(".products").html(item);
+            }else{
+                $(".products").html("<h1>No hay datos</h1>")
+            }
+       }
+   });
+}
+$(document).ready(function(){
+    var ul = $(".navbar-nav")[1];
+    var category = ul.children[0].innerText;
+   result(category, "");
+});
+$("input[name='search-item']").keyup(function(){
+    if (this.value == ""){
+        var ul = $(".navbar-nav")[1];
+    var category = ul.children[0].innerText;
+   result(category, "");
+    }else{
+    result("", this.value);
+    }
+});
+$("#category li").click(function(){
+    result(this.innerText, "");
+});
+$("#clear").click(function(){
+   var r = confirm('Esta seguro de limpiar la cesta?');
+   if (r == true){
+        clear();
+   }
+});
+$("#cancel").click(function(){
+    var r = confirm('Esta  seguro que quieres cancelar la orden?');
+    if (r == true){
+        cancel();   
+    }
 });

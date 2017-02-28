@@ -432,7 +432,7 @@ section#my0 {
                     </button>
                 </section>
                 <section class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" id="category">
                         <?php foreach($categories as $key => $value):?>
                         <li><a href="#"><?=$value->name?></a></li>
                         <?php endforeach; ?>
@@ -442,16 +442,7 @@ section#my0 {
             <section class="row">
                 <section class="col-sm-12">
                     <section class="products">
-                        <?php foreach($products as $key => $value): ?>
-                        <a href="#" class="item" data-item='<?=json_encode($value)?>'>
-                            <section class="item-header">
-                                <img src="<?=base_url()?>uploads/<?=$value->image_url?>"/>
-                            </section>
-                            <section class="item-body">
-                                <h3><?=$value->name?></h3>
-                            </section>
-                        </a>
-                        <?php endforeach; ?>
+                        
                     </section>
                 </section>
             </section>
@@ -460,7 +451,7 @@ section#my0 {
                     <section class="col-md-9 col-sm-8 col-xs-6">
                         <section class="customer">
                             <section class="lb">
-                                <label>Customer</label>
+                                <label>Cliente</label>
                                 <p id="customer">Walk-in Customer</p>
                             </section>
                             <section class="btn-ctm">
@@ -471,9 +462,9 @@ section#my0 {
                     <section class="col-md-3 col-sm-4 col-xs-6">
                         <section class="action">
                             <ul>
-                                <li><a href="#" data-toggle="modal" data-target="#tipo"><i class="fa fa-sign-out"></i> Type</a></li>
-                                <li><a href="#"><i class="fa fa-calendar-times-o"></i> Cancelar</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Limpiar</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#tipo"><i class="fa fa-sign-out"></i> Servicio</a></li>
+                                <li><a href="#" id="cancel"><i class="fa fa-calendar-times-o"></i> Cancelar</a></li>
+                                <li><a href="#" id="clear"><i class="fa fa-circle-o"></i> Limpiar</a></li>
                             </ul>
                         </section>
                         <section class="detail">
@@ -495,7 +486,7 @@ section#my0 {
                 <section class="sales">
                     <section class="sales-header">
                         <section class="form-group">
-                            <input type="text" name="search" class="form-control" placeholder="Search Item"/>
+                            <input type="text" name="search-item" class="form-control" placeholder="Buscar Item"/>
                         </section>
                     </section>
                     <section class="sales-content">
@@ -526,7 +517,7 @@ section#my0 {
             </form>
           </section>
           <section class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             <button type="button" class="btn btn-primary" id="add-customer">Añadir cliente</button>
           </section>
         </section><!-- /.modal-content -->
@@ -542,22 +533,20 @@ section#my0 {
                 <section class="modal-body">
                     <section class="row">
                         <section class="col-md-12">
-                            <h4>Seleccione un tipo</h4>
+                            <h4>Seleccione un tipo de servicio</h4>
                             <section class="form-group">
                                 <select name="tipo" class="form-control" id="input-tipo">
-                                    <option value="0">Orders Type</option>
-                                    <option value="1">Eat In</option>
-                                    <option value="2">To Go</option>
-                                    <option value="3">Drive Throught</option>
-                                    <option value="4">Drive Order</option>
+                                    <?php foreach($order_type as $key => $value):?>
+                                    <option value="<?=$value->id?>"><?=$value->name?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </section>
                         </section>
                     </section>
                 </section>
                 <section class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="add-type">Add type</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="add-type">Añadir</button>
                 </section>
             </section><!-- /.modal-content -->
         </section><!-- /.modal-dialog -->
@@ -571,21 +560,21 @@ section#my0 {
                 </section>
                 <section class="modal-body">
                     <section class="row">
-                        <section class="col-md-6">
+                        <section class="col-xs-6">
                             <section class="row">
-                                <section class="col-md-6">
+                                <section class="col-xs-6">
                                     <section class="pay-type">
-                                        <label class="button-pay active"><input type="radio" name="pay-type" style="display:none;" value="cash"/> <i class="icon ion-cash"></i></label>
+                                        <label class="button-pay active"><input type="radio" name="pay-type" style="display:none;" value="1"/> <i class="icon ion-cash"></i></label>
                                     </section>
                                 </section>
-                                <section class="col-md-6">
+                                <section class="col-xs-6">
                                     <section class="pay-type">
-                                        <label class="button-pay"><input type="radio" name="pay-type" style="display:none;" value="fiao"/> <i class="fa fa-credit-card"></i></label>
+                                        <label class="button-pay"><input type="radio" name="pay-type" style="display:none;" value="3"/> <i class="fa fa-credit-card"></i></label>
                                     </section>
                                 </section>
                             </section>
                         </section>
-                        <section class="col-md-6">
+                        <section class="col-xs-6">
                             <section class="row">
                                 <section class="invoic">
                                     <section class="headPay" style="display:none">
@@ -633,7 +622,7 @@ section#my0 {
                                     </section>
                                 </section>
                                 <section class="row">
-                                    <section class="col-md-12">
+                                    <section class="col-xs-12">
                                         <section class="paymend-details">
                                             <section class="total">
                                                 <span>Subtotal: </span>
@@ -680,7 +669,7 @@ section#my0 {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" id="efectivo">Pagar</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -695,7 +684,7 @@ section#my0 {
         </div>
         <div class="modal-body">
           <section class="row">
-                        <section class="col-md-8 col-md-offset-2">
+                        <section class="col-xs-8 col-xs-offset-2">
                             <section class="row">
                                 <section class="invoic">
                                     <section class="headPay" style="display:none">
@@ -742,7 +731,7 @@ section#my0 {
                                         </section>
                                     </section>
                                 </section>
-                                <section class="row">
+                                <section class="row" id="hs">
                                     <section class="col-md-12">
                                         <section class="paymend-details">
                                             <section class="total">
@@ -765,8 +754,8 @@ section#my0 {
                     </section>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" id="cobro">Pagar</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" id="cobro">Pagar y Imprimir</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -944,6 +933,7 @@ td {
         $("#tipo").modal('show');
     }
         window.print();
+        clear();
     }
 </script>
 <?php endif; ?>

@@ -11,7 +11,7 @@ class products extends CI_Controller {
     }
     public function getall(){
         $data = array(
-            'data' => $this->model_product->get_products()
+            'data' => $this->model_product->get_ajax_products($this->input->post('str'), $this->input->post('category'))
         );
         $this->load->view('template/ajax/response', $data);
     }
