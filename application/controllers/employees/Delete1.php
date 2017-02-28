@@ -6,9 +6,9 @@ class Delete extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Delete category",
-	        'title_page' => "Delete Category",
-	        'view_content' => "categories/delete",
+	        'title' => "Delete employee",
+	        'title_page' => "Delete Employee",
+	        'view_content' => "employees/delete",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
 	            'css/style.css'
@@ -38,38 +38,39 @@ class Delete extends CI_Controller {
 	}
 	public function index($str){
 	    if (!is_null($str)){
-	        $this->load->model("model_product");
+	        $this->load->model("model_employee");
 	        $data = array(
-	            'data' => $this->model_product->get_product($str)
+	            'data' => $this->model_employee->get_employee($str)
 	        );
 	        $this->page_config += $data;
 	    }else{
-	        redirect('products');
+	        redirect('employees');
 	    }
 	    $this->template->view($this->page_config);
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('id', 'Product', 'callback_id_isExisted');
+	    $this->form_validation->set_rules('id', 'employee', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
 	        $this->template->view($this->page_config);
 	    }else{
-	        $this->session->set_flashdata('product_success', false);
-	        redirect('products');
+	        $this->session->set_flashdata('employee_success', false);
+	        redirect('employees');
 	    }
 	}
 	public function id_isExisted($str){
-	    $this->load->model('model_product');
-	    if (!$this->model_product->product_id_isExisted($str)){
+	    $this->load->model('model_employee');
+	    if (!$this->model_employee->employee_id_isExisted($str)){
 	        return TRUE;
 	    }else{
-	        return $this->delete_product();
+	        return $this->delete_employee();
 	    }
 	}
-	public function delete_product(){
-	    $this->load->model('model_product');
-	    if ($this->model_product->delete_product($this->input->post("id"))){
-	        $this->session->set_flashdata('product_success',true);
-	        redirect('products');
+	public function delete_employee(){
+	    $this->load->model('model_employee');
+	    if ($this->model_supplier->delete_supplier($this->input->post("id"), 
+		$this->input->post('address_id'))){
+	        $this->session->set_flashdata('employee_success',true);
+	        redirect('employee');
 	    }
 	    return FALSE;
 	}

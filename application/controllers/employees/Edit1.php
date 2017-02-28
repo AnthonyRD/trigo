@@ -1,15 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Create extends CI_Controller {
+class Edit extends CI_Controller {
 	private $page_config = array();
-	private $image_url = array();
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Agregar Empleado",
-	        'title_page' => "Agregar Empleado",
-	        'view_content' => "employees/create",
+	        'title' => "Edit employee",
+	        'title_page' => "Edit employee",
+	        'view_content' => "employees/edit",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
 	            'css/style.css'
@@ -37,29 +36,37 @@ class Create extends CI_Controller {
 	    $this->load->library("form_validation");
 	    $this->form_validation->set_error_delimiters('<section class="alert alert-danger">', '</section>');
 	}
-	public function index()
+	public function index($str = NULL)
 	{
-	    $this->load->model(array('model_employee', 'model_department', 'model_position'));
-	    $data = array(
-	        'model_employee' => $this->model_employee->get_employees(),
-			'department' => $this->model_department->get_departments(),
-	        'position' => $this->model_position->get_positions()
-	    );
-	    $this->page_config += $data;
-		$this->template->view($this->page_config);
+	    if (!is_null($str)){	        
+			$this->load->model(array('model_employee','model_department', 'model_position'));
+	         $data = array(
+    	        'model_department' => $this->model_department->get_departments(),    	        
+    	        'model_position' => $this->model_position->get_positions(),
+				'model_employee' => $this->model_employee->get_employee($str)
+    	    );
+	        $this->page_config += $data;
+	    }else{
+	        redirect('employees');
+	    }
+	    $this->template->view($this->page_config);
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('employee_name', 'Nombre', 'callback_name_check');	    
+	    $this->form_validation->set_rules('id', 'Employee', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
-	        $this->template->view($this->page_config);
+	    	$this->session->set_flashdata('error', true);
+	        redirect('employee/edit/'.$this->input->post('employee_id'));
 	    }else{
-	        $this->session->set_flashdata('error', true);
-	        redirect('employee/create');
+	        $this->session->set_flashdata('employee_success', false);
+	        redirect('employees');
 	    }
-	}	  
-	public function add_employee(){
+	}
+	public function id_isExisted($str){
+        return $this->update_employee();
+	}
+	public function update_employee(){
 	    $this->load->model('model_employee');
-	     $data = array(
+	    $data = array(
 	        'name' => $this->input->post('employee_name'),
 	        'last_name' => $this->input->post('last_name'),
 			'telephone' => $this->input->post('telephone'),
@@ -76,9 +83,9 @@ class Create extends CI_Controller {
 	            'country' => $this->input->post('country'),
 	            'state' => $this->input->post('state'),
 	            'zip_code' => $this->input->post('zip_code')
-		 )
+	        )
 	    );
-	    if ($this->model_employee->insert_employee($data)){
+	     if ($this->model_product->update_employee($data, $this->input->post("employee_id"), $this->input->post('address_id'))){
 	        $this->session->set_flashdata('employee_success',true);
 	        redirect('employees');
 	    }

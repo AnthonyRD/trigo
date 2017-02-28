@@ -6,9 +6,9 @@ class Edit extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Edit employee",
-	        'title_page' => "Edit employee",
-	        'view_content' => "employees/edit",
+	        'title' => "Editar Producto",
+	        'title_page' => "Editar Producto",
+	        'view_content' => "products/edit",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
 	            'css/style.css'
@@ -38,56 +38,74 @@ class Edit extends CI_Controller {
 	}
 	public function index($str = NULL)
 	{
-	    if (!is_null($str)){	        
-			$this->load->model(array('model_employee','model_department', 'model_position'));
-	         $data = array(
-    	        'model_department' => $this->model_department->get_departments(),    	        
-    	        'model_position' => $this->model_position->get_positions(),
-				'model_employee' => $this->model_employee->get_employee($str)
+	    if (!is_null($str)){
+	        $this->load->model(array('model_supplier','model_category', 'model_product'));
+	        $data = array(
+    	        'category' => $this->model_category->get_categories(),
+    	        'supplier' => $this->model_supplier->get_suppliers(),
+    	        'data' => $this->model_product->get_product($str)
     	    );
 	        $this->page_config += $data;
 	    }else{
-	        redirect('employees');
+	        redirect('products');
 	    }
 	    $this->template->view($this->page_config);
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('id', 'Employee', 'callback_id_isExisted');
+	    $this->form_validation->set_rules('id', 'Product', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
 	    	$this->session->set_flashdata('error', true);
-	        redirect('employee/edit/'.$this->input->post('employee_id'));
+	        redirect('product/edit/'.$this->input->post('id'));
 	    }else{
-	        $this->session->set_flashdata('employee_success', false);
-	        redirect('employees');
+	        $this->session->set_flashdata('supplier_success', false);
+	        redirect('products');
 	    }
 	}
 	public function id_isExisted($str){
-        return $this->update_employee();
+        if (empty($_FILE['image_url'])){
+            return $this->update_product();
+        }else{
+            return do_upload();
+        }
 	}
-	public function update_employee(){
-	    $this->load->model('model_employee');
-	    $data = array(
-	        'name' => $this->input->post('employee_name'),
-	        'last_name' => $this->input->post('last_name'),
-			'telephone' => $this->input->post('telephone'),
-			'cellphone' => $this->input->post('cellphone'),
-			'email' => $this->input->post('email'),			
-			'status' => $this->input->post('status'),	        
-	        'department_id' => $this->input->post('department'),
-			'position_id' => $this->input->post('position'),			
-	        'start_date' => date('Y-m-d H:i:s'),
-	        'address' => array(
-	            'address_line_1' => $this->input->post('address_1'),
-	            'address_line_2' => $this->input->post('address_2'),
-	            'number' => $this->input->post('number'),
-	            'country' => $this->input->post('country'),
-	            'state' => $this->input->post('state'),
-	            'zip_code' => $this->input->post('zip_code')
-	        )
+    public function do_upload()
+    {
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 100;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+    
+            $this->load->library('upload', $config);
+            if ( ! $this->upload->do_upload('image_url'))
+            {
+                    $error = array('error' => $this->upload->display_errors());
+
+                    return FALSE;
+            }
+            else
+            {
+                    $this->image_url = $this->upload->data();
+                    
+                    return $this->update_product();
+            }
+    }
+	public function update_product(){
+	    $this->load->model('model_product');
+        $data = array(
+	        'name' => $this->input->post('name'),
+	        'description' => $this->input->post('description'),
+	        'image_url' => $this->image_url['file_name'],
+	        'price' => $this->input->post('price'),
+	        'mesurement_unit' => $this->input->post('mesurement_unit'),
+	        'id_category' => $this->input->post('category'),
+	        'charge_tax' => $this->input->post('charge_tax'),
+	        'suplier_id' => $this->input->post('supplier')
 	    );
-	     if ($this->model_product->update_employee($data, $this->input->post("employee_id"), $this->input->post('address_id'))){
-	        $this->session->set_flashdata('employee_success',true);
-	        redirect('employees');
+	    if (is_null($this->image_url)) unset($data['image_url']);
+	    if ($this->model_product->update_product($data, $this->input->post("id"), $this->input->post('address_id'))){
+	        $this->session->set_flashdata('product_success',true);
+	        redirect('products');
 	    }
 	    return FALSE;
 	}

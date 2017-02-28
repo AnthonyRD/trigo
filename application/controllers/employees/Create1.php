@@ -3,12 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Create extends CI_Controller {
 	private $page_config = array();
-	private $image_url = array();
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Agregar Empleado",
-	        'title_page' => "Agregar Empleado",
+	        'title' => "Create new employee",
+	        'title_page' => "Create new employee",
 	        'view_content' => "employees/create",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
@@ -39,24 +38,32 @@ class Create extends CI_Controller {
 	}
 	public function index()
 	{
-	    $this->load->model(array('model_employee', 'model_department', 'model_position'));
+		$this->load->model(array('model_employee', 'model_department', 'model_position'));
 	    $data = array(
-	        'model_employee' => $this->model_employee->get_employees(),
-			'department' => $this->model_department->get_departments(),
-	        'position' => $this->model_position->get_positions()
+	         'model_department' => $this->model_department->get_departments(),
+    	     'model_employee' => $this->model_employee->get_employees(),
+    	     'model_position' => $this->model_position->get_positions($str)
 	    );
 	    $this->page_config += $data;
 		$this->template->view($this->page_config);
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('employee_name', 'Nombre', 'callback_name_check');	    
+	    $this->form_validation->set_rules('name', 'Nombre', 'callback_name_check');
 	    if ($this->form_validation->run() === FALSE){
 	        $this->template->view($this->page_config);
 	    }else{
 	        $this->session->set_flashdata('error', true);
 	        redirect('employee/create');
 	    }
-	}	  
+	}
+	public function name_check($str){
+	    $this->load->model('model_employee');
+	    if ($this->model_employee->category_name_validation($str)){
+	        return TRUE;
+	    }else{
+	        return $this->add_employee();
+	    }
+	}
 	public function add_employee(){
 	    $this->load->model('model_employee');
 	     $data = array(
