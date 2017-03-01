@@ -24,7 +24,7 @@
             <section class="col-md-12">
               <?php if (!is_null($this->session->flashdata('position_success')) && $this->session->flashdata('position_success') === TRUE):?>
                 <section class="alert alert-success">
-                  <p>Puesto agregado con éxito!</p>
+                  <p>¡Operación realizada con éxito!</p>
                 </section>
               <?php elseif(!is_null($this->session->flashdata('position_success')) && $this->session->flashdata('position_success') === FALSE):?>
                 <section class="alert alert-danger">

@@ -6,9 +6,9 @@ class Index extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Employees List",
-	        'title_page' => "Employees",
-	        'view_content' => "employees/index",
+	        'title' => "Lista de Localidades",
+	        'title_page' => "Localidades",
+	        'view_content' => "locations/index",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
 	            'css/style.css'
@@ -35,9 +35,9 @@ class Index extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->model('model_employee');
+		$this->load->model('model_location');
 		$data = array(
-			'data' => $this->model_employee->get_employees()
+			'data' => $this->model_location->get_locations()
 		);
 		$this->page_config += $data;
 		$this->template->view($this->page_config);

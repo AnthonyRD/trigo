@@ -6,8 +6,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>        
-        <li><a href="#">Departments</a></li>
-        <li class="active">Editar Departamento</li>
+        <li><a href="#">Localidades</a></li>
+        <li class="active">Editar Localidad</li>
       </ol>
     </section>
     <section class="content">
@@ -15,7 +15,7 @@
             <section class="col-md-12">
                 <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Editar Departamento</h3>
+                        <h3 class="box-title">Editar Localidad</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -33,7 +33,7 @@
                                 <section class="col-md-12">
                                     <section class="row">
                                          <section class="col-md-12">
-                                              <h2 class="page-header">Información del Departamento</h2>
+                                              <h2 class="page-header">Información de la Localidad</h2>
                                          </section>
                                     </section>
                                     <section class="row">
@@ -43,25 +43,18 @@
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Nombre</label>
-                                                <input type="text" name="name" class="form-control" placeholder="Nombre del Departamento" value="<?=$data->name?>" required/>
+                                                <input type="text" name="name" class="form-control" placeholder="Nombre del Localidad" value="<?=$data->name?>" required/>
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Descripción</label>
                                                 <input type="text" name="description" class="form-control" placeholder="Descripción" value="<?=$data->description?>" required/>
-                                            </section>
-                                            <section class="form-group">
-                                                <label for="">Status</label>
-                                                <select name="status" class="form-control">
-                                                <option value="A"<?=$data->status == 'A' ? ' selected="selected"' : '';?>>Activo</option>
-                                                <option value="I"<?=$data->status == 'I' ? ' selected="selected"' : '';?>>Inactivo</option>                                                    
-                                                </select>
-                                            </section>                                                            
+                                            </section>                                                                                                       
                                         </section>                                        
                                     </section>                                                                       
                                     <section class="row">
                                         <section class="col-md-offset-10 col-md-2">
                                             <section class="form-group">
-                                                <button type="submit" class="btn btn-primary">Actualizar Departamento</button>
+                                                <button type="submit" class="btn btn-primary">Actualizar Localidad</button>
                                             </section>
                                         </section>
                                     </section>

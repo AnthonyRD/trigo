@@ -6,8 +6,8 @@ class Edit extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Editar Usuario",
-	        'title_page' => "Editar Usuario",
+	        'title' => "Editar Empleado",
+	        'title_page' => "Editar Empleado",
 	        'view_content' => "users/edit",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
@@ -39,10 +39,10 @@ class Edit extends CI_Controller {
 	public function index($str = NULL)
 	{
 	    if (!is_null($str)){
-	        $this->load->model(array('model_role', 'model_employee','model_user'));
+	        $this->load->model(array('model_role','model_employee', 'model_user'));
 	        $data = array(
     	        'employee' => $this->model_employee->get_employees(),
-	        	'role' => $this->model_role->get_roles(),
+    	        'role' => $this->model_role->get_roles(),
     	        'data' => $this->model_user->get_user($str)
     	    );
 	        $this->page_config += $data;
@@ -50,9 +50,9 @@ class Edit extends CI_Controller {
 	        redirect('users');
 	    }
 	    $this->template->view($this->page_config);
-	}		  	
+	}
 	public function confirm(){
-	    $this->form_validation->set_rules('id', 'user', 'callback_id_isExisted');
+	    $this->form_validation->set_rules('id', 'user', 'callback_id_isExisted');		
 	    if ($this->form_validation->run() === FALSE){
 	    	$this->session->set_flashdata('error', true);
 	        redirect('user/edit/'.$this->input->post('id'));
@@ -60,15 +60,22 @@ class Edit extends CI_Controller {
 	        $this->session->set_flashdata('user_success', false);
 	        redirect('users');
 	    }
-	}	
+	}
+	public function id_isExisted($str){
+        if (empty($_FILE['image_url'])){
+            return $this->update_user();
+        }else{
+            return do_upload();
+        }
+	}    
 	public function update_user(){
 	    $this->load->model('model_user');
         $data = array(
 	        'user_name' => $this->input->post('user_name'),
 	        'password' => $this->input->post('password'),	        
 	        'status' => $this->input->post('status'),
-	        'role_id' => $this->input->post('role_id'),
-	        'employee_id' => $this->input->post('employee_id')	        
+	        'user_role_id' => $this->input->post('role'),
+	        'employee_id' => $this->input->post('employee')	        
 	    );	    
 	    if ($this->model_user->update_user($data, $this->input->post("id"))){
 	        $this->session->set_flashdata('user_success',true);

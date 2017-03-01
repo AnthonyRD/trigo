@@ -6,9 +6,9 @@ class Edit extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Editar Departamento",
-	        'title_page' => "Editar Departamento",
-	        'view_content' => "departments/edit",
+	        'title' => "Editar Localidad",
+	        'title_page' => "Editar Localidad",
+	        'view_content' => "locations/edit",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
 	            'css/style.css'
@@ -39,39 +39,38 @@ class Edit extends CI_Controller {
 	public function index($str = NULL)
 	{
 	    if (!is_null($str)){
-	        $this->load->model("model_department");
+	        $this->load->model("model_location");
 	        $data = array(
-	            'data' => $this->model_department->get_department($str)
+	            'data' => $this->model_location->get_location($str)
 	        );
 	        $this->page_config += $data;
 	    }else{
-	        redirect('departments');
+	        redirect('locations');
 	    }
 	    $this->template->view($this->page_config);
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('id', 'department', 'callback_id_isExisted');
+	    $this->form_validation->set_rules('id', 'location', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
 	    	$this->session->set_flashdata('error', true);
-	        redirect('department/edit/'.$this->input->post('id'));
+	        redirect('location/edit/'.$this->input->post('id'));
 	    }else{
-	        $this->session->set_flashdata('department_success', false);
-	        redirect('departments');
+	        $this->session->set_flashdata('location_success', false);
+	        redirect('locations');
 	    }
 	}
 	public function id_isExisted($str){
-        return $this->update_department();
+        return $this->update_location();
 	}
-	public function update_department(){
-	    $this->load->model('model_department');
+	public function update_location(){
+	    $this->load->model('model_location');
 	    $data = array(
 	        'name' => $this->input->post('name'),
-	        'description' => $this->input->post('description'),
-	        'status' => $this->input->post('status')
+	        'description' => $this->input->post('description')
 	        );	    
-	    if ($this->model_department->update_department($data, $this->input->post("id"))){
-	        $this->session->set_flashdata('department_success',true);
-	        redirect('departments');
+	    if ($this->model_location->update_location($data, $this->input->post("id"))){
+	        $this->session->set_flashdata('location_success',true);
+	        redirect('locations');
 	    }
 	    return FALSE;
 	}

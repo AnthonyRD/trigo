@@ -60,6 +60,20 @@ $(function() {
             location.href = "/department/delete/" + radio;
         }
     });
+    $("#edit_location").on('click', function(e) {
+        e.preventDefault();
+        var radio = $("input[type='radio']:checked").val();
+        if (typeof radio !== 'undefined') {
+            location.href = "/location/edit/" + radio;
+        }
+    });
+    $("#delete_location").on('click', function(e) {
+        e.preventDefault();
+        var radio = $("input[type='radio']:checked").val();
+        if (typeof radio !== 'undefined') {
+            location.href = "/location/delete/" + radio;
+        }
+    });
     $("#edit_position").on('click', function(e) {
         e.preventDefault();
         var radio = $("input[type='radio']:checked").val();

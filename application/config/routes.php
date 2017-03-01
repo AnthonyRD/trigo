@@ -102,6 +102,17 @@ $route['supplier/edit/(:num)'] = "suppliers/edit/index/$1";
 $route['supplier/edit/confirm'] = "suppliers/edit/confirm";
 $route['suppliers/details/(:num)'] = "suppliers/details/index/$1";
 /**
+ * Locations Router
+ * */
+$route['locations'] = "locations/index/index";
+$route['location/create'] = "locations/create/index";
+$route['location/create/confirm'] = "locations/create/confirm";
+$route['location/delete/(:num)'] = "locations/delete/index/$1";
+$route['location/delete/confirm'] = "locations/delete/confirm";
+$route['location/edit/(:num)'] = "locations/edit/index/$1";
+$route['location/edit/confirm'] = "locations/edit/confirm";
+$route['locations/details/(:num)'] = "locations/details/index/$1";
+/**
  * Departments Router
  * */
 $route['departments'] = "departments/index/index";

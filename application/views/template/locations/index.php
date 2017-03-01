@@ -6,15 +6,15 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Clientes</li>
+        <li class="active">Localidades</li>
       </ol>
     </section>
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/customer/create"><i class="fa fa-plus"></i> Agregar cliente</a></li>
-          <li><a href="#" id="edit_customer"><i class="fa fa-edit"></i> Editar</a></li>
-          <li><a href="#" id="delete_customer"><i class="fa fa-trash"></i> Eliminar</a></li>
+          <li><a href="/location/create"><i class="fa fa-plus"></i> Agregar Localidad</a></li>
+          <li><a href="#" id="edit_location"><i class="fa fa-edit"></i> Editar</a></li>
+          <li><a href="#" id="delete_location"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->
         </ul>
       </section>
@@ -22,13 +22,13 @@
         <section class="content">
           <section class="row">
             <section class="col-md-12">
-              <?php if (!is_null($this->session->flashdata('customer_success')) && $this->session->flashdata('customer_success') === TRUE):?>
+              <?php if (!is_null($this->session->flashdata('location_success')) && $this->session->flashdata('location_success') === TRUE):?>
                 <section class="alert alert-success">
                   <p>¡Operación realizada con éxito!</p>
                 </section>
-              <?php elseif(!is_null($this->session->flashdata('customer_success')) && $this->session->flashdata('customer_success') === FALSE):?>
+              <?php elseif(!is_null($this->session->flashdata('location_success')) && $this->session->flashdata('location_success') === FALSE):?>
                 <section class="alert alert-danger">
-                  <p>¡Algo salió mal! Verificar datos.</p>
+                  <p>¡Algo salió mal! Revisar Datos.</p>
                 </section>
               <?php endif;?>
             </section>
@@ -37,7 +37,7 @@
           <section class="col-md-12">
             <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Lista de clientes</h3>
+                        <h3 class="box-title">Lista de Localidads</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -46,32 +46,19 @@
                           <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Teléfono</th>
-                            <th>Móvil</th>
-                            <th>Email</th>
-                            <th>Origen</th>
-                            <th>Fecha de nacimiento</th>
-                            <th>Dirección</th>
+                            <th>Descripción</th>                                               
                           </tr>
                         </thead>
                         <tbody>
-                          <?php if (isset($data) && !(is_null($data))): foreach($data as $key => $value): ?>
+                          <?php if (isset($data) && !is_null($data)): foreach($data as $key => $value): ?>
                           <tr>
                             <td>
                               <section class="radio icheck">
                                 <label><input type="radio" name="iCheck" value="<?=$value->id?>"></label>
-                                </section>
                               </section>
                             </td>
                             <td><?=$value->name?></td>
-                            <td><?=$value->last_name?></td>
-                            <td><?=$value->telephone?></td>
-                            <td><?=$value->cellphone?></td>
-                            <td><?=$value->email?></td>
-                            <td><?=$value->origin?></td>
-                            <td><?=$value->birthdate?></td>
-                            <td><?=$value->address_line_1?></td>
+                            <td><?=$value->description?></td>                                                                             
                           </tr>
                           <?php endforeach;endif;?>
                         </tbody>

@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Edit extends CI_Controller {
+class Delete extends CI_Controller {
 	private $page_config = array();
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Editar Departamento",
-	        'title_page' => "Editar Departamento",
-	        'view_content' => "departments/edit",
+	        'title' => "Eliminar Localidad",
+	        'title_page' => "Eliminar Localidad",
+	        'view_content' => "locations/delete",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
 	            'css/style.css'
@@ -36,42 +36,40 @@ class Edit extends CI_Controller {
 	    $this->load->library("form_validation");
 	    $this->form_validation->set_error_delimiters('<section class="alert alert-danger">', '</section>');
 	}
-	public function index($str = NULL)
-	{
+	public function index($str){
 	    if (!is_null($str)){
-	        $this->load->model("model_department");
+	        $this->load->model("model_location");
 	        $data = array(
-	            'data' => $this->model_department->get_department($str)
+	            'data' => $this->model_location->get_location($str)
 	        );
 	        $this->page_config += $data;
 	    }else{
-	        redirect('departments');
+	        redirect('locations');
 	    }
 	    $this->template->view($this->page_config);
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('id', 'department', 'callback_id_isExisted');
+	    $this->form_validation->set_rules('id', 'location', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
-	    	$this->session->set_flashdata('error', true);
-	        redirect('department/edit/'.$this->input->post('id'));
+	        $this->template->view($this->page_config);
 	    }else{
-	        $this->session->set_flashdata('department_success', false);
-	        redirect('departments');
+	        $this->session->set_flashdata('location_success', false);
+	        redirect('locations');
 	    }
 	}
 	public function id_isExisted($str){
-        return $this->update_department();
+	    $this->load->model('model_location');
+	    if (!$this->model_location->location_id_isExisted($str)){
+	        return TRUE;
+	    }else{
+	        return $this->delete_location();
+	    }
 	}
-	public function update_department(){
-	    $this->load->model('model_department');
-	    $data = array(
-	        'name' => $this->input->post('name'),
-	        'description' => $this->input->post('description'),
-	        'status' => $this->input->post('status')
-	        );	    
-	    if ($this->model_department->update_department($data, $this->input->post("id"))){
-	        $this->session->set_flashdata('department_success',true);
-	        redirect('departments');
+	public function delete_location(){
+	    $this->load->model('model_location');
+	    if ($this->model_location->delete_location($this->input->post("id"))){
+	        $this->session->set_flashdata('location_success',true);
+	        redirect('locations');
 	    }
 	    return FALSE;
 	}

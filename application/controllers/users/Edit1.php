@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Delete extends CI_Controller {
+class Edit extends CI_Controller {
 	private $page_config = array();
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Delete employee",
-	        'title_page' => "Delete Employee",
-	        'view_content' => "employees/delete",
+	        'title' => "Editar Usuario",
+	        'title_page' => "Editar Usuario",
+	        'view_content' => "users/edit",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
 	            'css/style.css'
@@ -36,41 +36,43 @@ class Delete extends CI_Controller {
 	    $this->load->library("form_validation");
 	    $this->form_validation->set_error_delimiters('<section class="alert alert-danger">', '</section>');
 	}
-	public function index($str){
+	public function index($str = NULL)
+	{
 	    if (!is_null($str)){
-	        $this->load->model("model_employee");
+	        $this->load->model(array('model_role', 'model_employee','model_user'));
 	        $data = array(
-	            'data' => $this->model_employee->get_employee($str)
-	        );
+    	        'employee' => $this->model_employee->get_employees(),
+	        	'role' => $this->model_role->get_roles(),
+    	        'data' => $this->model_user->get_user($str)
+    	    );
 	        $this->page_config += $data;
 	    }else{
-	        redirect('employees');
+	        redirect('users');
 	    }
 	    $this->template->view($this->page_config);
-	}
+	}		  	
 	public function confirm(){
-	    $this->form_validation->set_rules('id', 'employee', 'callback_id_isExisted');
+	    $this->form_validation->set_rules('id', 'user', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
-	        $this->template->view($this->page_config);
+	    	$this->session->set_flashdata('error', true);
+	        redirect('user/edit/'.$this->input->post('id'));
 	    }else{
-	        $this->session->set_flashdata('employee_success', false);
-	        redirect('employees');
-	    }
-	}
-	public function id_isExisted($str){
-	    $this->load->model('model_employee');
-	    if (!$this->model_employee->employee_id_isExisted($str)){
-	        return TRUE;
-	    }else{
-	        return $this->delete_employee();
-	    }
-	}
-	public function delete_employee(){
-	    $this->load->model('model_employee');
-	    if ($this->model_supplier->delete_supplier($this->input->post("id"), 
-		$this->input->post('address_id'))){
-	        $this->session->set_flashdata('employee_success',true);
-	        redirect('employee');
+	        $this->session->set_flashdata('user_success', false);
+	        redirect('users');
+	    }		 
+	}	
+	public function update_user(){
+	    $this->load->model('model_user');
+        $data = array(
+	        'user_name' => $this->input->post('user_name'),
+	        'password' => $this->input->post('password'),	        
+	        'status' => $this->input->post('status'),
+	        'role_id' => $this->input->post('role'),
+	        'employee_id' => $this->input->post('employee')	        
+	    );	    
+	    if ($this->model_user->update_user($data, $this->input->post("id"))){
+	        $this->session->set_flashdata('user_success',true);
+	        redirect('users');
 	    }
 	    return FALSE;
 	}

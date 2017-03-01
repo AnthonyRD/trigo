@@ -39,8 +39,8 @@
                                     <section class="row">
                                         <section class="col-md-6">
 					                <section class="form-group hide">
-                                                <input type="hidden" name="id" value="<?=$data->id?>"/>
-                                                <input type="hidden" name="address_id" value="<?=$data->id?>"/>
+                                                <input type="hidden" name="id" value="<?=$data->employee_id?>"/>
+                                                <input type="hidden" name="address_id" value="<?=$data->address_id?>"/>
                                             </section>
                                             <section class="form-group">
                                                 <label for="">Nombre</label>
@@ -68,22 +68,24 @@
                                         </section>
                                         <section class="col-md-6">                                           
                                             <section class="form-group">
-                                                <label for="">Telefono Movil</label>
-                                                <input type="text" name="cellphone" class="form-control" placeholder="Telefono Movil" value="<?=$data->cellphone?>" required/>
+                                                <label for="">Telefono Móvil</label>
+                                                <input type="text" name="cellphone" class="form-control" placeholder="Telefono Móvil" value="<?=$data->cellphone?>" required/>
                                             </section>
                                             <section class="form-group">
-                                                <label for="">Departamento</label>
-                                                <select name="department" class="form-control">
+                                            <label for="">Departamento</label>
+                                            <select name="department" class="form-control">
+                                                <option value=""></option>
                                                 <?php foreach($department as $key => $value):?>
-                                                <option value="<?=$value->id?>"  <?=$data->id == $value->id ? ' selected="selected"' : '';?>><?=$value->name?></option>
+                                                <option value="<?=$value->id?>"  <?=$data->department_id == $value->id ? ' selected="selected"' : '';?>><?=$value->name?></option>
                                                 <?php endforeach; ?>
                                             </select>   
                                             </section>
                                             <section class="form-group">
                                             <label>Posición</label>
                                             <select name="position" class="form-control">
+                                                <option value=""></option>
                                                 <?php foreach($position as $key => $value):?>
-                                                <option value="<?=$value->id?>"  <?=$data->id == $value->id ? ' selected="selected"' : '';?>><?=$value->name?></option>
+                                                <option value="<?=$value->id?>"  <?=$data->position_id == $value->id ? ' selected="selected"' : '';?>><?=$value->name?></option>
                                                 <?php endforeach; ?>
                                             </select>                                               
                                             </section>					   

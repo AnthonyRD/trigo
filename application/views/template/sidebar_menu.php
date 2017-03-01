@@ -138,6 +138,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+          <li><a href="/locations"><i class="fa fa-compass"></i> Localidades</a></li>
             <li><a href="/departments"><i class="fa fa-cubes"></i> Departamentos</a></li>
             <li><a href="/positions"><i class="fa fa-book"></i> Posiciones</a></li>                        
             <li><a href="/employees"><i class="fa fa-asterisk"></i> Empleados</a></li>               

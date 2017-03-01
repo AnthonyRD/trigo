@@ -24,6 +24,7 @@
                                 <section class="col-md-6">
                                     <section class="form-group">
                                         <label>User Name</label>
+                                        <input type="hidden" name="id" value="<?=$data->id?>"/>
                                         <input type="text" name="user_name" class="form-control" placeholder="Nombre de usuario" value="<?=$data->user_name?>" required/>
                                     </section>
                                     <section class="form-group">

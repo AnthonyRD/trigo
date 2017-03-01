@@ -24,11 +24,11 @@
             <section class="col-md-12">
               <?php if (!is_null($this->session->flashdata('product_success')) && $this->session->flashdata('product_success') === TRUE):?>
                 <section class="alert alert-success">
-                  <p>Todo ha salido bien!</p>
+                  <p>¡Operación realizada con éxito!</p>
                 </section>
               <?php elseif(!is_null($this->session->flashdata('product_success')) && $this->session->flashdata('product_success') === FALSE):?>
                 <section class="alert alert-danger">
-                  <p>Algo salió mal!</p>
+                  <p>¡Algo salió mal! Revisar Datos.</p>
                 </section>
               <?php endif;?>
             </section>
