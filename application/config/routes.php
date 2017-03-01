@@ -67,6 +67,7 @@ $route['login/reset/password/confirm'] = "account/reset/password_confirm";
 /**
  * Customers Router
  * */
+$route['customers'] = "customers/index/index";
 $route['customer/create'] = "customers/create/index";
 $route['customer/create/confirm'] = "customers/create/confirm";
 $route['customer/delete/(:num)'] = "customers/delete/index/$1";

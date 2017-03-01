@@ -7,7 +7,7 @@ class Model_employee extends CI_Model {
         $this->load->database();
         $this->load->model('model_address');
     }
-    public function category_name_validation($str){
+    public function employee_name_validation($str){
         $this->db->where('name', $str);
         $this->db->limit(1);
         $query = $this->db->get("employee");

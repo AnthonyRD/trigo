@@ -39,10 +39,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <section class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </section>
                 <section class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="#" class="btn btn-default btn-flat">Salir</a>
                 </section>
               </li>
             </ul>
@@ -61,11 +61,11 @@
           <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </section>
         <section class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <p>Jose Madero</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Activo</a>
         </section>
       </section>
-      <!-- search form -->
+      <!-- search form 
       <form action="#" method="get" class="sidebar-form">
         <section class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -75,13 +75,13 @@
               </span>
         </section>
       </form>
-      <!-- /.search form -->
+       /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">NAVEGACION PRINCIPAL</li>
         <li>
           <a href="/dashboard">
-            <i class="fa fa-dashboard"></i> <span>Estadisticas</span>
+            <i class="fa fa-dashboard"></i> <span>Estadísticas</span>
           </a>
         </li>
         <li class="treeview">
@@ -113,12 +113,7 @@
             <i class="fa fa-tasks"></i>
             <span>Ordenes</span>
           </a>
-        </li>
-        <li>
-          <a href="/employes">
-            <i class="fa fa-user"></i> <span>Usuarios</span>
-          </a>
-        </li>
+        </li>        
         <li>
           <a href="/reports">
             <i class="fa fa-area-chart"></i> <span>Reportes</span>

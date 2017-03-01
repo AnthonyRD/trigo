@@ -32,6 +32,20 @@ $(function() {
             location.href = "/supplier/delete/" + radio;
         }
     });
+    $("#edit_customer").on('click', function(e) {
+        e.preventDefault();
+        var radio = $("input[type='radio']:checked").val();
+        if (typeof radio !== 'undefined') {
+            location.href = "/customer/edit/" + radio;
+        }
+    });
+    $("#delete_customer").on('click', function(e) {
+        e.preventDefault();
+        var radio = $("input[type='radio']:checked").val();
+        if (typeof radio !== 'undefined') {
+            location.href = "/customer/delete/" + radio;
+        }
+    });
     $("#edit_employee").on('click', function(e) {
         e.preventDefault();
         var radio = $("input[type='radio']:checked").val();

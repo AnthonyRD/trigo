@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Edit extends CI_Controller {
+class Create extends CI_Controller {
 	private $page_config = array();
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Editar Cliente",
-	        'title_page' => "Editar Cliente",
+	        'title' => "Editar cliente",
+	        'title_page' => "Editar cliente",
 	        'view_content' => "customers/edit",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
@@ -36,9 +36,9 @@ class Edit extends CI_Controller {
 	    $this->load->library("form_validation");
 	    $this->form_validation->set_error_delimiters('<section class="alert alert-danger">', '</section>');
 	}
-	public function index($str = NULL)
-	{	    
-	    if (!is_null($str)){
+	public function index()
+	{
+        if (!is_null($str)){
 	        $this->load->model("model_customer");
 	        $data = array(
 	            'data' => $this->model_customer->get_customer($str)
@@ -47,22 +47,29 @@ class Edit extends CI_Controller {
 	    }else{
 	        redirect('customers');
 	    }
-	    $this->template->view($this->page_config);
+	    $this->template->view($this->page_config);		
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('id', 'customer', 'callback_name_isExisted');		
+	    $this->form_validation->set_rules('name', 'Nombre', 'callback_name_check',
+	        array("name_check" => 'El nombre del cliente ya existe.')
+	    );
 	    if ($this->form_validation->run() === FALSE){
-	    	$this->session->set_flashdata('error', true);
-	        redirect('customer/edit/'.$this->input->post('id'));
+	        $this->template->view($this->page_config);
 	    }else{
-	        $this->session->set_flashdata('customer_success', false);
-	        redirect('customers');
+	        $this->template->view($this->page_config);
 	    }
 	}
-	
-	public function update_customer(){
+	public function name_check($str){
 	    $this->load->model('model_customer');
-        $data = array(
+	    if ($this->model_customer->customer_name_validation($str)){
+	        return TRUE;
+	    }else{
+	        return $this->add_customer();
+	    }
+	}
+	public function add_customer(){
+	    $this->load->model('model_customer');
+	    $data = array(
 	        'name' => $this->input->post('name'),
 	        'last_name' => $this->input->post('last_name'),
 	        'telephone' => $this->input->post('telephone'),
@@ -77,8 +84,9 @@ class Edit extends CI_Controller {
 	            'country' => $this->input->post('country'),
 	            'state' => $this->input->post('state'),
 	            'zip_code' => $this->input->post('zip_code')
-	        ));	    
-	    if ($this->model_customer->update_customer($data, $this->input->post("id"), $this->input->post('address_id'))){
+	        )
+	    );
+	    if ($this->model_customer->insert_customer($data)){
 	        $this->session->set_flashdata('customer_success',true);
 	        redirect('customers');
 	    }
