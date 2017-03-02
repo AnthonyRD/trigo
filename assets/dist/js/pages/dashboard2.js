@@ -169,7 +169,7 @@ $(function () {
    * ------------
    * Create a world map with markers
    */
-  $('#world-map-markers').vectorMap({
+  /*$('#world-map-markers').vectorMap({
     map: 'world_mill_en',
     normalizeFunction: 'polynomial',
     hoverOpacity: 0.7,
@@ -226,7 +226,7 @@ $(function () {
       {latLng: [26.02, 50.55], name: 'Bahrain'},
       {latLng: [0.33, 6.73], name: 'São Tomé and Príncipe'}
     ]
-  });
+  });*/
 
   /* SPARKLINE CHARTS
    * ----------------
@@ -236,7 +236,7 @@ $(function () {
   //-----------------
   //- SPARKLINE BAR -
   //-----------------
-  $('.sparkbar').each(function () {
+ $('.sparkbar').each(function () {
     var $this = $(this);
     $this.sparkline('html', {
       type: 'bar',
@@ -248,19 +248,19 @@ $(function () {
   //-----------------
   //- SPARKLINE PIE -
   //-----------------
-  $('.sparkpie').each(function () {
+/*  $('.sparkpie').each(function () {
     var $this = $(this);
     $this.sparkline('html', {
       type: 'pie',
       height: $this.data('height') ? $this.data('height') : '90',
       sliceColors: $this.data('color')
     });
-  });
+  });*/
 
   //------------------
   //- SPARKLINE LINE -
   //------------------
-  $('.sparkline').each(function () {
+/*  $('.sparkline').each(function () {
     var $this = $(this);
     $this.sparkline('html', {
       type: 'line',
@@ -270,5 +270,5 @@ $(function () {
       fillColor: $this.data('fillcolor'),
       spotColor: $this.data('spotcolor')
     });
-  });
+  });*/
 });

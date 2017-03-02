@@ -205,53 +205,22 @@
 </section>
 <?php endif; ?>
 <!-- jQuery 2.2.3 -->
-<script src="<?=base_url()?>/assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?=base_url()?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="<?=base_url()?>/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Load JS -->
 <?php if (isset($plugin_js)):foreach($plugin_js as $key_src => $value_src):?>
 <?="<script src='".base_url()."assets/plugins/".$value_src."'></script>"?>
+
 <?php endforeach; endif;?>
 <?php if (isset($js)):foreach($js as $key_src => $value_src):?>
+
 <?="<script src='".base_url()."assets/dist/".$value_src."'></script>"?>
 <?php endforeach; endif;?>
 <!-- CDN JS-->
 <?php if (isset($cdn)):foreach($cdn as $key_href => $value_href):?>
-<?="<script src='$value_href'></script>"?>
+<?="<script src='$value_href'></script>"?>	
 <?php endforeach; endif;?>
-<script>
-var typeaheadSource = [{ id: 1, name: 'John'}, { id: 2, name: 'Alex'}, { id: 3, name: 'Terry'}];
-$('input[name="search"]').typeahead({
-onSelect: function(item) {
-        console.log(item);
-    },
-    ajax: {
-        url: "<?=base_url()?>ajax/customer/search",
-        timeout: 500,
-        displayField: "title",
-        triggerLength: 1,
-        method: "post",
-        loadingClass: "loading-circle",
-        preDispatch: function (query) {
-            return {
-                search: query
-            }
-        },
-        preProcess: function (data) {
-            if (data === null) {
-                // Hide the list, there was some error
-                return false;
-            }
-            // We good!
-            return $.map(data, function(value){
-              return value.name;
-            });
-        }
-    }
-});
-$("#search").submit(function(e){
-  e.preventDefault();
-})
-</script>
+
 </body>
 </html>

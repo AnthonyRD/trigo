@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Register extends CI_Controller {
+class Login extends CI_Controller {
 	private $page_config = array();
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Account Register",
-	        'title_page' => "Account",
-	        'view_content' => "account/register",
+	        'title' => "Resetear Password",
+	        'title_page' => "Resetear Password",
+	        'view_content' => "account/reset",
 	        'plugin_css' => array(
 	        	'href' => 'iCheck/square/blue.css'
 	        ),
@@ -21,7 +21,7 @@ class Register extends CI_Controller {
 	        'js' => array(
 	        	'src' => 'js/config/iCheck.js'
 	        ),
-	        'sidebar_menu'=> false
+	        'sidebar-menu'=> false
 	    );
 	    $this->load->library("template");
 	}

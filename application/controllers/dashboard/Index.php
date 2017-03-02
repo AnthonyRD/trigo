@@ -6,19 +6,23 @@ class Index extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Dashboard",
-	        'title_page' => "Dashboard",
+	        'title' => "Indicadores",
+	        'title_page' => "Indicadores",
 	        'view_content' => "dashboard/index",
 	        'css' => array(
-	            'css/skins/_all-skins.min.css'
+	            'css/skins/skin-yellow-light.css'
 	            
 	        ),
 	        'plugin_js' => array(
-	        	'js' => 'fastclick/fastclick.js'
+	        	'js' => 'fastclick/fastclick.js', 
+				'chartjs/Chart.min.js',
+				'slimScroll/jquery.slimscroll.min.js',
+				'sparkline/jquery.sparkline.js'
+
 	        ),
 	        'js' => array(
 	            'js/app.min.js',
-	            'js/demo.js'
+		    'js/pages/dashboard2.js'
 	        ),
 	        'sidebar_menu'=> true
 	    );

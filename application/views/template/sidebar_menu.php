@@ -1,4 +1,4 @@
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-yellow-light sidebar-mini">
 <section class="wrapper">
 
   <header class="main-header">
@@ -24,7 +24,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">Jose Madero</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -32,7 +32,7 @@
                 <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  Jose Madero - Servicio de Caja
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>                           
@@ -81,7 +81,7 @@
         <li class="header">NAVEGACION PRINCIPAL</li>
         <li>
           <a href="/dashboard">
-            <i class="fa fa-dashboard"></i> <span>Estadísticas</span>
+            <i class="fa fa-dashboard"></i> <span>Indicadores</span>
           </a>
         </li>
         <li class="treeview">
@@ -90,6 +90,9 @@
             <span>Productos</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
+            </span>
+	    <span class="pull-right-container">
+              <span class="label bg-red pull-right">2</span>
             </span>
           </a>
           <ul class="treeview-menu">
@@ -128,8 +131,10 @@
           <a href="#">
             <i class="fa fa-gears"></i>
             <span>Configuraciones</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+            <span class="pull-right-container">              
+            </span>
+	    <span class="pull-right-container">
+              <span class="label bg-green pull-right">5</span>
             </span>
           </a>
           <ul class="treeview-menu">
