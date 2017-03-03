@@ -1,7 +1,7 @@
 body {
-    background: url(https://www.grainchain.com/sites/default/files/flour-baking-background-with-egg,-rolling-pin-and-wheat-ear-000069728007_Medium_3.jpg) no-repeat fixed !important;
+    background: url('http://localhost/trigo/assets/dist/img/salad-2068220_1920.jpg') no-repeat fixed !important;
     background-size: cover;
-    background-position: 50%;
+    background-position: 50%;   
 }
 .login-logo a, .register-logo a{
     color:#fff !important;

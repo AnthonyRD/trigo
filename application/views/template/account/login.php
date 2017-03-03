@@ -1,19 +1,47 @@
+<?php
+  if (isset($this->session->userdata['logged_in'])) {
+    header("location: http://localhost/login/index.php/login/user_login_process");
+  }
+?>
 <body class="hold-transition login-page">
+<?php
+  if (isset($logout_message)) {
+  echo "<div class='message'>";
+  echo $logout_message;
+  echo "</div>";
+  }
+?>
+<?php
+  if (isset($message_display)) {
+  echo "<div class='message'>";
+  echo $message_display;
+  echo "</div>";
+  }
+?>
 <section class="login-box">
   <section class="login-logo">
     <a href="<?=base_url();?>"><b>Trigo</b> Dashboard</a>
   </section>
   <!-- /.login-logo -->
   <section class="login-box-body">
-    <p class="login-box-msg">Iniciar Sesión</p>
+    <p class="login-box-msg">Iniciar Sesión</p>    
 
-    <form action="../../index2.html" method="post">
-      <section class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Usuario">
+	<hr/>
+<?php echo form_open('account/login/user_login_process'); ?>
+<?php
+echo "<div class='error_msg'>";
+if (isset($error_message)) {
+echo $error_message;
+}
+echo validation_errors();
+echo "</div>";
+?>
+<section class="form-group has-feedback">
+        <input type="text" name="username" class="form-control" placeholder="Usuario">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </section>
       <section class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" name="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </section>
       <section class="row">
@@ -30,18 +58,10 @@
         </section>
         <!-- /.col -->
       </section>
-    </form>
-<!--
-    <section class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-    </section>-->
-    <!-- /.social-auth-links -->
-
-    <a href="/login/forgot/password">Olvidé mi Contraseña</a><br>
+<?php echo form_close(); ?>
+     
+  <a href="/login/forgot/password">Olvidé mi Contraseña</a><br>
+	<?php echo form_close(); ?>
 
   </section>
   <!-- /.login-box-body -->
