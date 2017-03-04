@@ -7,7 +7,15 @@
   <section class="login-box-body">
     <p class="login-box-msg">Resetear Password</p>
 
-    <form action="../../index2.html" method="post">
+    <?php echo form_open('#'); ?>
+<?php
+  echo "<div class='text-danger'>";
+if (isset($error_message)) {
+  echo $error_message;
+}
+  echo validation_errors();
+  echo "</div>";
+?>
       <section class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Usuario">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -33,9 +41,8 @@
         </section>
         <!-- /.col -->
       </section>
-    </form>
+ <?php echo form_close(); ?>
 
-    <a href="/login/forgot/password">Volver al inicio</a><br>
 
   </section>
   <!-- /.login-box-body -->

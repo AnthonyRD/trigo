@@ -5,26 +5,36 @@
   </section>
   <!-- /.login-logo -->
   <section class="login-box-body">
-    <p class="login-box-msg">Retrieve my password</p>
+    <p class="login-box-msg">Recuperar mi password</p>
 
-    <form action="../../index2.html" method="post">
-        <section class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+<?php echo form_open('#'); ?>
+<?php
+  echo "<div class='text-danger'>";
+if (isset($error_message)) {
+  echo $error_message;
+}
+  echo validation_errors();
+  echo "</div>";
+?>
+<section class="form-group has-feedback">
+        <input type="email" name="email" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </section>
-        <!-- /.col -->
-        <section class="col-xs-offset-8 col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Retrieve</button>
+      </section>      
+      <section class="row">
+        <section class="col-xs-8">
+          <section class="checkbox icheck">
+            <label>
+              <a href="/account/login/">Login</a><br>
+            </label>
+          </section>
         </section>
-    </form>
-    <!-- /.social-auth-links -->
-    <section class="row">
-      <a href="/register" class="text-center">Register a new membership</a>
-    </section>
-    <section class="row">
-      <a href="/login" class="text-center">Login</a>
-    </section>
-    
+        <!-- /.col -->
+        <section class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Recuperar</button>
+        </section>
+        <!-- /.col -->
+      </section>
+<?php echo form_close(); ?>   
 
   </section>
   <!-- /.login-box-body -->

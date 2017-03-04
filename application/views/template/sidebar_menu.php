@@ -1,3 +1,11 @@
+<?php
+if (isset($this->session->userdata['logged_in'])) {
+  $username = ($this->session->userdata['logged_in']['username']);
+  //$email = ($this->session->userdata['logged_in']['email']);
+} else {
+header("location: /trigo/account/login");
+}
+?>
 <body class="hold-transition skin-yellow-light sidebar-mini">
 <section class="wrapper">
 
@@ -42,7 +50,7 @@
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </section>
                 <section class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Salir</a>
+                  <a id="logout" href="account/login/logout" class="btn btn-default btn-flat">Salir</a>                  
                 </section>
               </li>
             </ul>

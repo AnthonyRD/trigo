@@ -20,7 +20,7 @@ echo "<br/>";
 echo "<br/>";
 echo "Your Username is " . $username;
 echo "<br/>";
-echo "Your Email is " . $email;
+//echo "Your Email is " . $email;
 echo "<br/>";
 ?>
 <b id="logout"><a href="logout">Logout</a></b>

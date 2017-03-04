@@ -72,14 +72,15 @@ class Login extends CI_Controller {
 				);				
 					// Add user data in session
 					$this->session->set_userdata('logged_in', $session_data);
-					$this->load->view('admin_page');
+					redirect('dashboard');	
 				}
 			} else {
 				$data = array(
-				'error_message' => 'Invalid Username or Password'
+				  'error_message' => 'Usuario o Contraseña no válidos'
 				);
-				$this->load->view('account/login', $data);
-				//$this->template->view($this->page_config, $data);
+				
+				$this->load->view('/template/account/login',$data);
+				
 			}
 		}
 	}
@@ -92,8 +93,7 @@ class Login extends CI_Controller {
 		);
 		$this->session->unset_userdata('logged_in', $sess_array);
 		$data['message_display'] = 'Successfully Logout';
-		//$this->load->view('login', $data);
-		$this->template->view($this->page_config, $data);
+		$this->load->view('/template/account/login', $data);		
 	}
 
 }

@@ -6,8 +6,8 @@ class Forgot extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Account Forgot Password",
-	        'title_page' => "Account",
+	        'title' => "Recuperar contraseña",
+	        'title_page' => "Recuperar contraseña",
 	        'view_content' => "account/forgot_password",
 	        'plugin_css' => array(
 	        	'href' => 'iCheck/square/blue.css'
