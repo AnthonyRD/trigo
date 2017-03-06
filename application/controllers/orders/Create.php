@@ -10,7 +10,7 @@ class Create extends CI_Controller {
 	        'title_page' => "Orders",
 	        'view_content' => "orders/create",
 	        'css' => array(
-	            'css/skins/_all-skins.min.css',
+	            'css/skins/skin-yellow-light.css',
 	            'css/sales.css'
 	        ),
 	        'plugin_js' => array(

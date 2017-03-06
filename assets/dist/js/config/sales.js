@@ -1,4 +1,4 @@
-var height = $( window ).height();
+var height = $(window).height();
 $(".sidebar-sales").css("min-height", height);
 
 var item = $(".products a");
@@ -19,7 +19,8 @@ Array.prototype.indexOf || (Array.prototype.indexOf = function(d, e) {
     }
     return -1
 });
-function clear(){
+
+function clear() {
     var cero = 0;
     var cliente = storage.get('customer');
     localStorage.clear();
@@ -29,7 +30,8 @@ function clear(){
     $("#tax, .impuesto").html(cero.toFixed(2));
     $("#total, #total-btn, .toPay").html(cero.toFixed(2));
 }
-function cancel(){
+
+function cancel() {
     var cero = 0;
     localStorage.clear();
     $(contentItem).html("");
@@ -38,31 +40,33 @@ function cancel(){
     $("#total, #total-btn, .toPay").html(cero.toFixed(2));
     $("#customer").html("Default");
 }
-function setStorage(data){
-    
+
+function setStorage(data) {
+
     var get_all = storage.get('item');
     var indexCount = null;
     var cObject = [];
-    if (get_all !== null){
-        $.each(get_all, function(index, value){
-            if (value.name == data.name){
-               indexCount = index;
+    if (get_all !== null) {
+        $.each(get_all, function(index, value) {
+            if (value.name == data.name) {
+                indexCount = index;
             }
         });
-    }else{
+    } else {
         cObject.push(data);
         storage.set('item', cObject);
     }
-    if (indexCount !== null){
+    if (indexCount !== null) {
         get_all[indexCount].unidad += 1;
         storage.set('item', get_all);
     }
-    if (get_all !== null && indexCount == null && data !== null){
+    if (get_all !== null && indexCount == null && data !== null) {
         get_all.push(data);
         storage.set('item', get_all);
     }
 }
-function addItem(data){
+
+function addItem(data) {
     var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section><section class="name"><p>{name}</p></section><section class="tax"><p>{tax}</p></section><section class="price"><p>{price}</p></section><section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-close"></i></a></section></section>';
     var get_all = storage.get('item');
     var temp = null;
@@ -71,20 +75,20 @@ function addItem(data){
     var totalImpuesto = 0;
     var totalSubtotal = 0;
     var total = 0;
-    if (get_all !== null){
-        $.each(get_all, function(index, value){
+    if (get_all !== null) {
+        $.each(get_all, function(index, value) {
             temp = itemHTML.replace('{cantidad}', value.unidad);
             temp = temp.replace('{name}', value.name);
-            impuesto = (value.price*15/100);
+            impuesto = (value.price * 18 / 100);
             temp = temp.replace('{tax}', impuesto);
             temp = temp.replace('{price}', value.price);
             temp = temp.replace('{index}', index);
             item += temp;
             temp = null;
-            totalImpuesto += impuesto*value.unidad;
-            totalSubtotal += value.price*value.unidad;
+            totalImpuesto += impuesto * value.unidad;
+            totalSubtotal += value.price * value.unidad;
         });
-        total = totalImpuesto+totalSubtotal;
+        total = totalImpuesto + totalSubtotal;
         storage.set('total', total);
         storage.set('tax', totalImpuesto);
         storage.set('subtotal', totalSubtotal);
@@ -93,16 +97,17 @@ function addItem(data){
         $("#total, #total-btn, .toPay").html(total.toFixed(2));
         contentItem.html(item);
     }
-            if (storage.get('customer') == null){
-            storage.set('customer', 'Default');
-            $("#customer").html(storage.get('customer'));
-        }else{
-            $("#customer").html(storage.get('customer'));
-        }
-    
+    if (storage.get('customer') == null) {
+        storage.set('customer', 'Default');
+        $("#customer").html(storage.get('customer'));
+    } else {
+        $("#customer").html(storage.get('customer'));
+    }
+
 }
-function removeItem(index){
-var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section><section class="name"><p>{name}</p></section><section class="tax"><p>{tax}</p></section><section class="price"><p>{price}</p></section><section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-close"></i></a></section></section>';
+
+function removeItem(index) {
+    var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section><section class="name"><p>{name}</p></section><section class="tax"><p>{tax}</p></section><section class="price"><p>{price}</p></section><section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-close"></i></a></section></section>';
     var gets = storage.get('item');
     gets.splice(index, 1);
     var temp = null;
@@ -111,21 +116,21 @@ var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p
     var totalImpuesto = 0;
     var totalSubtotal = 0;
     var total = 0;
-    if (gets !== null){
-        $.each(gets, function(index, value){
+    if (gets !== null) {
+        $.each(gets, function(index, value) {
             temp = itemHTML.replace('{cantidad}', value.unidad);
             temp = temp.replace('{name}', value.name);
-            impuesto = (value.price*15/100);
+            impuesto = (value.price * 15 / 100);
             temp = temp.replace('{tax}', impuesto);
             temp = temp.replace('{price}', value.price);
             temp = temp.replace('{index}', index);
             item += temp;
             temp = null;
-            totalImpuesto = impuesto*value.unidad;
-            totalSubtotal = value.price*value.unidad;
+            totalImpuesto = impuesto * value.unidad;
+            totalSubtotal = value.price * value.unidad;
         });
         storage.set('item', gets);
-        total = totalImpuesto+totalSubtotal;
+        total = totalImpuesto + totalSubtotal;
         storage.set('total', total);
         storage.set('tax', totalImpuesto);
         storage.set('subtotal', totalSubtotal);
@@ -135,6 +140,7 @@ var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p
         contentItem.html(item);
     }
 }
+
 function PopupCenter(url, title, w, h) {
     // Fixes dual-screen position                         Most browsers      Firefox
     var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
@@ -152,34 +158,35 @@ function PopupCenter(url, title, w, h) {
         newWindow.focus();
     }
 }
-$(document).on('click', '.products a' , function(event){
+$(document).on('click', '.products a', function(event) {
     event.preventDefault();
     var data = JSON.parse(this.dataset.item);
-    
+
     data = {
-            id: data.id,
-            price: data.price,
-            name: data.name,
-            impuesto: null,
-            unidad: 1,
-            category: data.name_category,
-            supplier: data.suppier_name
-        };
-    
+        id: data.id,
+        price: data.price,
+        name: data.name,
+        impuesto: null,
+        unidad: 1,
+        category: data.name_category,
+        supplier: data.suppier_name
+    };
+
     setStorage(data);
     addItem();
-    
+
 });
-$(document).on('ready', function(){
+$(document).on('ready', function() {
     addItem(null);
 });
-$("#pay").click(function(){
+$("#pay").click(function() {
     var payType = $("input[name='pay-type']").val();
-    
+
 });
-function prm(){
+
+function prm() {
     var cero = parseInt($("#total-btn").html());
-    if (cero > 0){
+    if (cero > 0) {
         var item = null;
         var itemT = null;
         var subtotal = 0;
@@ -187,17 +194,17 @@ function prm(){
         var total = 0;
         var itemPay = '<tr><td>{{nameProduct}}</td><td>{{qty}}</td><td>{{prece}}</td><td>{{total}}</td></tr>';
         var totalStorage = storage.get('total');
-        if (storage.get('tipo') !== null){
-            if(totalStorage != 0){
+        if (storage.get('tipo') !== null) {
+            if (totalStorage != 0) {
                 $("#payModal").modal('show');
-                $.each(storage.get('item'), function(index, value){
-                    subtotal += (value.price*value.unidad);
-                    impuesto += ((value.price*15/100)*value.unidad);
+                $.each(storage.get('item'), function(index, value) {
+                    subtotal += (value.price * value.unidad);
+                    impuesto += ((value.price * 15 / 100) * value.unidad);
                     console.log(value);
                     itemT = itemPay.replace("{{nameProduct}}", value.name);
                     itemT = itemT.replace("{{qty}}", value.unidad);
                     itemT = itemT.replace("{{prece}}", value.price);
-                    itemT = itemT.replace("{{total}}", (value.price*value.unidad));
+                    itemT = itemT.replace("{{total}}", (value.price * value.unidad));
                     item += itemT;
                 });
                 total = (subtotal + impuesto);
@@ -205,66 +212,66 @@ function prm(){
                 $(".subtotalPay").html(subtotal.toFixed(2));
                 $(".impuesto").html(impuesto.toFixed(2));
                 $(".toPay").html(total.toFixed(2));
-            }else{
+            } else {
                 alert('No hay ningun articulo en la cesta');
             }
-        }else{
+        } else {
             $("#tipo").modal('show');
         }
-    }else{
+    } else {
         alert('Primero debes añadir un item a la cesta');
     }
 }
-$("#total-btn").click(function () {
- prm();
+$("#total-btn").click(function() {
+    prm();
 });
-$("#add-customer").click(function(){
-   var customer = $('ul.typeahead li.active').data('value');
-   if (customer != ""){
-       storage.set('customer', customer);
-       $("#customer").html(customer);
-       $("#search-customer").modal('hide');
-   }
+$("#add-customer").click(function() {
+    var customer = $('ul.typeahead li.active').data('value');
+    if (customer != "") {
+        storage.set('customer', customer);
+        $("#customer").html(customer);
+        $("#search-customer").modal('hide');
+    }
 });
-$("#add-type").click(function(){
-   var type = document.getElementById('input-tipo').value;
-   if (type != ""){
-       storage.set("tipo",type);
-       $("#tipo").modal('hide');
-       $("#payModal").modal('show');
-       prm();
-   }
+$("#add-type").click(function() {
+    var type = document.getElementById('input-tipo').value;
+    if (type != "") {
+        storage.set("tipo", type);
+        $("#tipo").modal('hide');
+        $("#payModal").modal('show');
+        prm();
+    }
 });
-$(".button-pay").click(function(){
-    if(!$(this).hasClass('active')){
+$(".button-pay").click(function() {
+    if (!$(this).hasClass('active')) {
         $(".button-pay").toggleClass('active');
     }
 
 });
-$("#confirm").click(function(){
+$("#confirm").click(function() {
     var type = $(".active input[name='pay-type']").val();
     storage.set('payment_type', type);
-    if (type == "1"){
+    if (type == "1") {
         $("#payModal").modal("hide");
         $("#confirmM").modal('show', {
-  backdrop: 'static',
-  keyboard: false
-});
-    }else if (type == "3"){
+            backdrop: 'static',
+            keyboard: false
+        });
+    } else if (type == "3") {
         $("#payModal").modal("hide");
         $("#hs").addClass('hide');
-        $("#cobro-invoice").modal('show',{
-  backdrop: 'static',
-  keyboard: false
-});
+        $("#cobro-invoice").modal('show', {
+            backdrop: 'static',
+            keyboard: false
+        });
     }
-    
+
 });
-$("#efectivo").click(function(){
+$("#efectivo").click(function() {
     var efectivo = $("input[name='efectivo']");
     var efectivo_val = parseFloat(efectivo.val());
     var total_pago = storage.get('total');
-    if (efectivo_val != '' && !isNaN(efectivo_val) && efectivo_val >= total_pago){
+    if (efectivo_val != '' && !isNaN(efectivo_val) && efectivo_val >= total_pago) {
         var devuelta = efectivo_val - total_pago;
         $(".devuelta").html(devuelta.toFixed(2));
         $(".pago").html(efectivo_val);
@@ -273,12 +280,12 @@ $("#efectivo").click(function(){
         efectivo.parent().addClass('has-success');
         $("#confirmM").modal('hide');
         $("#cobro-invoice").modal('show');
-    }else{
+    } else {
         efectivo.parent().removeClass('has-success');
         efectivo.parent().addClass('has-error');
     }
 });
-$("#cobro").click(function(){
+$("#cobro").click(function() {
     var customer = (storage.get('customer') == null) ? 'Default' : storage.get('customer');
     var data = {
         order: storage.get('item'),
@@ -288,79 +295,80 @@ $("#cobro").click(function(){
         tax: storage.get('tax'),
         payment_type: storage.get('payment_type')
     };
-    $.ajax('/ajax/order/create', {
+    $.ajax('/trigo/ajax/order/create', {
         method: 'POST',
         data: data,
         dataType: 'json',
-        beforeSend: function(){
-          $(".loading").css('display', 'flex');  
+        beforeSend: function() {
+            $(".loading").css('display', 'flex');
         },
-        success: function(resp){
+        success: function(resp) {
             $("#hs").removeClass('hide');
         },
-        error: function(resp){
+        error: function(resp) {
             $(".loading").css("display", 'none');
             console.log(resp);
         },
-        complete: function(data, a){
-            if (a == "success"){
+        complete: function(data, a) {
+            if (a == "success") {
                 $(".loading").css("display", 'none');
                 PopupCenter("/order/print", "Print Invoice", '900', '500');
-            }else{
+            } else {
                 alert("Error ha guardar la factura");
             }
         }
     });
 });
-function result(category, str){
-    $.ajax('/ajax/product/getall',{
-       method:'POST',
-       data: {category: category, str: str},
-       dataType: 'json',
-       success: function(res){
-            if (res != null){
+
+function result(category, str) {
+    $.ajax('/trigo/ajax/products/getall', {
+        method: 'POST',
+        data: { category: category, str: str },
+        dataType: 'json',
+        success: function(res) {
+            if (res != null) {
                 var itemHTML = '<a href="#" class="item" data-item=\'{{data}}\'><section class="item-header"><img src="/uploads/{{img}}"/></section><section class="item-body"><h3>{{name}}</h3></section></a>';
-                var item = "";  
+                var item = "";
                 var itemTEMP = "";
-                $.each(res, function(index, value){
+                $.each(res, function(index, value) {
                     itemTEMP = itemHTML.replace('{{data}}', JSON.stringify(value));
                     itemTEMP = itemTEMP.replace('{{img}}', value.image_url);
                     itemTEMP = itemTEMP.replace('{{name}}', value.name);
                     item += itemTEMP;
                 });
                 $(".products").html(item);
-            }else{
+            } else {
                 $(".products").html("<h1>No hay datos</h1>")
             }
-       }
-   });
+        }
+    });
 }
-$(document).ready(function(){
+$(document).ready(function() {
     var ul = $(".navbar-nav")[1];
     var category = ul.children[0].innerText;
-   result(category, "");
+    result(category, "");
 });
-$("input[name='search-item']").keyup(function(){
-    if (this.value == ""){
+$("input[name='search-item']").keyup(function() {
+    if (this.value == "") {
         var ul = $(".navbar-nav")[1];
-    var category = ul.children[0].innerText;
-   result(category, "");
-    }else{
-    result("", this.value);
+        var category = ul.children[0].innerText;
+        result(category, "");
+    } else {
+        result("", this.value);
     }
 });
-$("#category li").click(function(){
+$("#category li").click(function() {
     result(this.innerText, "");
 });
-$("#clear").click(function(){
-   var r = confirm('Esta seguro de limpiar la cesta?');
-   if (r == true){
+$("#clear").click(function() {
+    var r = confirm('Esta seguro de limpiar la cesta?');
+    if (r == true) {
         clear();
-   }
+    }
 });
-$("#cancel").click(function(){
+$("#cancel").click(function() {
     var r = confirm('Esta  seguro que quieres cancelar la orden?');
-    if (r == true){
-        cancel();   
+    if (r == true) {
+        cancel();
     }
 });

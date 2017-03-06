@@ -82,7 +82,10 @@ class Model_product extends CI_Model {
         if ($category != ""){
             $this->db->where('product_category.name', trim($category));
         }
-        $this->db->select('product.id, product.price, product.name, product.description, product.charge_tax, product.image_url, product.mesurement_unit, product.reorder_level, product.entry_date, product.last_entry, supplier.name as suppier_name, product_category.name as name_category');
+        $this->db->select('product.id, product.price, product.name, product.description, 
+                           product.charge_tax, product.image_url, product.mesurement_unit, 
+                           product.reorder_level, product.entry_date, product.last_entry, 
+                           supplier.name as suppier_name, product_category.name as name_category');
         $this->db->join('supplier', 'supplier.id = product.suplier_id');
         $this->db->join('product_category', 'product_category.id = product.id_category');
         $query = $this->db->get('product');

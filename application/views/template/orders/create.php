@@ -55,7 +55,7 @@
   background: #3c8dbc;
   padding: 14px;
   color: #fff;  
-  margin-right:270px;
+  margin-right:270px;  
 }
 .main-sidebar1,
 .right-side {
@@ -360,57 +360,46 @@ section#my0 {
 }
     </style>
 <?php if(!isset($print)): ?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-yellow-light sidebar-mini">
 <section class="wrapper" style="overflow:hidden">
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="assets/index2.html" class="logo">
+    <a href="/trigo/dashboard" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>T</b>rigo</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Trigo</b> Dashboard</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top">     
+
       <section class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">Jose Madero</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  Jose Madero - Servicio de Caja
                   <small>Member since Nov. 2012</small>
                 </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <section class="row">
-                  <section class="col-sm-4 text-center">
-                    <a href="#">Followers</a>
-                  </section>
-                  <section class="col-sm-4 text-center">
-                    <a href="#">Sales</a>
-                  </section>
-                  <section class="col-sm-4 text-center">
-                    <a href="#">Friends</a>
-                  </section>
-                </section>
-                <!-- /.row -->
-              </li>
+              </li>                           
               <!-- Menu Footer-->
               <li class="user-footer">
                 <section class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </section>
                 <section class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a id="logout" href="account/login/logout" class="btn btn-default btn-flat">Salir</a>                  
                 </section>
+
               </li>
             </ul>
           </li>
@@ -455,7 +444,7 @@ section#my0 {
                                 <p id="customer">Walk-in Customer</p>
                             </section>
                             <section class="btn-ctm">
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#search-customer">New</button>
+                                <button class="btn btn-success" data-toggle="modal" data-target="#search-customer">New</button>
                             </section>
                         </section>
                     </section>
@@ -474,7 +463,7 @@ section#my0 {
                                 <p class="total"><span>Total: </span><span id="total">0.00</span></p>
                             </section>
                             <section class="btn-pay">
-                                <button class="btn btn-primary" id="total-btn">0.00</button>
+                                <button class="btn btn-success" id="total-btn">0.00</button>
                             </section>
                         </section>
                     </section>
@@ -518,7 +507,7 @@ section#my0 {
           </section>
           <section class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" id="add-customer">Añadir cliente</button>
+            <button type="button" class="btn btn-success" id="add-customer">Añadir cliente</button>
           </section>
         </section><!-- /.modal-content -->
       </section><!-- /.modal-dialog -->
@@ -546,7 +535,7 @@ section#my0 {
                 </section>
                 <section class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="add-type">Añadir</button>
+                    <button type="button" class="btn btn-success" id="add-type">Añadir</button>
                 </section>
             </section><!-- /.modal-content -->
         </section><!-- /.modal-dialog -->

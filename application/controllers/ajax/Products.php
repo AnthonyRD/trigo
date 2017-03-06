@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class products extends CI_Controller {
     public function __construct(){
         parent::__construct();
-        if (!$this->input->is_ajax_request()) {
+        /*if (!$this->input->is_ajax_request()) {
            exit(json_encode(array('error_code' => 500, 'error_message' => 'No direct script access allowed')));
-        }
+        }*/
         $this->load->model('model_product');
     }
     public function getall(){

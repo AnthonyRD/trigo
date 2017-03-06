@@ -150,7 +150,7 @@ $route['order/print'] = "orders/create/prints";
 /**
  * Employees Router
  * */
-$route['employees'] = "employees/index/index";
+$route['employees'] = "trigo/employees/index/index";
 $route['employee/create'] = "employees/create/index";
 $route['employee/create/confirm'] = "employees/create/confirm";
 $route['employee/delete/(:num)'] = "employees/delete/index/$1";
@@ -188,15 +188,15 @@ $route['product/category/details/(:num)'] = "categories/details/index/$1";
 /**
  * Call request page
  * */
-$route['ajax/customer/getall'] = "ajax/customers/getall";
-$route['ajax/customer/get/([a-zA-Z0-9]+)'] = "ajax/customers/get/$1";
-$route['ajax/customer/search'] = "ajax/customers/search";
+$route['ajax/customer/getall'] = "trigo/ajax/customers/getall";
+$route['ajax/customer/get/([a-zA-Z0-9]+)'] = "trigo/ajax/customers/get/$1";
+$route['ajax/customer/search'] = "trigo/ajax/customers/search";
 
 /****/
 //$route['ajax/employee/getall'] = "ajax/employees/getall";
 //$route['ajax/employee/get/([a-zA-Z0-9]+)'] = "ajax/employees/get/$1";
 //$route['ajax/employee/search'] = "ajax/employees/search"; 
 /****/
-$route['ajax/order/create'] = "ajax/orders/create";
+$route['/ajax/order/create'] = "trigo/ajax/orders/create";
 /****/
-$route['ajax/product/getall'] = "ajax/products/getall";
+$route['/ajax/product/getall'] = "trigo/ajax/products/getall";

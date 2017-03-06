@@ -1,15 +1,18 @@
 body {
-    overflow:hidden;
+    overflow: hidden;
 }
-.content-wrapper, .main-footer{
-    margin-left:0px !important;
+
+.content-wrapper,
+.main-footer {
+    margin-left: 0px !important;
 }
+
 section.navbar-bottom {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #3c8dbc;
+    background: #e08504;
     z-index: 99;
 }
 
@@ -22,17 +25,20 @@ section.customer {
 
 section.customer label {
     color: #fff;
-    font-family: cursive;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 
 section.customer p {
     color: #fff;
-    font-family: cursive;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 
 section.customer section.lb {
     margin-right: 10%;
 }
+
 section.sidebar-sales {
     padding: 10px;
     background: #fff;
@@ -57,13 +63,17 @@ section.sales-content section.item {
 section.sales-content section.item p {
     padding: 0;
     margin: 0;
-    font-family: serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
-section.sales-content section.item .cantidad, section.sales-content section.item .tax {
-    background:#fff;
-    padding:5px 10px 5px 10px;
+
+section.sales-content section.item .cantidad,
+section.sales-content section.item .tax {
+    background: #fff;
+    padding: 5px 10px 5px 10px;
     margin-right: 10px;
 }
+
 section.sales-content section.item .name {
     width: 50%;
     word-break: break-all;
@@ -77,15 +87,16 @@ section.sales-content section.action {
     border-radius: 50%;
     font-size: 10px;
 }
+
 section.sales-content section.action a {
-    color:#696969;
+    color: #696969;
     text-decoration: none
-    
 }
 
 section.sales-content section.price {
     margin-right: 10px;
 }
+
 section.products {
     position: relative;
     display: flex;
@@ -102,8 +113,7 @@ a.item {
     margin: 5px;
 }
 
-section.item-header {
-}
+section.item-header {}
 
 img {
     position: relative;
@@ -115,6 +125,7 @@ section.item-body h3 {
     margin: 5px;
     padding: 0;
 }
+
 .action ul {
     margin: 0;
     display: flex;
@@ -130,6 +141,7 @@ section.item-body h3 {
     align-items: center;
     color: #fff;
 }
+
 section.detail {
     position: absolute;
     top: -150%;
@@ -166,11 +178,12 @@ button.btn.btn-primary {}
 
 section.btn-pay button {
     width: 70%;
-    background: #008d4c !important;
+    /*background: #008d4c !important;*/
     border: none;
     border-radius: 0;
 }
+
 .navbar-default {
-    width:104%;
-    background-color:#fff !important;
+    width: 104%;
+    background-color: #fff !important;
 }
