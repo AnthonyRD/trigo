@@ -5,14 +5,14 @@
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="/trigo/dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>                
         <li class="active">Empleados</li>
       </ol>
     </section>
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/employee/create"><i class="fa fa-plus"></i>Agregar Empleado</a></li>
+          <li><a href="/trigo/employee/create"><i class="fa fa-plus"></i>Agregar Empleado</a></li>
           <li><a href="#" id="edit_employee"><i class="fa fa-edit"></i> Editar</a></li>
           <li><a href="#" id="delete_employee"><i class="fa fa-trash"></i> Eliminar</a></li>
           <li><a href="#" id="view"><i class="fa fa-info"></i> Detalles</a></li> 

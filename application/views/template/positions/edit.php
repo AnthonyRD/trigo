@@ -5,8 +5,8 @@
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>        
-        <li><a href="#">Puestos</a></li>
+        <li><a href="/trigo/dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>        
+        <li><a href="/trigo/positions">Puestos</a></li>
         <li class="active">Editar Puesto</li>
       </ol>
     </section>

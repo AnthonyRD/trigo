@@ -71,7 +71,7 @@ class Edit extends CI_Controller {
 	}
     public function do_upload()
     {
-            $config['upload_path']          = './uploads/';
+            $config['upload_path']          = './uploads/employees/';
             $config['allowed_types']        = 'gif|jpg|png';
             $config['max_size']             = 100;
             $config['max_width']            = 1024;

@@ -5,8 +5,8 @@
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#">Localidad</a></li>
+        <li><a href="/trigo/dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>        
+        <li><a href="/trigo/locations">Localidad</a></li>
         <li class="active">Eliminar</li>
       </ol>
     </section>

@@ -88,7 +88,7 @@ header("location: /trigo/account/login");
       <ul class="sidebar-menu">
         <li class="header">NAVEGACION PRINCIPAL</li>
         <li>
-          <a href="/dashboard">
+          <a href="/trigo/dashboard">
             <i class="fa fa-dashboard"></i> <span>Indicadores</span>
           </a>
         </li>
@@ -104,34 +104,34 @@ header("location: /trigo/account/login");
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/products"><i class="fa fa-list-ol"></i> Administrar</a></li>
-            <li><a href="/product/categories"><i class="fa fa-certificate"></i> Categorias</a></li>
+            <li><a href="/trigo/products"><i class="fa fa-list-ol"></i> Administrar Productos</a></li>
+            <li><a href="/trigo/product/categories"><i class="fa fa-certificate"></i> Adnministar Categorias</a></li>
           </ul>
         </li>       
         <li>
-          <a href="/customers">
+          <a href="/trigo/customers">
             <i class="fa fa-users"></i> <span>Clientes</span>
           </a>
         </li>
         <li>
-          <a href="/suppliers">
+          <a href="/trigo/suppliers">
             <i class="fa fa-truck"></i>
             <span>Suplidores</span>
           </a>
         </li>
         <li>
-          <a href="/orders">
+          <a href="/trigo/orders">
             <i class="fa fa-tasks"></i>
             <span>Ordenes</span>
           </a>
         </li>        
         <li>
-          <a href="/reports">
+          <a href="/trigo/reports">
             <i class="fa fa-area-chart"></i> <span>Reportes</span>
           </a>
         </li>
         <li>
-          <a href="/order/create">
+          <a href="/trigo/order/create">
             <i class="fa fa-shopping-cart"></i> <span>Venta</span>
           </a>
         </li>
@@ -146,11 +146,11 @@ header("location: /trigo/account/login");
             </span>
           </a>
           <ul class="treeview-menu">
-          <li><a href="/locations"><i class="fa fa-compass"></i> Localidades</a></li>
-            <li><a href="/departments"><i class="fa fa-cubes"></i> Departamentos</a></li>
-            <li><a href="/positions"><i class="fa fa-book"></i> Posiciones</a></li>                        
-            <li><a href="/employees"><i class="fa fa-asterisk"></i> Empleados</a></li>               
-            <li><a href="/users"><i class="fa fa-users"></i> Usuarios</a></li>            
+          <li><a href="/trigo/locations"><i class="fa fa-compass"></i> Localidades</a></li>
+            <li><a href="/trigo/departments"><i class="fa fa-cubes"></i> Departamentos</a></li>
+            <li><a href="/trigo/positions"><i class="fa fa-book"></i> Posiciones</a></li>                        
+            <li><a href="/trigo/employees"><i class="fa fa-asterisk"></i> Empleados</a></li>               
+            <li><a href="/trigo/users"><i class="fa fa-users"></i> Usuarios</a></li>            
           </ul>
         </li>
       </ul>

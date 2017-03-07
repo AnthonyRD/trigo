@@ -5,10 +5,9 @@
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Categories</a></li>
-        <li class="active">New Create</li>
+        <li><a href="/trigo/dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>        
+        <li><a href="/trigo/suppliers">Suplidores</a></li>        
+        <li class="active">Agregar</li>
       </ol>
     </section>
     <section class="content">
@@ -34,7 +33,7 @@
                                 <section class="col-md-12">
                                     <section class="row">
                                          <section class="col-md-12">
-                                              <h2 class="page-header">Informacion del suplidor</h2>
+                                              <h2 class="page-header">Información del suplidor</h2>
                                          </section>
                                     </section>
                                     <section class="row">

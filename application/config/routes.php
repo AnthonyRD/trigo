@@ -150,7 +150,7 @@ $route['order/print'] = "orders/create/prints";
 /**
  * Employees Router
  * */
-$route['employees'] = "trigo/employees/index/index";
+$route['employees'] = "employees/index/index";
 $route['employee/create'] = "employees/create/index";
 $route['employee/create/confirm'] = "employees/create/confirm";
 $route['employee/delete/(:num)'] = "employees/delete/index/$1";

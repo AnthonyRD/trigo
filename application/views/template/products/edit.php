@@ -5,8 +5,8 @@
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#">Productos</a></li>        
+        <li><a href="/trigo/dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="/trigo/products">Productos</a></li>        
         <li class="active">Agregar Producto</li>
       </ol>
     </section>
@@ -70,7 +70,9 @@
                                     </section>
                                     <section class="form-group">
                                         <label>Imagen de portada del producto</label>
-                                        <input type="file" name="image_url" class="form-control" />
+                                        <img src="<?=base_url()?>uploads/products/<?=$data->image_url?>" width="250"/>
+                                        <label class="btn btn-warning" for="image_url" class="btn">Seleccionar Imagen</label>
+                                        <input id="image_url" style="visibility:hidden;" type="file">                                        
                                     </section>
                                 </section>
                             </section>

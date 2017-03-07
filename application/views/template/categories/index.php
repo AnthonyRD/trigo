@@ -5,14 +5,14 @@
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="/trigo/dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li class="active">Categorías</li>
       </ol>
     </section>
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/product/category/create"><i class="fa fa-plus"></i> Crear Categoría</a></li>
+          <li><a href="/trigo/product/category/create"><i class="fa fa-plus"></i> Crear Categoría</a></li>
           <li><a href="#" id="edit"><i class="fa fa-edit"></i> Editar</a></li>
           <li><a href="#" id="delete"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->

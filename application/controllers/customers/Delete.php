@@ -44,7 +44,7 @@ class Delete extends CI_Controller {
 	        );
 	        $this->page_config += $data;
 	    }else{
-	        redirect('products');
+	        redirect('customers');
 	    }
 	    $this->template->view($this->page_config);
 	}
@@ -67,7 +67,7 @@ class Delete extends CI_Controller {
 	}
 	public function delete_customer(){
 	    $this->load->model('model_customer');
-	    if ($this->model_customer->delete_customer($this->input->post("id"))){
+	    if ($this->model_customer->delete_customer($this->input->post("id"), $this->input->post("address_id"))){
 	        $this->session->set_flashdata('customer_success',true);
 	        redirect('customers');
 	    }

@@ -5,9 +5,9 @@
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#">Supplidor</a></li>
-        <li class="active">Delete</li>
+        <li><a href="/trigo/dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>        
+        <li><a href="/trigo/suppliers">Suplidores</a></li>          
+        <li class="active">Eliminar</li>
       </ol>
     </section>
     <section class="content">
@@ -15,12 +15,12 @@
             <section class="col-md-12">
                 <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Eliminar Supplidor</h3>
+                        <h3 class="box-title">Eliminar Suplidor</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
                         <section class="alert alert-warning">
-                            <p>Realmente desea eliminar el supplidor "<strong><?=$data->name?></strong>"?</p>
+                            <p>Realmente desea eliminar el Suplidor "<strong><?=$data->name?></strong>"?</p>
                         </section>
                         <form action="confirm" method="POST">
                             <section class="row">

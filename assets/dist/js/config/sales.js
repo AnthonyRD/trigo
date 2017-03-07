@@ -67,21 +67,25 @@ function setStorage(data) {
 }
 
 function addItem(data) {
-    var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section><section class="name"><p>{name}</p></section><section class="tax"><p>{tax}</p></section><section class="price"><p>{price}</p></section><section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-close"></i></a></section></section>';
+    var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section>' +
+        '<section class="name"><p>{name}</p></section>' +
+        //'<section class="tax"><p>{tax}</p></section>' +
+        '<section class="tax"><p>{price}</p></section>' +
+        '<section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-close"></i></a></section></section>';
     var get_all = storage.get('item');
     var temp = null;
-    var impuesto = 0;
+    var impuesto = 0.00;
     var item = "";
     var totalImpuesto = 0;
     var totalSubtotal = 0;
-    var total = 0;
+    var total = 0.00;
     if (get_all !== null) {
         $.each(get_all, function(index, value) {
             temp = itemHTML.replace('{cantidad}', value.unidad);
             temp = temp.replace('{name}', value.name);
-            impuesto = (value.price * 18 / 100);
-            temp = temp.replace('{tax}', impuesto);
-            temp = temp.replace('{price}', value.price);
+            impuesto = (value.price * 18 / 100.00);
+            //temp = temp.replace('{tax}', impuesto);
+            temp = temp.replace('{price}', value.unidad * value.price);
             temp = temp.replace('{index}', index);
             item += temp;
             temp = null;
@@ -213,13 +217,13 @@ function prm() {
                 $(".impuesto").html(impuesto.toFixed(2));
                 $(".toPay").html(total.toFixed(2));
             } else {
-                alert('No hay ningun articulo en la cesta');
+                alert('No hay ningún artículo en la cesta.');
             }
         } else {
             $("#tipo").modal('show');
         }
     } else {
-        alert('Primero debes añadir un item a la cesta');
+        alert('Primero debes añadir un item a la cesta.');
     }
 }
 $("#total-btn").click(function() {
@@ -314,7 +318,7 @@ $("#cobro").click(function() {
                 $(".loading").css("display", 'none');
                 PopupCenter("/order/print", "Print Invoice", '900', '500');
             } else {
-                alert("Error ha guardar la factura");
+                alert("Error al guardar la factura.");
             }
         }
     });
@@ -327,7 +331,7 @@ function result(category, str) {
         dataType: 'json',
         success: function(res) {
             if (res != null) {
-                var itemHTML = '<a href="#" class="item" data-item=\'{{data}}\'><section class="item-header"><img src="/uploads/{{img}}"/></section><section class="item-body"><h3>{{name}}</h3></section></a>';
+                var itemHTML = '<a href="#" class="item" data-item=\'{{data}}\'><section class="item-header"><img src="/trigo/uploads/products/{{img}}"/></section><section class="item-body"><h3>{{name}}</h3></section></a>';
                 var item = "";
                 var itemTEMP = "";
                 $.each(res, function(index, value) {
@@ -338,7 +342,7 @@ function result(category, str) {
                 });
                 $(".products").html(item);
             } else {
-                $(".products").html("<h1>No hay datos</h1>")
+                $(".products").html("<div class='col-md-8'> <h4>Su requerimiento no genera resultados.</h4></div>")
             }
         }
     });
@@ -361,13 +365,13 @@ $("#category li").click(function() {
     result(this.innerText, "");
 });
 $("#clear").click(function() {
-    var r = confirm('Esta seguro de limpiar la cesta?');
+    var r = confirm('¿Está seguro de limpiar la cesta?');
     if (r == true) {
         clear();
     }
 });
 $("#cancel").click(function() {
-    var r = confirm('Esta  seguro que quieres cancelar la orden?');
+    var r = confirm('¿Está  seguro que quieres cancelar la orden?');
     if (r == true) {
         cancel();
     }

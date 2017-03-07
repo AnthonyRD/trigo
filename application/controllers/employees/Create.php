@@ -66,6 +66,7 @@ class Create extends CI_Controller {
 	}
 	public function add_employee(){
 	    $this->load->model('model_employee');
+		$this->form_validation->set_rules('image_url', 'Imagen', 'callback_do_upload');
 	     $data = array(
 	        'name' => $this->input->post('employee_name'),
 	        'last_name' => $this->input->post('last_name'),
@@ -91,4 +92,26 @@ class Create extends CI_Controller {
 	    }
 	    return FALSE;
 	}
+	public function do_upload()
+    {
+            $config['upload_path']          = './uploads/employees/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 100;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+    
+            $this->load->library('upload', $config);
+            if ( ! $this->upload->do_upload('image_url'))
+            {
+                    $error = array('error' => $this->upload->display_errors());
+
+                    return FALSE;
+            }
+            else
+            {
+                    $this->image_url = $this->upload->data();
+                    
+                    return $this->add_product();
+            }
+    }
 }

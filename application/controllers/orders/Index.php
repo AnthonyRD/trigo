@@ -6,8 +6,8 @@ class Index extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Orders List",
-	        'title_page' => "Orders",
+	        'title' => "Listado de Órdenes",
+	        'title_page' => "Órdenes",
 	        'view_content' => "orders/index",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css'
