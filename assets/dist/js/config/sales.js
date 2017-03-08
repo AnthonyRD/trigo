@@ -352,15 +352,6 @@ $(document).ready(function() {
     var category = ul.children[0].innerText;
     result(category, "");
 });
-$("input[name='search-item']").keyup(function() {
-    if (this.value == "") {
-        var ul = $(".navbar-nav")[1];
-        var category = ul.children[0].innerText;
-        result(category, "");
-    } else {
-        result("", this.value);
-    }
-});
 $("#category li").click(function() {
     result(this.innerText, "");
 });

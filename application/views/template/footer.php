@@ -222,7 +222,40 @@
 <?="<script src='$value_href'></script>"?>	
 <?php endforeach; endif;?>
 
-
+<script>
+var typeaheadSource = [{ id: 1, name: 'John'}, { id: 2, name: 'Alex'}, { id: 3, name: 'Terry'}];
+$('input[name="search"]').typeahead({
+onSelect: function(item) {
+        console.log(item);
+    },
+    ajax: {
+        url: "<?=base_url()?>ajax/customers/search",
+        timeout: 500,
+        displayField: "title",
+        triggerLength: 1,
+        method: "post",
+        loadingClass: "loading-circle",
+        preDispatch: function (query) {
+            return {
+                search: query
+            }
+        },
+        preProcess: function (data) {
+            if (data === null) {
+                // Hide the list, there was some error
+                return false;
+            }
+            // We good!
+            return $.map(data, function(value){
+              return value.name;
+            });
+        }
+    }
+});
+$("#search").submit(function(e){
+  e.preventDefault();
+})
+</script>
 
 </body>
 </html>
