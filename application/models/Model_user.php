@@ -25,11 +25,12 @@ class Model_user extends CI_Model {
         }
     }
     public function get_users(){
-        $this->db->select('user.id, user.user_name, user.password,user.status,  
-                          employee.name, employee.last_name, user_role.name role');
-        $this->db->from('user'); 
-        $this->db->join('employee', 'employee.id = user.employee_id','left');
-        $this->db->join('user_role', 'user_role.id = user.user_role_id','left');
+        $this->db->select('u.id,u.user_name,u.password,u.status,e.name,
+                           e.last_name,e.email,e.image_url,l.name location,ur.name role');
+        $this->db->from('user u'); 
+        $this->db->join('employee e', 'e.id = u.employee_id','left');
+        $this->db->join('location l', 'e.location_id=l.id','left');
+        $this->db->join('user_role ur', 'u.user_role_id=ur.id','left');
         $query = $this->db->get();
         if ($query->num_rows() > 0){
             return $query->result();
@@ -56,12 +57,13 @@ class Model_user extends CI_Model {
         }
     }
     public function get_user($str){
-        $this->db->select('user.id, user.user_name,user.password,user.status,  
-                          employee.id employee_id,employee.name, employee.last_name, user_role.id role_id, user_role.name role');
-        $this->db->from('user'); 
-        $this->db->join('employee', 'employee.id = user.employee_id','left');
-        $this->db->join('user_role', 'user_role.id = user.user_role_id','left');        
-        $this->db->where('user.id', $str);
+        $this->db->select('u.id,u.user_name,u.password,u.status,e.id employee_id,e.name,
+                           e.last_name,e.email,e.image_url,l.name location,ur.id role_id,ur.name role');
+        $this->db->from('user u'); 
+        $this->db->join('employee e', 'e.id = u.employee_id','left');
+        $this->db->join('location l', 'e.location_id=l.id','left');
+        $this->db->join('user_role ur', 'u.user_role_id=ur.id','left');        
+        $this->db->where('u.id', $str);
         $this->db->limit(1);
         $query = $this->db->get();
         if ($query->num_rows() > 0){

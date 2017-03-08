@@ -67,8 +67,13 @@ class Login extends CI_Controller {
 				$result = $this->model_account->read_user_information($username);
 				if ($result != false) {
 					$session_data = array(
-					'username' => $result[0]->user_name/*,
-					'email' => $result[0]->user_email,*/
+					'username' => $result[0]->user_name,
+					'email' => $result[0]->email,
+					'name' => $result[0]->name,
+					'last_name' => $result[0]->last_name,
+					'role' => $result[0]->role,
+					'image_url' => $result[0]->image_url,
+					'location' => $result[0]->location
 				);				
 					// Add user data in session
 					$this->session->set_userdata('logged_in', $session_data);

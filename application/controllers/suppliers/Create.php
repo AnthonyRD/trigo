@@ -6,8 +6,8 @@ class Create extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Create new supplier",
-	        'title_page' => "Create new supplier",
+	        'title' => "Agregar Suplidor",
+	        'title_page' => "Agregar SUplidor",
 	        'view_content' => "suppliers/create",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',

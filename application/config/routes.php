@@ -145,7 +145,7 @@ $route['order/delete/(:num)'] = "orders/delete/index/$1";
 $route['order/delete/confirm'] = "orders/delete/confirm";
 $route['order/edit/(:num)'] = "orders/edit/index/$1";
 $route['order/edit/confirm'] = "orders/edit/confirm";
-$route['order/details/(:num)'] = "orders/details/index/$1";
+$route['order/details'] = "orders/details";
 $route['order/print'] = "orders/create/prints";
 /**
  * Employees Router

@@ -3,6 +3,32 @@
       <h1>
         <?=$title_page?>
         <small></small>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-success">Seleccionar Período</button>
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Día</a></li>
+            <li><a href="#">Semana</a></li>
+            <li><a href="#">Mes</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Trimestre</a></li>
+            <li><a href="#">Semestre</a></li>
+            <li><a href="#">Año</a></li>
+          </ul>
+        </div>        
+        <span class="small">Desde</span>
+          <div class="btn-group">
+          <input class="datepicker small" data-date-format="mm/dd/yyyy">          
+        </div>
+        <span class="small">Hasta</span>
+          <div class="btn-group">
+          <input class="datepicker small" data-date-format="mm/dd/yyyy">          
+        </div>
+
       </h1>
       <ol class="breadcrumb">
         <li><a href="/trigo/dashboard"><i class="fa fa-dashboard"></i> Inicio</a></li>                

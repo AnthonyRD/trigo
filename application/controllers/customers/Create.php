@@ -41,13 +41,12 @@ class Create extends CI_Controller {
 		$this->template->view($this->page_config);
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('name', 'Nombre', 'callback_name_check',
-	        array("name_check" => 'El nombre del cliente ya existe.')
-	    );
+	    $this->form_validation->set_rules('name', 'Nombre', 'callback_name_check');
 	    if ($this->form_validation->run() === FALSE){
 	        $this->template->view($this->page_config);
 	    }else{
-	        $this->template->view($this->page_config);
+	        $this->session->set_flashdata('error', true);
+	        redirect('customer/create');
 	    }
 	}
 	public function name_check($str){

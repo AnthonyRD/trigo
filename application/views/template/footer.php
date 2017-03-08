@@ -4,7 +4,7 @@
     <section class="pull-right hidden-xs">
       <b>Version</b> 1.0.0
     </section>
-    <strong>Copyright &copy; 2017 <a href="http://sysedit.net">Sysedit.net</a>.</strong> All rights    
+    <strong>Copyright &copy; 2017 <a href="http://sysedit.co">sysedit.co</a>.</strong> All rights    
     reserved.
   </footer>
    <!-- Control Sidebar -->
@@ -208,6 +208,8 @@
 <script src="<?=base_url()?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- Bootstrap Calendar -->
+<script src="<?=base_url()?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Load JS -->
 <?php if (isset($plugin_js)):foreach($plugin_js as $key_src => $value_src):?>
 <?="<script src='".base_url()."assets/plugins/".$value_src."'></script>"?>
@@ -255,6 +257,13 @@ onSelect: function(item) {
 $("#search").submit(function(e){
   e.preventDefault();
 })
+</script>
+
+<script type="text/javascript">
+  $('.datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    startDate: '-3d'
+  });
 </script>
 
 </body>

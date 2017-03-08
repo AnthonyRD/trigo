@@ -15,7 +15,7 @@
             <section class="col-md-12">
                 <section class="box box-default">
                     <section class="box-header with-border">
-                        <h3 class="box-title">Crear nueva categoria</h3>
+                        <h3 class="box-title">Crear nueva categoría</h3>
                     </section>
                     <!-- /.box-header -->
                     <section class="box-body">
@@ -23,7 +23,7 @@
                             <section class="col-md-12">
                                 <?php if (!is_null($this->session->flashdata('error')) && $this->session->flashdata('error') === TRUE): ?>
                                 <section class="alert alert-danger">
-                                    <p>No haz hecho ningun cambio.</p>
+                                    <p>No haz hecho ningún cambio.</p>
                                 </section>
                                 <?php endif;?>
                             </section>
@@ -33,7 +33,7 @@
                                 <section class="col-md-12">
                                     <section class="row">
                                          <section class="col-md-12">
-                                              <h2 class="page-header">Informacion del suplidor</h2>
+                                              <h2 class="page-header">Información del suplidor</h2>
                                          </section>
                                     </section>
                                     <section class="row">
@@ -61,7 +61,7 @@
                                                 <input type="text" name="rnc" class="form-control" value="<?=$data->RNC?>" placeholder="RNC"/>
                                             </section>
                                             <section class="form-group">
-                                                <label for="">Telefono</label>
+                                                <label for="">Teléfono</label>
                                                 <input type="text" name="telephone" class="form-control" value="<?=$data->telephone?>" placeholder="Numero de telefono" required/>
                                             </section>
                                             <section class="form-group">
@@ -78,11 +78,11 @@
                                     <section class="row">
                                         <section class="col-md-8">
                                             <section class="form-group">
-                                                <label for="">Direccion #1</label>
+                                                <label for="">Dirección #1</label>
                                                 <input type="text" name="address_1" class="form-control" value="<?=$data->address_1?>" placeholder="Direccion #1" required/>
                                             </section>
                                             <section class="form-group">
-                                                <label for="">Direccion #2</label>
+                                                <label for="">Dirección #2</label>
                                                 <input type="text" name="address_2" class="form-control" value="<?=$data->address_2?>" placeholder="Direccion #2"/>
                                             </section>
                                             <section class="form-group">
@@ -92,11 +92,11 @@
                                         </section>
                                         <section class="col-md-4">
                                             <section class="form-group">
-                                                <label for="">Pais</label>
+                                                <label for="">País</label>
                                                 <input type="text" name="country" class="form-control" value="<?=$data->country?>" placeholder="Pais donde recide" />
                                             </section>
                                             <section class="form-group">
-                                                <label for="">Numero de Edificio</label>
+                                                <label for="">Número de Edificio</label>
                                                 <input type="text" name="number" class="form-control" value="<?=$data->number?>" placeholder="Numero del edificio o casa"/>
                                             </section>
                                             <section class="form-group">
@@ -120,7 +120,7 @@
                                     <section class="row">
                                         <section class="col-md-offset-10 col-md-2">
                                             <section class="form-group">
-                                                <button type="submit" class="btn btn-primary">Añadir suplidor</button>
+                                                <button type="submit" class="btn btn-primary">Actualizar suplidor</button>
                                             </section>
                                         </section>
                                     </section>

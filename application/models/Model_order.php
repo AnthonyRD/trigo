@@ -21,6 +21,33 @@ class Model_order extends CI_Model {
             }
         }
     }
+    public function get_orders(){
+        $this->db->select('user.id, user.user_name, user.password,user.status,  
+                          employee.name, employee.last_name, user_role.name role');
+        $this->db->from('user'); 
+        $this->db->join('employee', 'employee.id = user.employee_id','left');
+        $this->db->join('user_role', 'user_role.id = user.user_role_id','left');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_order($str){
+        $this->db->where('id', $str);
+        $this->db->select('user.id, user.user_name, user.password,user.status,  
+                          employee.name, employee.last_name, user_role.name role');
+        $this->db->from('user'); 
+        $this->db->join('employee', 'employee.id = user.employee_id','left');
+        $this->db->join('user_role', 'user_role.id = user.user_role_id','left');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
     public function order_detail_create($data = array()){
         foreach($data['item'] as $key => $value){
             $item = array(

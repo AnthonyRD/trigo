@@ -299,7 +299,7 @@ $("#cobro").click(function() {
         tax: storage.get('tax'),
         payment_type: storage.get('payment_type')
     };
-    $.ajax('/trigo/ajax/order/create', {
+    $.ajax('/trigo/ajax/orders/create', {
         method: 'POST',
         data: data,
         dataType: 'json',
@@ -311,7 +311,7 @@ $("#cobro").click(function() {
         },
         error: function(resp) {
             $(".loading").css("display", 'none');
-            console.log(resp);
+            console.log('respuesta: ' + resp);
         },
         complete: function(data, a) {
             if (a == "success") {

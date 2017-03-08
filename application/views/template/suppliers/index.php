@@ -12,9 +12,9 @@
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/trigo/supplier/create"><i class="fa fa-plus"></i> New Supplier</a></li>
-          <li><a href="#" id="edit_supplier"><i class="fa fa-edit"></i> Edit</a></li>
-          <li><a href="#" id="delete_supplier"><i class="fa fa-trash"></i> Delete</a></li>
+          <li><a href="/trigo/supplier/create"><i class="fa fa-plus"></i> Agregar Suplidor</a></li>
+          <li><a href="#" id="edit_supplier"><i class="fa fa-edit"></i> Editar</a></li>
+          <li><a href="#" id="delete_supplier"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->
         </ul>
       </section>

@@ -6,8 +6,8 @@ class Delete extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Delete supplier",
-	        'title_page' => "Delete supplier",
+	        'title' => "Eliminar SUplidor",
+	        'title_page' => "Eliminar SUplidor",
 	        'view_content' => "suppliers/delete",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',

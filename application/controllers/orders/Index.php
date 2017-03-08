@@ -10,14 +10,24 @@ class Index extends CI_Controller {
 	        'title_page' => "Órdenes",
 	        'view_content' => "orders/index",
 	        'css' => array(
-	            'css/skins/_all-skins.min.css'
+	            'css/skins/_all-skins.min.css',
+	            'css/style.css'
+	        ),
+	        'plugin_css' => array(
+	            'datatables/dataTables.bootstrap.css',
+	            'iCheck/square/blue.css'
 	        ),
 	        'plugin_js' => array(
-	        	'js' => 'fastclick/fastclick.js'
+	        	'fastclick/fastclick.js',
+	        	'datatables/jquery.dataTables.min.js',
+	        	'datatables/dataTables.bootstrap.min.js',
+	        	'iCheck/icheck.min.js'
 	        ),
 	        'js' => array(
 	            'js/app.min.js',
-	            'js/demo.js'
+	            'js/demo.js',
+	            'js/config/dataTables.js',
+	            'js/config/iCheck.js'
 	        ),
 	        'sidebar_menu'=> true
 	    );

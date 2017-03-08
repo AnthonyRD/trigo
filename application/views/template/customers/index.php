@@ -12,7 +12,7 @@
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="/customer/create"><i class="fa fa-plus"></i> Agregar cliente</a></li>
+          <li><a href="/trigo/customer/create"><i class="fa fa-plus"></i> Agregar cliente</a></li>
           <li><a href="#" id="edit_customer"><i class="fa fa-edit"></i> Editar</a></li>
           <li><a href="#" id="delete_customer"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->

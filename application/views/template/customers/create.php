@@ -29,7 +29,7 @@
                             </section>
                         </section>
                         <section class="row">
-                            <form action="confirm" method="POST" enctype="multipart/form-data">
+                            <form action="create/confirm" method="post">
                                 <section class="col-md-12">
                                     <section class="row">
                                          <section class="col-md-12">

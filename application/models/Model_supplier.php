@@ -50,7 +50,9 @@ class Model_supplier extends CI_Model {
         }
     }
     public function get_supplier($str){
-        $this->db->select('address.id as aid,supplier.id, name, RNC, email, address.address_line_1, address.address_line_2, contact_name, Details, address.zip_code, address.country, address.state, telephone, cellphone, address.number');
+        $this->db->select('address.id as aid,supplier.id, name, RNC, email, address.address_line_1 address_1, 
+                           address.address_line_2 address_2, contact_name, Details, address.zip_code, 
+                           address.country, address.state, telephone, cellphone, address.number');
         $this->db->limit(1);
         $this->db->where('supplier.id', $str);
         $this->db->join('address', 'address.id = supplier.address_id');

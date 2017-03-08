@@ -1,9 +1,14 @@
 <?php
 if (isset($this->session->userdata['logged_in'])) {
   $username = ($this->session->userdata['logged_in']['username']);
-  //$email = ($this->session->userdata['logged_in']['email']);
+  $email = ($this->session->userdata['logged_in']['email']);
+  $name = ($this->session->userdata['logged_in']['name']);
+  $last_name = ($this->session->userdata['logged_in']['last_name']);
+  $role = ($this->session->userdata['logged_in']['role']);
+  $location = ($this->session->userdata['logged_in']['location']);
+  $image_url = ($this->session->userdata['logged_in']['image_url']);  
 } else {
-header("location: /trigo/account/login");
+  header("location: /trigo/account/login");
 }
 ?>
 <body class="hold-transition skin-yellow-light sidebar-mini">
@@ -32,7 +37,7 @@ header("location: /trigo/account/login");
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Jose Madero</span>
+              <span class="hidden-xs"><?php echo $name . ' ' . $last_name?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -40,8 +45,8 @@ header("location: /trigo/account/login");
                 <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Jose Madero - Servicio de Caja
-                  <small>Member since Nov. 2012</small>
+                  <?php echo $name . ' ' . $last_name?> - <?php echo $role?>
+                  <small><?php echo $username?></small>
                 </p>
               </li>                           
               <!-- Menu Footer-->
@@ -69,7 +74,7 @@ header("location: /trigo/account/login");
           <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </section>
         <section class="pull-left info">
-          <p>Jose Madero</p>
+          <p><?php echo $name . ' ' . $last_name?> </p>
           <a href="#"><i class="fa fa-circle text-success"></i> Activo</a>
         </section>
       </section>
@@ -118,13 +123,22 @@ header("location: /trigo/account/login");
             <i class="fa fa-truck"></i>
             <span>Suplidores</span>
           </a>
-        </li>
-        <li>
-          <a href="/trigo/orders">
+        </li>            
+        <li class="treeview">
+          <a href="#">
             <i class="fa fa-tasks"></i>
-            <span>Ordenes</span>
+            <span>Órdenes</span>
+            <span class="pull-right-container">              
+            </span>
+	        <span class="pull-right-container">
+              <span class="label bg-purple pull-right">2</span>
+            </span>
           </a>
-        </li>        
+          <ul class="treeview-menu">
+            <li><a href="/trigo/orders"><i class="fa fa-list"></i> Ver Lista</a></li>
+            <li><a href="/trigo/orders/details"><i class="fa fa-square-o"></i> Ver Detalles</a></li>                   
+          </ul>
+        </li>    
         <li>
           <a href="/trigo/reports">
             <i class="fa fa-area-chart"></i> <span>Reportes</span>
@@ -141,7 +155,7 @@ header("location: /trigo/account/login");
             <span>Configuraciones</span>
             <span class="pull-right-container">              
             </span>
-	    <span class="pull-right-container">
+	        <span class="pull-right-container">
               <span class="label bg-green pull-right">5</span>
             </span>
           </a>

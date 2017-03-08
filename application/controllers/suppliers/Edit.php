@@ -73,8 +73,8 @@ class Edit extends CI_Controller {
 	        'cellphone' => $this->input->post('cellphone'),
 	        'Details' => $this->input->post('details'),
 	        'address' => array(
-	            'address_1' => $this->input->post('address_1'),
-	            'address_2' => $this->input->post('address_2'),
+	            'address_line_1' => $this->input->post('address_1'),
+	            '<address_line_2></address_line_2>' => $this->input->post('address_2'),
 	            'number' => $this->input->post('number'),
 	            'country' => $this->input->post('country'),
 	            'state' => $this->input->post('state'),
