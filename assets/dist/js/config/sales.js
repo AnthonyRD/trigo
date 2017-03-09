@@ -69,7 +69,6 @@ function setStorage(data) {
 function addItem(data) {
     var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section>' +
         '<section class="name"><p>{name}</p></section>' +
-        //'<section class="tax"><p>{tax}</p></section>' +
         '<section class="tax"><p>{price}</p></section>' +
         '<section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-close"></i></a></section></section>';
     var get_all = storage.get('item');
@@ -297,9 +296,16 @@ $("#cobro").click(function() {
         customer: customer,
         subtotal: storage.get('subtotal'),
         tax: storage.get('tax'),
-        payment_type: storage.get('payment_type')
+        payment_type: storage.get('payment_type'),
+        location_id: storage.get('location_id'),
+        username: storage.get('username')
     };
-    $.ajax('/trigo/ajax/orders/create', {
+
+    $.each(data, function(index, value) {
+        alert(index + ": " + value);
+    });
+
+    /*$.ajax('/trigo/ajax/orders/create', {
         method: 'POST',
         data: data,
         dataType: 'json',
@@ -321,7 +327,7 @@ $("#cobro").click(function() {
                 alert("Error al guardar la factura.");
             }
         }
-    });
+    });*/
 });
 
 function result(category, str) {
@@ -348,6 +354,11 @@ function result(category, str) {
     });
 }
 $(document).ready(function() {
+    var location_id = $('#location_id').val();
+    var username = $('#username').val();
+    storage.set('location_id', location_id);
+    storage.set('username', username);
+
     var ul = $(".navbar-nav")[1];
     var category = ul.children[0].innerText;
     result(category, "");

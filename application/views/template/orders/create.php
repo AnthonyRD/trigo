@@ -1,3 +1,18 @@
+<?php
+if (isset($this->session->userdata['logged_in'])) {
+  $username = ($this->session->userdata['logged_in']['username']);
+  $email = ($this->session->userdata['logged_in']['email']);
+  $name = ($this->session->userdata['logged_in']['name']);
+  $last_name = ($this->session->userdata['logged_in']['last_name']);
+  $role = ($this->session->userdata['logged_in']['role']);
+  $location_id = ($this->session->userdata['logged_in']['location_id']);
+  $location = ($this->session->userdata['logged_in']['location']);
+  $image_url = ($this->session->userdata['logged_in']['image_url']);  
+} else {
+  header("location: /trigo/account/login");
+}
+?>
+
     <style>
         .main-sidebar1 {
             width:370px !important;
@@ -379,7 +394,7 @@ section#my0 {
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Jose Madero</span>
+              <span class="hidden-xs"><?php echo $name . ' ' . $last_name?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -387,8 +402,8 @@ section#my0 {
                 <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Jose Madero - Servicio de Caja
-                  <small>Member since Nov. 2012</small>
+                  <?php echo $name . ' ' . $last_name?> - <?php echo $role?>
+                  <small><?php echo $username?></small>
                 </p>
               </li>                           
               <!-- Menu Footer-->
@@ -441,12 +456,17 @@ section#my0 {
                         <section class="customer">
                             <section class="lb">
                                 <label>Cliente</label>
-                                <p id="customer">Walk-in Customer</p>
+                                <p id="customer"></p>
                             </section>
                             <section class="btn-ctm">
-                                <button class="btn btn-success" data-toggle="modal" data-target="#search-customer">New</button>
-                            </section>
+                                <button class="btn btn-success" data-toggle="modal" data-target="#search-customer">Nuevo</button>
+                            </section>                            
+                            <section class="pull-right">                                
+                                <input type="hidden" id="location_id" value="<?php echo $location_id ?>"/>                                                
+                                <input type="hidden" id="username" value="<?php echo $username ?>"/>                                                                                                                                                                                                
                         </section>
+                        </section>
+                        
                     </section>
                     <section class="col-md-3 col-sm-4 col-xs-6">
                         <section class="action">
@@ -544,7 +564,7 @@ section#my0 {
             <section class="modal-content">
                 <section class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="gridSystemModalLabel">Pay</h4>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Pagar</h4>
                 </section>
                 <section class="modal-body">
                     <section class="row">
@@ -567,12 +587,12 @@ section#my0 {
                                 <section class="invoic">
                                     <section class="headPay" style="display:none">
                                         <section class="column">
-                                            <span>Served by: Williams</span>
+                                            <span>Atendió: Williams</span>
                                             <span>2017-02-06</span>
                                         </section>
                                         <section class="column">
-                                            <span>Orders</span>
-                                            <span>Invoice #: 01</span>
+                                            <span>Orden</span>
+                                            <span>Factura #: 01</span>
                                         </section>
                                         <section class="column">
                                             <span>REG-012</span>
@@ -582,9 +602,9 @@ section#my0 {
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Qty</th>
-                                                <th>Price</th>
+                                                <th>Nombre</th>
+                                                <th>Cant.</th>
+                                                <th>Precio</th>
                                                 <th>Total</th>
                                             </tr>
                                         </thead>
@@ -668,7 +688,7 @@ section#my0 {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Invoice</h4>
+          <h4 class="modal-title">Factura</h4>
         </div>
         <div class="modal-body">
           <section class="row">
@@ -677,12 +697,12 @@ section#my0 {
                                 <section class="invoic">
                                     <section class="headPay" style="display:none">
                                         <section class="column">
-                                            <span>Served by: Williams</span>
+                                            <span>Atendió: Williams</span>
                                             <span>2017-02-06</span>
                                         </section>
                                         <section class="column">
-                                            <span>Orders</span>
-                                            <span>Invoice #: 01</span>
+                                            <span>Ordern</span>
+                                            <span>Factura. #: 01</span>
                                         </section>
                                         <section class="column">
                                             <span>REG-012</span>
@@ -692,9 +712,9 @@ section#my0 {
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Qty</th>
-                                                <th>Price</th>
+                                                <th>Nombre</th>
+                                                <th>Cant.</th>
+                                                <th>Precio</th>
                                                 <th>Total</th>
                                             </tr>
                                         </thead>
@@ -845,12 +865,12 @@ td {
 
     <section class="headPay">
         <section class="column">
-            <span>Served by: Williams</span>
+            <span>Atendió: Williams</span>
             <span>2017-02-06</span>
         </section>
         <section class="column">
-            <span>Orders</span>
-            <span>Invoice #: 01</span>
+            <span>Orden</span>
+            <span>Factura #: 01</span>
         </section>
         <section class="column">
             <span>REG-012</span>
@@ -860,9 +880,9 @@ td {
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Qty</th>
-                <th>Prece</th>
+                <th>Nombre</th>
+                <th>Cant.</th>
+                <th>Precio</th>
                 <th>Total</th>
             </tr>
         </thead>

@@ -73,6 +73,7 @@ class Login extends CI_Controller {
 					'last_name' => $result[0]->last_name,
 					'role' => $result[0]->role,
 					'image_url' => $result[0]->image_url,
+					'location_id' => $result[0]->location_id,
 					'location' => $result[0]->location
 				);				
 					// Add user data in session

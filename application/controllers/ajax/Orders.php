@@ -17,13 +17,15 @@ class Orders extends CI_Controller {
           ),
           'order' => array(
                 'date' => date("Y-m-d H:i:s"),
-                'subtotal' => $this->input->post('subtotal'),
-                'tax' => $this->input->post('tax'),
-                'status' => ($this->input->post('payment_type') != '1') ? 'active': '',
-                'payment_date' => date('Y-m-d'),
                 'customer_id' => null,
-                'payment_type' => $this->input->post('payment_type')
-                
+                'subtotal' => $this->input->post('subtotal'),                
+                'tax' => $this->input->post('tax'),
+                'payment_type_id' => $this->input->post('payment_type')
+                'payment_date' => date('Y-m-d'),                                
+                'status' => ($this->input->post('payment_type') != '1') ? 'completada': '',                
+                'username' =>$this->input->post('username'),
+                'tax' => $this->input->post('tax'),
+                'location_id' =>$this->input->post('location_id')
           ),
           'order_detail' => array(
                 'item' => $this->input->post('order')
