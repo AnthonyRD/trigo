@@ -8,18 +8,18 @@ class Model_order extends CI_Model {
         $this->load->database();
         $this->load->model('model_customer');
     }
-    public function order_create($data = array()){
-        //$data['order']['customer_id'] = $this->model_customer->get_id($data['customer']);
+    public function order_create($data = array()){        
         $this->db->insert('orders', $data['order']);
         if ($this->db->affected_rows() > 0){
             $order_id = $this->db->insert_id();
             $data['order_detail']['order_id'] = $order_id;
-            if($this->order_detail_create($data['order_detail'])){
+            $this->order_detail_create($data['order_detail']);
+            if($this->db->affected_rows() > 0){
                 return TRUE;
             }else{
                 return FALSE;
             }
-        }
+        }                
     }
     public function get_orders(){
         $this->db->select('user.id, user.user_name, user.password,user.status,  
@@ -52,7 +52,8 @@ class Model_order extends CI_Model {
         foreach($data['item'] as $key => $value){
             $item = array(
                 'product_id' => $value['id'],
-                'order_id' => $data['order_id']
+                'order_id' => $data['order_id'],
+                'quantity' => $value['unidad']
             );
             $this->db->insert('order_detail', $item);
         }

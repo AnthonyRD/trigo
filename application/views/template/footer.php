@@ -225,7 +225,10 @@
 <?php endforeach; endif;?>
 
 <script>
-var typeaheadSource = [{ id: 1, name: 'John'}, { id: 2, name: 'Alex'}, { id: 3, name: 'Terry'}];
+var typeaheadSource = [{ id: 1, name: 'John', last_name: 'John', telephone: '555-555-5555', cellphone: '555-555-5555'},
+                       { id: 2, name: 'Terry', last_name: 'Crews', telephone: '555-555-5555', cellphone: '555-555-5555'},
+                       { id: 3, name: 'Bon', last_name: 'Jovi', telephone: '555-555-5555', cellphone: '555-555-5555'}];
+if($('input[name="search"]').length>0){
 $('input[name="search"]').typeahead({
 onSelect: function(item) {
         console.log(item);
@@ -249,14 +252,18 @@ onSelect: function(item) {
             }
             // We good!
             return $.map(data, function(value){
-              return value.name;
+              $("#customer_id").attr( "data-id", value.id);
+              return value.name + ' ' + value.last_name 
+              + (value.telephone.length > 0 ? ' | Tel: ' + value.telephone : '') 
+              + (value.cellphone.length > 0 ? ' | Tel: ' + value.cellphone : '');
             });
         }
     }
 });
 $("#search").submit(function(e){
   e.preventDefault();
-})
+})                         
+}
 </script>
 
 <script type="text/javascript">

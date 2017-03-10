@@ -98,14 +98,13 @@ class Model_customer extends CI_Model {
         
     }
     public function get_search_customer($str){
-        //$this->db->select('id, name', 'last_name','telephone','cellphone' );
-        //$this->db->like('name', $str, 'both');
-        //$this->db->or_like(array('name' => $str, 'last_name' => $str, 'telephone' => $str, 'cellphone' => $str), 'both');
-
-        $sql = ('SELECT * FROM customer WHERE name LIKE ? || last_name LIKE ? OR telephone LIKE ? OR cellphone LIKE ?');
-        $query = $this->db->query($sql, array($str));
+        $this->db->select('id, name, last_name, telephone, cellphone' );
+        $this->db->or_like('name', $str,'both');
+        $this->db->or_like('last_name', $str,'both');
+        $this->db->or_like('telephone', $str,'both');
+        $this->db->or_like('cellphone', $str,'both');
         
-        $query = $this->db->get();
+        $query = $this->db->get('customer');
         if ($query->num_rows() > 0){
             return $query->result();
         }else{

@@ -99,6 +99,8 @@ function addItem(data) {
         $("#tax, .impuesto").html(totalImpuesto.toFixed(2));
         $("#total, #total-btn, .toPay").html(total.toFixed(2));
         contentItem.html(item);
+
+        console.log(item);
     }
     if (storage.get('customer') == null) {
         storage.set('customer', 'Default');
@@ -161,6 +163,7 @@ function PopupCenter(url, title, w, h) {
         newWindow.focus();
     }
 }
+
 $(document).on('click', '.products a', function(event) {
     event.preventDefault();
     var data = JSON.parse(this.dataset.item);
@@ -170,7 +173,7 @@ $(document).on('click', '.products a', function(event) {
         price: data.price,
         name: data.name,
         impuesto: null,
-        unidad: 1,
+        unidad: data.unidad,
         category: data.name_category,
         supplier: data.suppier_name
     };
@@ -180,7 +183,7 @@ $(document).on('click', '.products a', function(event) {
 
 });
 $(document).on('ready', function() {
-    addItem(null);
+    addItem();
 });
 $("#pay").click(function() {
     var payType = $("input[name='pay-type']").val();
@@ -232,7 +235,9 @@ $("#add-customer").click(function() {
     var customer = $('ul.typeahead li.active').data('value');
     if (customer != "") {
         storage.set('customer', customer);
-        $("#customer").html(customer);
+        $("#customer").html(customer.split('|')[0]);
+        var customer_id = $('#customer_id').attr('data-id');
+        storage.set('customer_id', customer_id);
         $("#search-customer").modal('hide');
     }
 });
@@ -293,7 +298,7 @@ $("#cobro").click(function() {
     var data = {
         order: storage.get('item'),
         tipo: storage.get('tipo'),
-        customer: '1',
+        customer_id: (storage.get('customer_id') != null ? storage.get('customer_id') : '1'),
         subtotal: storage.get('subtotal'),
         tax: storage.get('tax'),
         payment_type: storage.get('payment_type'),
@@ -301,30 +306,7 @@ $("#cobro").click(function() {
         username: storage.get('username')
     };
 
-       $.ajax('/trigo/ajax/orders/create', {
-        method: 'POST',
-        data: data,
-        dataType: 'json',
-        beforeSend: function() {
-            $(".loading").css('display', 'flex');
-        },
-        success: function(resp) {
-            //$("#hs").removeClass('hide');
-        },
-        error: function(resp) {
-            $(".loading").css("display", 'none');
-            console.log('respuesta: ' + resp);
-        },
-        complete: function(data, a) {
-            if (a == "success") {
-                alert(a);
-            } else {
-                alert("Error al guardar la factura.");
-            }
-        }
-    });
-
-    /*$.ajax('/trigo/ajax/orders/create', {
+    $.ajax('/trigo/ajax/orders/create', {
         method: 'POST',
         data: data,
         dataType: 'json',
@@ -336,17 +318,21 @@ $("#cobro").click(function() {
         },
         error: function(resp) {
             $(".loading").css("display", 'none');
-            console.log('respuesta: ' + resp);
+            $.each(resp, function(i, j) {
+                console.log('respuesta error:' + i + ' ' + j);
+            });
+
         },
         complete: function(data, a) {
             if (a == "success") {
                 $(".loading").css("display", 'none');
-                PopupCenter("/order/print", "Print Invoice", '900', '500');
+                PopupCenter("/trigo/order/print", "Print Invoice", '900', '500');
             } else {
                 alert("Error al guardar la factura.");
             }
         }
-    });*/
+    });
+
 });
 
 function result(category, str) {

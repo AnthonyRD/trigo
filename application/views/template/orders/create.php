@@ -455,8 +455,10 @@ section#my0 {
                     <section class="col-md-9 col-sm-8 col-xs-6">
                         <section class="customer">
                             <section class="lb">
-                                <label>Cliente</label>
-                                <p id="customer"></p>
+                                <div id="customer_id" data-id="">
+                                    <label>Cliente</label>
+                                    <p id="customer"></p>
+                                </div>
                             </section>
                             <section class="btn-ctm">
                                 <button class="btn btn-success" data-toggle="modal" data-target="#search-customer">Nuevo</button>
@@ -921,7 +923,7 @@ td {
             $("#payModal").modal('show');
             $.each(storage.get('item'), function(index, value){
                 subtotal += (value.price*value.unidad);
-                impuesto += ((value.price*15/100)*value.unidad);
+                impuesto += ((value.price*18/100)*value.unidad);
                 console.log(impuesto);
                 itemT = itemPay.replace("{{nameProduct}}", value.name);
                 itemT = itemT.replace("{{qty}}", value.unidad);
