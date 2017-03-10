@@ -9,7 +9,7 @@ class Orders extends CI_Controller {
         }
         $this->load->model('model_order');
     }
-    public function create(){
+    /*public function create(){
         $data = array(
           'payment' => array(
                 'payment_type' => $this->input->post('tipo')
@@ -36,6 +36,30 @@ class Orders extends CI_Controller {
             'data' => $this->model_order->order_create($data)
         );
         
+        $this->load->view('template/ajax/response', $data);
+    }*/
+    public function create(){
+        $data = array(                          
+            'order' => array(
+                'date' => date("Y-m-d H:i:s"),
+                'customer_id' => $this->input->post('customer'),          
+                'subtotal' => $this->input->post('subtotal'),                
+                'tax' => $this->input->post('tax'),
+                'payment_type_id' => $this->input->post('payment_type'),
+                'payment_date' => date('Y-m-d'),                                                             
+                'username' =>$this->input->post('username'),                
+                'location_id' =>$this->input->post('location_id'),
+                'status' => 'completada', 
+                'oder_type_id' => '1'
+          ),
+          'order_detail' => array(
+                'item' => $this->input->post('order')
+          ),
+          'data' => array(
+                //'data' => $this->model_order->order_create($data)
+                'data' =>''
+            )
+        );                       
         $this->load->view('template/ajax/response', $data);
     }
 }

@@ -123,7 +123,7 @@ function removeItem(index) {
         $.each(gets, function(index, value) {
             temp = itemHTML.replace('{cantidad}', value.unidad);
             temp = temp.replace('{name}', value.name);
-            impuesto = (value.price * 15 / 100);
+            impuesto = (value.price * 18 / 100);
             temp = temp.replace('{tax}', impuesto);
             temp = temp.replace('{price}', value.price);
             temp = temp.replace('{index}', index);
@@ -202,7 +202,7 @@ function prm() {
                 $("#payModal").modal('show');
                 $.each(storage.get('item'), function(index, value) {
                     subtotal += (value.price * value.unidad);
-                    impuesto += ((value.price * 15 / 100) * value.unidad);
+                    impuesto += ((value.price * 18 / 100) * value.unidad);
                     console.log(value);
                     itemT = itemPay.replace("{{nameProduct}}", value.name);
                     itemT = itemT.replace("{{qty}}", value.unidad);
@@ -293,7 +293,7 @@ $("#cobro").click(function() {
     var data = {
         order: storage.get('item'),
         tipo: storage.get('tipo'),
-        customer: customer,
+        customer: '1',
         subtotal: storage.get('subtotal'),
         tax: storage.get('tax'),
         payment_type: storage.get('payment_type'),
@@ -301,8 +301,27 @@ $("#cobro").click(function() {
         username: storage.get('username')
     };
 
-    $.each(data, function(index, value) {
-        alert(index + ": " + value);
+       $.ajax('/trigo/ajax/orders/create', {
+        method: 'POST',
+        data: data,
+        dataType: 'json',
+        beforeSend: function() {
+            $(".loading").css('display', 'flex');
+        },
+        success: function(resp) {
+            //$("#hs").removeClass('hide');
+        },
+        error: function(resp) {
+            $(".loading").css("display", 'none');
+            console.log('respuesta: ' + resp);
+        },
+        complete: function(data, a) {
+            if (a == "success") {
+                alert(a);
+            } else {
+                alert("Error al guardar la factura.");
+            }
+        }
     });
 
     /*$.ajax('/trigo/ajax/orders/create', {
