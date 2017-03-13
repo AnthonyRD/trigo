@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 10, 2017 at 10:20 PM
+-- Generation Time: Mar 13, 2017 at 11:00 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.0.15
 
@@ -171,6 +171,27 @@ INSERT INTO `location` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `measurement_unit`
+--
+
+CREATE TABLE `measurement_unit` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `measurement_unit`
+--
+
+INSERT INTO `measurement_unit` (`id`, `name`, `description`) VALUES
+(1, 'Unidad', 'Unidad'),
+(2, 'Pedazo', 'Pedazo'),
+(3, 'Libra', 'Libra');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -222,7 +243,10 @@ INSERT INTO `orders` (`id`, `date`, `customer_id`, `subtotal`, `tax`, `payment_t
 (29, '2017-03-10 21:06:44', NULL, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
 (30, '2017-03-10 16:11:48', NULL, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
 (31, '2017-03-10 16:14:09', NULL, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 2, 1),
-(32, '2017-03-10 16:15:56', 1, 22, 3.96, 1, '2017-03-10', 'completada', 'admin', 1, 1);
+(32, '2017-03-10 16:15:56', 1, 22, 3.96, 1, '2017-03-10', 'completada', 'admin', 1, 1),
+(33, '2017-03-13 10:46:08', 1, 120, 21.6, 1, '2017-03-13', 'completada', 'admin', 1, 1),
+(35, '2017-03-13 10:49:41', 1, 120, 21.6, 1, '2017-03-13', 'completada', 'admin', 2, 1),
+(36, '2017-03-13 14:52:30', 1, 1485, 267.3, 1, '2017-03-13', 'completada', 'admin', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -262,7 +286,22 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`) VALUES
 (18, 29, 1, 1),
 (19, 30, 1, 1),
 (20, 31, 1, 4),
-(21, 32, 1, 2);
+(21, 32, 1, 2),
+(22, 33, 8, 2),
+(23, 35, 8, 2),
+(24, 36, 8, 3),
+(25, 36, 9, 5),
+(26, 36, 10, 4),
+(27, 36, 11, 2),
+(28, 36, 16, 3),
+(29, 36, 12, 2),
+(30, 36, 18, 3),
+(31, 36, 19, 3),
+(32, 36, 17, 2),
+(33, 36, 4, 2),
+(34, 36, 7, 2),
+(35, 36, 13, 1),
+(36, 36, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -352,7 +391,7 @@ CREATE TABLE `product` (
   `reorder_level` int(5) NOT NULL,
   `barcode` varchar(100) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   `charge_tax` tinyint(1) NOT NULL,
-  `mesurement_unit` varchar(20) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `measurement_unit_id` int(11) NOT NULL,
   `barcode_symbol` varchar(1000) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   `suplier_id` int(11) NOT NULL,
   `status` varchar(20) NOT NULL,
@@ -364,26 +403,26 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `description`, `image_url`, `id_category`, `last_entry`, `entry_date`, `price`, `reorder_level`, `barcode`, `charge_tax`, `mesurement_unit`, `barcode_symbol`, `suplier_id`, `status`, `cantidad_en_existencia`, `cantidad_ultima_entrada`) VALUES
-(1, 'Cocacola Light', 'Nuevo Producto1', 'good-course7.jpg', 3, '0000-00-00 00:00:00', '2017-02-14 04:14:22', '11.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(2, 'Cocacola Light', 'Nuevo Producto1', 'empanda.jpg', 3, '0000-00-00 00:00:00', '2017-03-10 16:43:04', '11.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(3, 'Cocacola Light', 'Nuevo Producto1', '11d8f28844ba79c9240100806f82001e.jpg', 3, '0000-00-00 00:00:00', '2017-03-10 16:57:26', '11.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(4, 'Croquetas de pollo', '', '53b8edaac5908-300x300.jpg', 7, '0000-00-00 00:00:00', '2017-03-10 16:59:31', '20.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(5, 'Botella de agua', '', 'botella_de_agua.jpg', 3, '0000-00-00 00:00:00', '2017-03-10 17:00:07', '25.00', 0, NULL, 0, '1', NULL, 4, '', 0, 0),
-(6, 'Coca Cola', '', 'coca_cola.jpg', 3, '0000-00-00 00:00:00', '2017-03-10 17:01:46', '40.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(7, 'Croasant', '', 'croasant.jpg', 7, '0000-00-00 00:00:00', '2017-03-10 17:02:19', '50.00', 0, NULL, 0, '1', NULL, 4, '', 0, 0),
-(8, 'Cupcake', '', 'cupcake.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:02:52', '60.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(9, 'Galleta de Mantequilla', '', 'galelta_de_mantequilla.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:03:17', '25.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(10, 'Galleta de Avena', '', 'galleta_de_avena.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:03:42', '60.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(11, 'Galleta de LImon', '', 'galleta_de_limon.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:04:11', '25.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(12, 'Galleta de Nueces', '', 'galleta_de_nueces.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:04:41', '30.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(13, 'Galleta', '', 'galletas.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:05:16', '30.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(14, 'Jugo de Limon', '', 'jugo_de_limon.jpg', 3, '0000-00-00 00:00:00', '2017-03-10 17:05:51', '25.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(15, 'JUgo de Naranja', '', 'jugo_de_naranja.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:06:19', '50.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(16, 'Bizcocho de Chocolate', '', 'pastel_chocolate.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:10:57', '50.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(17, 'Pastel de Cafe', '', 'pastel_de_cafe.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:13:40', '50.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(18, 'Pie', '', 'pie.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:15:12', '60.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0),
-(19, 'Bizcocho de Coco', '', 'pastel_de_coco.jpg', 2, '0000-00-00 00:00:00', '2017-03-10 17:16:02', '60.00', 0, NULL, 0, '1', NULL, 2, '', 0, 0);
+INSERT INTO `product` (`id`, `name`, `description`, `image_url`, `id_category`, `last_entry`, `entry_date`, `price`, `reorder_level`, `barcode`, `charge_tax`, `measurement_unit_id`, `barcode_symbol`, `suplier_id`, `status`, `cantidad_en_existencia`, `cantidad_ultima_entrada`) VALUES
+(1, 'Bizcocho de Pasas1', 'Bizcocho de Pasas1', '', 7, '2017-03-13 17:58:21', '2017-02-14 04:14:22', '50.00', 0, NULL, 0, 3, NULL, 2, '', 0, 0),
+(2, 'Bizcocho de Pasas', 'Empanada de Res', 'empanda.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 16:43:04', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(3, 'Bizcocho de Pasas', 'Empanada de Res', '11d8f28844ba79c9240100806f82001e.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 16:57:26', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(4, 'Bizcocho de Pasas', 'Empanada de Res', '53b8edaac5908-300x300.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 16:59:31', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(5, 'Bizcocho de Pasas', 'Empanada de Res', 'botella_de_agua.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:00:07', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(6, 'Bizcocho de Pasas', 'Empanada de Res', 'coca_cola.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:01:46', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(7, 'Bizcocho de Pasas', 'Empanada de Res', 'croasant.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:02:19', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(8, 'Bizcocho de Pasas', 'Empanada de Res', 'cupcake.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:02:52', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(9, 'Bizcocho de Pasas', 'Empanada de Res', 'galelta_de_mantequilla.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:03:17', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(10, 'Bizcocho de Pasas', 'Empanada de Res', 'galleta_de_avena.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:03:42', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(11, 'Bizcocho de Pasas', 'Empanada de Res', 'galleta_de_limon.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:04:11', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(12, 'Bizcocho de Pasas', 'Empanada de Res', 'galleta_de_nueces.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:04:41', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(13, 'Bizcocho de Pasas', 'Empanada de Res', 'galletas.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:05:16', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(14, 'Bizcocho de Pasas', 'Empanada de Res', 'jugo_de_limon.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:05:51', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(15, 'Bizcocho de Pasas', 'Empanada de Res', 'jugo_de_naranja.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:06:19', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(16, 'Bizcocho de Pasas', 'Empanada de Res', 'pastel_chocolate.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:10:57', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(17, 'Bizcocho de Pasas', 'Empanada de Res', 'pastel_de_cafe.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:13:40', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(18, 'Bizcocho de Pasas', 'Empanada de Res', 'pie.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:15:12', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(19, 'Bizcocho de Pasas', 'Empanada de Res', 'pastel_de_coco.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:16:02', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -518,6 +557,12 @@ ALTER TABLE `location`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `measurement_unit`
+--
+ALTER TABLE `measurement_unit`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -556,7 +601,8 @@ ALTER TABLE `position`
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_measurement_unit` (`measurement_unit_id`);
 
 --
 -- Indexes for table `product_category`
@@ -605,22 +651,27 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `measurement_unit`
+--
+ALTER TABLE `measurement_unit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `order_type`
 --
@@ -673,6 +724,12 @@ ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`payment_type_id`) REFERENCES `payment_type` (`id`),
   ADD CONSTRAINT `orders_ibfk_4` FOREIGN KEY (`oder_type_id`) REFERENCES `order_type` (`id`),
   ADD CONSTRAINT `orders_ibfk_5` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`);
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `FK_measurement_unit` FOREIGN KEY (`measurement_unit_id`) REFERENCES `measurement_unit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
