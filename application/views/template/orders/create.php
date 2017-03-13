@@ -412,7 +412,7 @@ section#my0 {
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </section>
                 <section class="pull-right">
-                  <a id="logout" href="account/login/logout" class="btn btn-default btn-flat">Salir</a>                  
+                  <a id="logout" href="/account/login/logout" class="btn btn-default btn-flat">Salir</a>                  
                 </section>
 
               </li>
@@ -443,7 +443,7 @@ section#my0 {
                     </ul>
                 </section>
             </nav>
-            <section class="row">
+            <section class="row" >
                 <section class="col-sm-12">
                     <section class="products">
                         
@@ -497,7 +497,7 @@ section#my0 {
                 <section class="sales">
                     <section class="sales-header">
                         <section class="form-group">
-                            <input type="text" name="search-item" class="form-control" placeholder="Buscar Item"/>
+                            <input type="text" id="search-item" name="search-item" class="form-control" placeholder="Buscar Item"/>
                         </section>
                     </section>
                     <section class="sales-content">
@@ -867,22 +867,21 @@ td {
 
     <section class="headPay">
         <section class="column">
-            <span>Atendió: Williams</span>
-            <span>2017-02-06</span>
+            <span>Atendió: <?php echo $username?></span>
+            <span><?php echo date("d-m-Y, g:i a");?></span>
+        </section>
+        <section class="column">            
+            <span>Orden #: 01</span>
         </section>
         <section class="column">
-            <span>Orden</span>
-            <span>Factura #: 01</span>
-        </section>
-        <section class="column">
-            <span>REG-012</span>
-            <span>12:53</span>
+            <span>Tienda</span>
+            <span><?php echo $location?></span>
         </section>
     </section>
     <table>
         <thead>
             <tr>
-                <th>Nombre</th>
+                <th>Item</th>
                 <th>Cant.</th>
                 <th>Precio</th>
                 <th>Total</th>
@@ -909,7 +908,7 @@ td {
     </section>
 </section>
 </section>
-<script type="text/javascript">
+<!--<script type="text/javascript">
     window.onload = function(){
     var item = null;
     var itemT = null;
@@ -945,5 +944,8 @@ td {
         window.print();
         clear();
     }
-</script>
+</script>-->
+
+
+
 <?php endif; ?>

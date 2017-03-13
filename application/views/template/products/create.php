@@ -37,11 +37,11 @@
                                         </section>
                                     </section>
                                     <section class="form-group">
-                                        <label>Unidad de medida</label>
-                                        <select name="mesurement_unit" class="form-control">
-                                            <option value="0">Libra</option>
-                                            <option value="1">Unidad</option>
-                                            <option value="2">Litro</option>
+                                        <label>Se vende por:</label>
+                                        <select name="measurement_unit" class="form-control">
+                                            <?php foreach($measurement_unit as $key => $value):?>
+                                            <option value="<?=$value->id?>"><?=$value->name?></option>
+                                            <?php endforeach; ?>  
                                         </select>
                                     </section>
                                 </section>

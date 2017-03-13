@@ -39,10 +39,11 @@ class Edit extends CI_Controller {
 	public function index($str = NULL)
 	{
 	    if (!is_null($str)){
-	        $this->load->model(array('model_supplier','model_category', 'model_product'));
+	        $this->load->model(array('model_supplier','model_category', 'model_product','model_measurement_unit'));
 	        $data = array(
     	        'category' => $this->model_category->get_categories(),
     	        'supplier' => $this->model_supplier->get_suppliers(),
+				'measurement_unit' => $this->model_measurement_unit->get_measurement_units(),
     	        'data' => $this->model_product->get_product($str)
     	    );
 	        $this->page_config += $data;
@@ -97,13 +98,13 @@ class Edit extends CI_Controller {
 	        'description' => $this->input->post('description'),
 	        'image_url' => $this->image_url['file_name'],
 	        'price' => $this->input->post('price'),
-	        'mesurement_unit' => $this->input->post('mesurement_unit'),
+	        'measurement_unit_id' => $this->input->post('measurement_unit'),
 	        'id_category' => $this->input->post('category'),
 	        'charge_tax' => $this->input->post('charge_tax'),
-	        'suplier_id' => $this->input->post('supplier')
-	    );
-	    if (is_null($this->image_url)) unset($data['image_url']);
-	    if ($this->model_product->update_product($data, $this->input->post("id"), $this->input->post('address_id'))){
+	        'suplier_id' => $this->input->post('supplier'),
+			'last_entry' => date('Y-m-d H:i:s')
+	    );	    
+	    if ($this->model_product->update_product($data, $this->input->post("id"))){
 	        $this->session->set_flashdata('product_success',true);
 	        redirect('products');
 	    }

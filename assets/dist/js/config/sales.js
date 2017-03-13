@@ -173,7 +173,7 @@ $(document).on('click', '.products a', function(event) {
         price: data.price,
         name: data.name,
         impuesto: null,
-        unidad: data.unidad,
+        unidad: 1,
         category: data.name_category,
         supplier: data.suppier_name
     };
@@ -370,6 +370,9 @@ $(document).ready(function() {
 });
 $("#category li").click(function() {
     result(this.innerText, "");
+});
+$('#search-item').keyup(function(e) {
+    result(this.innerText, $("#search-item").val());
 });
 $("#clear").click(function() {
     var r = confirm('¿Está seguro de limpiar la cesta?');

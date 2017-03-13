@@ -28,10 +28,11 @@ class Model_product extends CI_Model {
     }
     public function get_products(){
         $this->db->select('product.id as id, product.price, product.name, product.description, product.charge_tax, 
-                           product.image_url, product.mesurement_unit, product.reorder_level, product.entry_date, 
+                           product.image_url, product.measurement_unit_id, product.reorder_level, product.entry_date, 
                            product.last_entry, supplier.name as suppier_name, product_category.name as name_category');
         $this->db->join('supplier', 'supplier.id = product.suplier_id');
         $this->db->join('product_category', 'product_category.id = product.id_category');
+        $this->db->join('measurement_unit', 'measurement_unit.id = product.measurement_unit_id');
         $query = $this->db->get('product');
         if ($query->num_rows() > 0){
             return $query->result();
@@ -50,10 +51,11 @@ class Model_product extends CI_Model {
     public function get_product($str){
         $this->db->where('product.id', $str);
         $this->db->select('product.id as id, product.name, product.price, product.description, product.charge_tax, 
-                           product.image_url, product.mesurement_unit, product.reorder_level, product.entry_date, 
+                           product.image_url, product.measurement_unit_id, product.reorder_level, product.entry_date, 
                            product.last_entry, supplier.name as suppier_name, product_category.name as name_category');
         $this->db->join('supplier', 'supplier.id = product.suplier_id');
         $this->db->join('product_category', 'product_category.id = product.id_category');
+        $this->db->join('measurement_unit', 'measurement_unit.id = product.measurement_unit_id');
         $this->db->limit(1);
         $query = $this->db->get('product');
         if ($query->num_rows() > 0){
@@ -62,8 +64,9 @@ class Model_product extends CI_Model {
             return NULL;
         }
     }
-    public function update_product($data = array()){
-        $this->db->update('product', $data);
+    public function update_product($data = array(), $str){
+        $this->db->where('id', $str);
+        $this->db->update('product', $data);   
         if ($this->db->affected_rows() > 0){
             return TRUE;
         }else{
@@ -87,7 +90,7 @@ class Model_product extends CI_Model {
             $this->db->where('product_category.name', trim($category));
         }
         $this->db->select('product.id, product.price, product.name, product.description, 
-                           product.charge_tax, product.image_url, product.mesurement_unit, 
+                           product.charge_tax, product.image_url, product.measurement_unit_id, 
                            product.reorder_level, product.entry_date, product.last_entry, 
                            supplier.name as suppier_name, product_category.name as name_category');
         $this->db->join('supplier', 'supplier.id = product.suplier_id');

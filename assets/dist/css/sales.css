@@ -76,7 +76,8 @@ section.sales-content section.item .tax {
 
 section.sales-content section.item .name {
     width: 50%;
-    word-break: break-all;
+    /*word-break: break-all;*/
+    word-wrap: break-word;
     text-align: center;
     margin-right: 10px;
 }
@@ -98,12 +99,17 @@ section.sales-content section.price {
 }
 
 section.products {
+    padding-bottom: 210px;
     position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: center;
     flex-flow: row wrap;
+    height: 750px;
+    overflow: auto;
+    margin: 20px;
+    clear: both
 }
 
 a.item {
@@ -111,6 +117,10 @@ a.item {
     display: block;
     width: 23%;
     margin: 5px;
+    min-width: 100px;
+    min-height: 100px;
+    background: #fff;
+    padding: 5px;
 }
 
 section.item-header {}
@@ -121,9 +131,9 @@ img {
 }
 
 section.item-body h3 {
-    font-size: 18px;
+    font-size: 14px;
     margin: 5px;
-    padding: 0;
+    color: #333;
 }
 
 .action ul {

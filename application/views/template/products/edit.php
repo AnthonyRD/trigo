@@ -37,11 +37,14 @@
                                         </section>
                                     </section>
                                     <section class="form-group">
-                                        <label>Unidad de medida</label>
-                                        <select name="mesurement_unit" class="form-control">
-                                            <option value="0">Libra</option>
-                                            <option value="1">Unidad</option>
-                                            <option value="2">Litro</option>
+                                        <label>Se vende por:</label>
+                                        <select name="measurement_unit" class="form-control">                                             
+                                            <?php foreach($measurement_unit as $key => $value):?>
+                                            <?php if($data->measurement_unit == $value->measurement_unit):?>
+                                            <option value="<?=$value->id?>" selected><?=$value->name?></option>
+                                            <?php else: ?>
+                                            <option value="<?=$value->id?>"><?=$value->name?></option>
+                                            <?php endif; endforeach; ?>        
                                         </select>
                                     </section>
                                 </section>
@@ -71,8 +74,8 @@
                                     <section class="form-group">
                                         <label>Imagen de portada del producto</label>
                                         <img src="<?=base_url()?>uploads/products/<?=$data->image_url?>" width="250"/>
-                                        <label class="btn btn-warning" for="image_url" class="btn">Seleccionar Imagen</label>
-                                        <input id="image_url" style="visibility:hidden;" type="file">                                        
+                                        <label class="btn btn-warning" for="file_name" class="btn">Seleccionar Imagen</label>
+                                        <input type="file" name="image_url" class="form-control" />                                        
                                     </section>
                                 </section>
                             </section>
