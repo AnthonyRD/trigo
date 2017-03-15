@@ -47,10 +47,7 @@
                             <th>#</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
-                            <th>Imagen</th>
-                            <th>Punto de Reorden</th>
-                            <th>Fcha de ingreso</th>
-                            <th>Última entrada</th>
+                            <th>Imagen</th>                            
                             <th>Suplidor</th>
                             <th>Categoría</th>
                           </tr>
@@ -66,10 +63,7 @@
                             </td>
                             <td><?=$value->name?></td>
                             <td><?=$value->description?></td>
-                            <td><img src="<?=base_url()?>uploads/products/<?=$value->image_url?>" width="45"/></td>
-                            <td><?=$value->reorder_level?></td>
-                            <td><?=$value->entry_date?></td>
-                            <td><?=$value->last_entry?></td>
+                            <td><img src="<?=base_url()?>uploads/products/<?=$value->image_url?>" width="45"/></td>                            
                             <td><?=$value->suppier_name?></td>
                             <td><?=$value->name_category?></td>
                           </tr>

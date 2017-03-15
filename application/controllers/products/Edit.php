@@ -58,7 +58,7 @@ class Edit extends CI_Controller {
 	    	$this->session->set_flashdata('error', true);
 	        redirect('product/edit/'.$this->input->post('id'));
 	    }else{
-	        $this->session->set_flashdata('supplier_success', false);
+	        $this->session->set_flashdata('product_success', false);
 	        redirect('products');
 	    }
 	}
@@ -88,7 +88,7 @@ class Edit extends CI_Controller {
             {
                     $this->image_url = $this->upload->data();
                     
-                    return $this->update_product();
+                    return $this->add_product();
             }
     }
 	public function update_product(){
@@ -104,6 +104,7 @@ class Edit extends CI_Controller {
 	        'suplier_id' => $this->input->post('supplier'),
 			'last_entry' => date('Y-m-d H:i:s')
 	    );	    
+		if (is_null($this->image_url)) unset($data['image_url']);
 	    if ($this->model_product->update_product($data, $this->input->post("id"))){
 	        $this->session->set_flashdata('product_success',true);
 	        redirect('products');

@@ -106,7 +106,7 @@ section.products {
     width: 100%;
     align-items: center;
     flex-flow: row wrap;
-    height: 750px;
+    height: 550px;
     overflow: auto;
     margin: 20px;
     clear: both
@@ -194,6 +194,11 @@ section.btn-pay button {
 }
 
 .navbar-default {
-    width: 104%;
+    width: 105%;
     background-color: #fff !important;
+    margin-bottom: 0px !important;
 }
+
+
+    
+    

@@ -443,13 +443,15 @@ section#my0 {
                     </ul>
                 </section>
             </nav>
-            <section class="row" >
-                <section class="col-sm-12">
-                    <section class="products">
-                        
+            
+                <section class="row" >
+                    <section class="col-sm-12">
+                        <section class="products">
+                            
+                        </section>
                     </section>
                 </section>
-            </section>
+        
             <section class="navbar-bottom">
                 <section class="row">
                     <section class="col-md-9 col-sm-8 col-xs-6">
@@ -461,7 +463,7 @@ section#my0 {
                                 </div>
                             </section>
                             <section class="btn-ctm">
-                                <button class="btn btn-success" data-toggle="modal" data-target="#search-customer">Nuevo</button>
+                                <button class="btn btn-success" data-toggle="modal" data-target="#search-customer">Buscar</button>
                             </section>                            
                             <section class="pull-right">                                
                                 <input type="hidden" id="location_id" value="<?php echo $location_id ?>"/>                                                
@@ -520,7 +522,7 @@ section#my0 {
                     <section class="col-md-12">
                         <secton class="form-group">
                             <label for="">Buscar cliente</label>
-                            <input type="text" name="search" class="form-control" placeholder="search" autocomplete="off"/>                            
+                            <input type="text" name="search" class="form-control" placeholder="buscar" autocomplete="off"/>                            
                         </secton>
                     </section>
                 </section>
