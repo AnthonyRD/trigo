@@ -57,14 +57,14 @@
                                                 </select>
                                             </section>                                                            
                                         </section>                                        
-                                    </section>                                                                       
-                                    <section class="row">
-                                        <section class="col-md-offset-10 col-md-2">
+                                         <section class="row">
+                                         <section class="col-md-offset-9 col-md-2">
                                             <section class="form-group">
                                                 <button type="submit" class="btn btn-primary">Actualizar Departamento</button>
                                             </section>
                                         </section>
                                     </section>
+                                    </section>                                                                                                          
                                 </section>
                             </form>
                         </section>

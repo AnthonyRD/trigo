@@ -95,7 +95,7 @@ class Create extends CI_Controller {
 	        'description' => $this->input->post('description'),
 	        'image_url' => $this->image_url['file_name'],
 	        'price' => $this->input->post('price'),
-	        'mesurement_unit_id' => $this->input->post('mesurement_unit'),
+	        'measurement_unit_id' => $this->input->post('measurement_unit'),
 	        'id_category' => $this->input->post('category'),
 	        'charge_tax' => $this->input->post('charge_tax'),
 	        'suplier_id' => $this->input->post('supplier'),			

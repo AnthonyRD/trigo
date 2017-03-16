@@ -12,7 +12,7 @@
     <section class="categories">
       <section class="categories-header">
         <ul>
-          <li><a href="trigo/department/create"><i class="fa fa-plus"></i> Agregar Departamento</a></li>
+          <li><a href="/trigo/department/create"><i class="fa fa-plus"></i> Agregar Departamento</a></li>
           <li><a href="#" id="edit_department"><i class="fa fa-edit"></i> Editar</a></li>
           <li><a href="#" id="delete_department"><i class="fa fa-trash"></i> Eliminar</a></li>
           <!--<li><a href="#" id="view"><i class="fa fa-info"></i> View</a></li> -->

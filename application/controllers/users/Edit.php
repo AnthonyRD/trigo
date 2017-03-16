@@ -6,8 +6,8 @@ class Edit extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Editar Empleado",
-	        'title_page' => "Editar Empleado",
+	        'title' => "Editar Usuario",
+	        'title_page' => "Editar Usuario",
 	        'view_content' => "users/edit",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',

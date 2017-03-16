@@ -19,7 +19,7 @@
                     <!-- /.box-header -->
                     <section class="box-body">
                         <section class="alert alert-warning">
-                            <p>Realmente desea eliminar la categoríaa "<strong><?=$data->name?></strong>"?</p>
+                            <p>Realmente desea eliminar la categoría "<strong><?=$data->name?></strong>"?</p>
                         </section>
                         <form action="confirm" method="POST">
                             <section class="row">
