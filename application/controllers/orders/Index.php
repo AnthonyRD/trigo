@@ -35,6 +35,11 @@ class Index extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->model('model_order');
+		$data = array(
+			'data' => $this->model_order->get_order_list()
+		);
+		$this->page_config += $data;
 		$this->template->view($this->page_config);
 	}
 }

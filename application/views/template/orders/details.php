@@ -1,3 +1,39 @@
+    <style>
+
+    .grid {  
+  max-width: 900px;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-item {
+  width: 160px;
+  height: 120px;
+  float: left;
+  background: #D26;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+}
+
+.grid-item--width2 { width: 320px; }
+.grid-item--width3 { width: 480px; }
+.grid-item--width4 { width: 640px; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }
+
+
+    </style>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
@@ -56,307 +92,41 @@
   </section>
   </section>
   <!-- Main content -->
-  <section class="content">     
+  <section class="content container">     
 
-  <div class="row">
+   <div class="grid">
+      <?php if (isset($data) && !(is_null($data))): foreach($data as $key => $value): ?>
+      
   
-  <div class="col-md-3"> <!-- /.inicia tarjeta de orden -->
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Orden #0036</h3>
-              <div class="box-tools">                
-                <span class="badge bg-green">completada</span>
-              </div>
-              
-            </div>            
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table">
-                <tbody><tr>
-                  <th style="width: 10px">#</th>
-                  <th>Artículo</th>                                    
-                </tr>
-                <tr>
-                  <td>3 </td>
-                  <td>Galletas de avena</td>                                      
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Empanada</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Bizcocho de Fresa</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Botella de <Agua></Agua></td>                                   
-                </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">  <!-- /.box-footer -->  
-              <span class="badge bg-aqua">21/02/17 | 11:58 am</span>          
-              <span class="pull-right"><b>Total:</b> 205.00</span>                
-            </div>              
-            <!-- /.box-footer --> 
-            <div class="box-footer clearfix">  <!-- /.box-footer -->
-              <ul class="pagination pagination-sm no-margin pull-left">
-                <li><span>Cliente: José Madero</span></li>
-                <li><a href="#">Atendió: V. Echavarría</a></li>             
-              </ul>
-            </div><!-- /.box-footer -->
-          </div> <!-- /.box -->               
-</div><!-- /.termina tarjeta de orden -->
 
-  <div class="col-md-3"> <!-- /.inicia tarjeta de orden -->
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Orden #0036</h3>
-              <div class="box-tools">                
-                <span class="badge bg-green">completada</span>
-              </div>
-              
-            </div>            
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table">
-                <tbody><tr>
-                  <th style="width: 10px">#</th>
-                  <th>Artículo</th>                                    
-                </tr>
-                <tr>
-                  <td>3 </td>
-                  <td>Galletas de avena</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Empanada</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Bizcocho de Fresa</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Botella de <Agua></Agua></td>                                   
-                </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">  <!-- /.box-footer -->  
-              <span class="badge bg-aqua">21/02/17 | 11:58 am</span>          
-              <span class="pull-right"><b>Total:</b> 205.00</span>                
-            </div>              
-            <!-- /.box-footer --> 
-            <div class="box-footer clearfix">  <!-- /.box-footer -->
-              <ul class="pagination pagination-sm no-margin pull-left">
-                <li><span>Cliente: José Madero</span></li>
-                <li><a href="#">Atendió: V. Echavarría</a></li>             
-              </ul>
-            </div><!-- /.box-footer -->
-          </div> <!-- /.box -->               
-</div><!-- /.termina tarjeta de orden -->
-
-  <div class="col-md-3"> <!-- /.inicia tarjeta de orden -->
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Orden #0036</h3>
-              <div class="box-tools">                
-                <span class="badge bg-green">completada</span>
-              </div>
-              
-            </div>            
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table">
-                <tbody><tr>
-                  <th style="width: 10px">#</th>
-                  <th>Artículo</th>                                    
-                </tr>
-                <tr>
-                  <td>3 </td>
-                  <td>Galletas de avena</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Empanada</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Bizcocho de Fresa</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Botella de <Agua></Agua></td>                                   
-                </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">  <!-- /.box-footer -->  
-              <span class="badge bg-aqua">21/02/17 | 11:58 am</span>          
-              <span class="pull-right"><b>Total:</b> 205.00</span>                
-            </div>              
-            <!-- /.box-footer --> 
-            <div class="box-footer clearfix">  <!-- /.box-footer -->
-              <ul class="pagination pagination-sm no-margin pull-left">
-                <li><span>Cliente: José Madero</span></li>
-                <li><a href="#">Atendió: V. Echavarría</a></li>             
-              </ul>
-            </div><!-- /.box-footer -->
-          </div> <!-- /.box -->               
-</div><!-- /.termina tarjeta de orden -->
-
-  <div class="col-md-3"> <!-- /.inicia tarjeta de orden -->
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Orden #0036</h3>
-              <div class="box-tools">                
-                <span class="badge bg-green">completada</span>
-              </div>
-              
-            </div>            
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table">
-                <tbody><tr>
-                  <th style="width: 10px">#</th>
-                  <th>Artículo</th>                                    
-                </tr>
-                <tr>
-                  <td>3 </td>
-                  <td>Galletas de avena</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Empanada</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Bizcocho de Fresa</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Botella de <Agua></Agua></td>                                   
-                </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">  <!-- /.box-footer -->  
-              <span class="badge bg-aqua">21/02/17 | 11:58 am</span>          
-              <span class="pull-right"><b>Total:</b> 205.00</span>                
-            </div>              
-            <!-- /.box-footer --> 
-            <div class="box-footer clearfix">  <!-- /.box-footer -->
-              <ul class="pagination pagination-sm no-margin pull-left">
-                <li><span>Cliente: José Madero</span></li>
-                <li><a href="#">Atendió: V. Echavarría</a></li>             
-              </ul>
-            </div><!-- /.box-footer -->
-          </div> <!-- /.box -->               
-</div><!-- /.termina tarjeta de orden -->
-
-  <div class="col-md-3"> <!-- /.inicia tarjeta de orden -->
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Orden #0036</h3>
-              <div class="box-tools">                
-                <span class="badge bg-green">completada</span>
-              </div>
-              
-            </div>            
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table">
-                <tbody><tr>
-                  <th style="width: 10px">#</th>
-                  <th>Artículo</th>                                    
-                </tr>
-                <tr>
-                  <td>3 </td>
-                  <td>Galletas de avena</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Empanada</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Bizcocho de Fresa</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Botella de <Agua></Agua></td>                                   
-                </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">  <!-- /.box-footer -->  
-              <span class="badge bg-aqua">21/02/17 | 11:58 am</span>          
-              <span class="pull-right"><b>Total:</b> 205.00</span>                
-            </div>              
-            <!-- /.box-footer --> 
-            <div class="box-footer clearfix">  <!-- /.box-footer -->
-              <ul class="pagination pagination-sm no-margin pull-left">
-                <li><span>Cliente: José Madero</span></li>
-                <li><a href="#">Atendió: V. Echavarría</a></li>             
-              </ul>
-            </div><!-- /.box-footer -->
-          </div> <!-- /.box -->               
-</div><!-- /.termina tarjeta de orden -->
-
-
-  <div class="col-md-3"> <!-- /.inicia tarjeta de orden -->
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Orden #0036</h3>
-              <div class="box-tools">                
-                <span class="badge bg-green">completada</span>
-              </div>
-              
-            </div>            
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table">
-                <tbody><tr>
-                  <th style="width: 10px">#</th>
-                  <th>Artículo</th>                                    
-                </tr>
-                <tr>
-                  <td>3 </td>
-                  <td>Galletas de avena</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Empanada</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Bizcocho de Fresa</td>                                    
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Botella de <Agua></Agua></td>                                   
-                </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">  <!-- /.box-footer -->  
-              <span class="badge bg-aqua">21/02/17 | 11:58 am</span>          
-              <span class="pull-right"><b>Total:</b> 205.00</span>                
-            </div>              
-            <!-- /.box-footer --> 
-            <div class="box-footer clearfix">  <!-- /.box-footer -->
-              <ul class="pagination pagination-sm no-margin pull-left">
-                <li><span>Cliente: José Madero</span></li>
-                <li><a href="#">Atendió: V. Echavarría</a></li>             
-              </ul>
-            </div><!-- /.box-footer -->
-          </div> <!-- /.box -->               
-</div><!-- /.termina tarjeta de orden -->
-
-
+      <div class="grid">
+  <div class="grid-item"></div>
+  <div class="grid-item grid-item--width2 grid-item--height2"></div>
+  <div class="grid-item grid-item--height3"></div>
+  <div class="grid-item grid-item--height2"></div>
+  <div class="grid-item grid-item--width3"></div>
+  <div class="grid-item"></div>
+  <div class="grid-item"></div>
+  <div class="grid-item grid-item--height2"></div>
+  <div class="grid-item grid-item--width2 grid-item--height3"></div>
+  <div class="grid-item"></div>
+  <div class="grid-item grid-item--height2"></div>
+  <div class="grid-item"></div>
+  <div class="grid-item grid-item--width2 grid-item--height2"></div>
+  <div class="grid-item grid-item--width2"></div>
+  <div class="grid-item"></div>
+  <div class="grid-item grid-item--height2"></div>
+  <div class="grid-item"></div>
+  <div class="grid-item"></div>
+  <div class="grid-item grid-item--height3"></div>
+  <div class="grid-item grid-item--height2"></div>
+  <div class="grid-item"></div>
+  <div class="grid-item"></div>
+  <div class="grid-item grid-item--height2"></div>
 </div>
+
+
+       <?php endforeach;endif;?>
 
   </section>
   <!-- /.content -->

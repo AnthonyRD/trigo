@@ -21,12 +21,21 @@ class Model_order extends CI_Model {
             }
         }                
     }
-    public function get_orders(){
-        $this->db->select('user.id, user.user_name, user.password,user.status,  
-                          employee.name, employee.last_name, user_role.name role');
-        $this->db->from('user'); 
-        $this->db->join('employee', 'employee.id = user.employee_id','left');
-        $this->db->join('user_role', 'user_role.id = user.user_role_id','left');
+    public function get_order_list(){
+        $this->db->select('orden, fecha, subtotal, tax itbis, tipo_pago, status, 
+                          username, tipo_orden, nombre_cliente, apellido_cliente, tienda');
+        $this->db->from('vw_order_list');      
+        $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_order_details(){
+        $this->db->select('orden, fecha_orden, producto, cantidad, precio, ITBIS_Producto, status, 
+                            usuario, subtotal, ITBIS_Orden, nombre_cliente, apellido_cliente');
+        $this->db->from('vw_order_detail');         
         $query = $this->db->get();
         if ($query->num_rows() > 0){
             return $query->result();
@@ -35,12 +44,10 @@ class Model_order extends CI_Model {
         }
     }
     public function get_order($str){
-        $this->db->where('id', $str);
-        $this->db->select('user.id, user.user_name, user.password,user.status,  
-                          employee.name, employee.last_name, user_role.name role');
-        $this->db->from('user'); 
-        $this->db->join('employee', 'employee.id = user.employee_id','left');
-        $this->db->join('user_role', 'user_role.id = user.user_role_id','left');
+        $this->db->where('orden', $str);
+         $this->db->select('orden, fecha_orden, producto, cantidad, precio, ITBIS_Producto, 
+                            usuario, subtotal, ITBIS_Orden, nombre_cliente, apellido_cliente');
+        $this->db->from('vw_order_detail');  
         $query = $this->db->get();
         if ($query->num_rows() > 0){
             return $query->result();

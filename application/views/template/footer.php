@@ -271,6 +271,12 @@ $("#search").submit(function(e){
     format: 'mm/dd/yyyy',
     startDate: '-3d'
   });
+
+  $('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: 160
+});
+
 </script>
 
 </body>

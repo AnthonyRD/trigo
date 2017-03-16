@@ -13,7 +13,8 @@ class Details extends CI_Controller {
 	            'css/skins/_all-skins.min.css'
 	        ),
 	        'plugin_js' => array(
-	        	'js' => 'fastclick/fastclick.js'
+	        	'js' => 'fastclick/fastclick.js',
+				'js' => 'masonry/masonry.pkgd.min.js'
 	        ),
 	        'js' => array(
 	            'js/app.min.js',
@@ -25,6 +26,12 @@ class Details extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->model('model_order');
+		$data = array(			
+			'order_details' => $this->model_order->get_order_details(),
+			'data' => $this->model_order->get_order_list()
+		);
+		$this->page_config += $data;
 		$this->template->view($this->page_config);
 	}
 }

@@ -483,7 +483,7 @@ section#my0 {
                         <section class="detail">
                             <section class="paying">
                                 <p class="subtotal"><span>Subtotal: </span><span id="subtotal">0.00</span></p>
-                                <p class="tax"><span>Impuesto: </span><span id="tax">0.00</span></p>
+                                <p class="tax"><span>ITBIS 18%: </span><span id="tax">0.00</span></p>
                                 <p class="total"><span>Total: </span><span id="total">0.00</span></p>
                             </section>
                             <section class="btn-pay">
@@ -623,7 +623,7 @@ section#my0 {
                                                 <span class="subtotalPay">0.00</span>
                                             </section>
                                             <section class="ttendered">
-                                                <span>Impuesto:</span>
+                                                <span>ITBIS 18%:</span>
                                                 <span class="impuesto">0.00</span>
                                             </section>
                                             <section class="texchanged">
@@ -641,7 +641,7 @@ section#my0 {
                                                 <span class="subtotalPay">0.00</span>
                                             </section>
                                             <section class="tendered">
-                                                <span>Impuesto:</span>
+                                                <span>ITBIS 18%:</span>
                                                 <span class="color-red impuesto">0.00</span>
                                             </section>
                                             <section class="exchanged">
@@ -733,7 +733,7 @@ section#my0 {
                                                 <span class="subtotalPay">0.00</span>
                                             </section>
                                             <section class="ttendered">
-                                                <span>Impuesto:</span>
+                                                <span>ITBIS 18%:</span>
                                                 <span class="impuesto">0.00</span>
                                             </section>
                                             <section class="texchanged">
@@ -899,7 +899,7 @@ td {
                 <span class="subtotalPay">0.00</span>
             </section>
             <section class="ttendered">
-                <span>Impuesto:</span>
+                <span>ITBIS 18%:</span>
                 <span class="impuesto">0.00</span>
             </section>
             <section class="texchanged">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 13, 2017 at 11:00 PM
+-- Generation Time: Mar 16, 2017 at 10:59 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.0.15
 
@@ -199,8 +199,8 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `customer_id` int(11) DEFAULT NULL,
-  `subtotal` double NOT NULL,
-  `tax` double NOT NULL,
+  `subtotal` decimal(10,2) NOT NULL,
+  `tax` decimal(10,2) NOT NULL,
   `payment_type_id` int(11) NOT NULL,
   `payment_date` date NOT NULL,
   `status` varchar(20) NOT NULL,
@@ -214,39 +214,14 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `date`, `customer_id`, `subtotal`, `tax`, `payment_type_id`, `payment_date`, `status`, `username`, `oder_type_id`, `location_id`) VALUES
-(3, '2017-03-10 15:16:54', 1, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(4, '2017-03-10 15:19:35', 1, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(5, '2017-03-10 15:21:21', 1, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(6, '2017-03-10 15:22:53', 1, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(7, '2017-03-10 15:23:49', 1, 33, 5.9399999999999995, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(8, '2017-03-10 15:34:47', 1, 33, 5.9399999999999995, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(9, '2017-03-10 15:35:38', 1, 33, 5.9399999999999995, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(10, '2017-03-10 15:38:55', 1, 33, 5.9399999999999995, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(11, '2017-03-10 15:47:55', 1, 33, 5.9399999999999995, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(12, '2017-03-10 15:49:38', 1, 33, 5.9399999999999995, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(13, '2017-03-10 15:58:11', 1, 33, 5.9399999999999995, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(14, '2017-03-10 16:07:07', 1, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(15, '2017-03-10 16:08:08', 1, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(16, '2017-03-10 16:09:06', 1, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(17, '2017-03-10 16:11:29', 1, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(18, '2017-03-10 16:11:41', 1, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(19, '2017-03-10 16:13:59', 1, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(20, '2017-03-10 16:14:28', 1, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(21, '2017-03-10 16:28:41', 1, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(22, '2017-03-10 16:29:29', 1, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(23, '2017-03-10 16:30:40', 1, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 3, 1),
-(24, '2017-03-10 16:33:59', 1, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 2, 1),
-(25, '2017-03-10 16:57:39', 1, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 2, 1),
-(26, '2017-03-10 20:44:13', NULL, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 2, 1),
-(27, '2017-03-10 20:55:17', NULL, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 2, 1),
-(28, '2017-03-10 21:05:05', NULL, 22, 3.96, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(29, '2017-03-10 21:06:44', NULL, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(30, '2017-03-10 16:11:48', NULL, 11, 1.98, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(31, '2017-03-10 16:14:09', NULL, 44, 7.92, 1, '2017-03-10', 'completada', 'admin', 2, 1),
-(32, '2017-03-10 16:15:56', 1, 22, 3.96, 1, '2017-03-10', 'completada', 'admin', 1, 1),
-(33, '2017-03-13 10:46:08', 1, 120, 21.6, 1, '2017-03-13', 'completada', 'admin', 1, 1),
-(35, '2017-03-13 10:49:41', 1, 120, 21.6, 1, '2017-03-13', 'completada', 'admin', 2, 1),
-(36, '2017-03-13 14:52:30', 1, 1485, 267.3, 1, '2017-03-13', 'completada', 'admin', 1, 1);
+(33, '2017-03-13 10:46:08', 1, '120.00', '21.60', 1, '2017-03-13', 'completada', 'admin', 1, 1),
+(35, '2017-03-13 10:49:41', 1, '120.00', '21.60', 1, '2017-03-13', 'completada', 'admin', 2, 1),
+(36, '2017-03-13 14:52:30', 1, '1485.00', '267.30', 1, '2017-03-13', 'completada', 'admin', 1, 1),
+(37, '2017-03-15 02:40:52', 1, '125.00', '22.50', 1, '2017-03-15', 'completada', 'admin', 2, 1),
+(38, '2017-03-15 02:41:07', 1, '125.00', '22.50', 1, '2017-03-15', 'completada', 'admin', 2, 1),
+(39, '2017-03-16 10:44:57', 2, '325.00', '58.50', 3, '2017-03-16', 'completada', 'admin', 2, 1),
+(42, '2017-03-16 10:48:30', 1, '75.00', '13.50', 1, '2017-03-16', 'completada', 'admin', 2, 1),
+(44, '2017-03-16 10:50:19', 1, '50.00', '9.00', 1, '2017-03-16', 'completada', 'admin', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -266,27 +241,6 @@ CREATE TABLE `order_detail` (
 --
 
 INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`) VALUES
-(1, 5, 1, 0),
-(2, 6, 1, 0),
-(3, 7, 1, 0),
-(4, 15, 1, 4),
-(5, 16, 1, 4),
-(6, 17, 1, 4),
-(7, 18, 1, 4),
-(8, 19, 1, 4),
-(9, 20, 1, 4),
-(10, 21, 1, 1),
-(11, 22, 1, 1),
-(12, 23, 1, 1),
-(13, 24, 1, 1),
-(14, 25, 1, 1),
-(15, 26, 1, 1),
-(16, 27, 1, 4),
-(17, 28, 1, 2),
-(18, 29, 1, 1),
-(19, 30, 1, 1),
-(20, 31, 1, 4),
-(21, 32, 1, 2),
 (22, 33, 8, 2),
 (23, 35, 8, 2),
 (24, 36, 8, 3),
@@ -301,7 +255,20 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`) VALUES
 (33, 36, 4, 2),
 (34, 36, 7, 2),
 (35, 36, 13, 1),
-(36, 36, 15, 1);
+(36, 36, 15, 1),
+(37, 37, 3, 1),
+(38, 37, 6, 1),
+(39, 37, 4, 1),
+(40, 38, 3, 1),
+(41, 38, 6, 1),
+(42, 38, 4, 1),
+(43, 39, 10, 3),
+(44, 39, 16, 2),
+(45, 39, 14, 1),
+(46, 39, 2, 1),
+(47, 42, 3, 1),
+(48, 42, 8, 1),
+(49, 44, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -404,25 +371,25 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `image_url`, `id_category`, `last_entry`, `entry_date`, `price`, `reorder_level`, `barcode`, `charge_tax`, `measurement_unit_id`, `barcode_symbol`, `suplier_id`, `status`, `cantidad_en_existencia`, `cantidad_ultima_entrada`) VALUES
-(1, 'Bizcocho de Pasas1', 'Bizcocho de Pasas1', '', 7, '2017-03-13 17:58:21', '2017-02-14 04:14:22', '50.00', 0, NULL, 0, 3, NULL, 2, '', 0, 0),
-(2, 'Bizcocho de Pasas', 'Empanada de Res', 'empanda.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 16:43:04', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(3, 'Bizcocho de Pasas', 'Empanada de Res', '11d8f28844ba79c9240100806f82001e.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 16:57:26', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(4, 'Bizcocho de Pasas', 'Empanada de Res', '53b8edaac5908-300x300.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 16:59:31', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(5, 'Bizcocho de Pasas', 'Empanada de Res', 'botella_de_agua.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:00:07', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(6, 'Bizcocho de Pasas', 'Empanada de Res', 'coca_cola.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:01:46', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(7, 'Bizcocho de Pasas', 'Empanada de Res', 'croasant.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:02:19', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(8, 'Bizcocho de Pasas', 'Empanada de Res', 'cupcake.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:02:52', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(9, 'Bizcocho de Pasas', 'Empanada de Res', 'galelta_de_mantequilla.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:03:17', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(10, 'Bizcocho de Pasas', 'Empanada de Res', 'galleta_de_avena.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:03:42', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(11, 'Bizcocho de Pasas', 'Empanada de Res', 'galleta_de_limon.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:04:11', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(12, 'Bizcocho de Pasas', 'Empanada de Res', 'galleta_de_nueces.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:04:41', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(13, 'Bizcocho de Pasas', 'Empanada de Res', 'galletas.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:05:16', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(14, 'Bizcocho de Pasas', 'Empanada de Res', 'jugo_de_limon.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:05:51', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(15, 'Bizcocho de Pasas', 'Empanada de Res', 'jugo_de_naranja.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:06:19', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(16, 'Bizcocho de Pasas', 'Empanada de Res', 'pastel_chocolate.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:10:57', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(17, 'Bizcocho de Pasas', 'Empanada de Res', 'pastel_de_cafe.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:13:40', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(18, 'Bizcocho de Pasas', 'Empanada de Res', 'pie.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:15:12', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
-(19, 'Bizcocho de Pasas', 'Empanada de Res', 'pastel_de_coco.jpg', 7, '2017-03-13 17:46:05', '2017-03-10 17:16:02', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0);
+(2, 'Empanada de Pollo', 'Empanada de Pollo', 'empanda.jpg', 7, '2017-03-14 01:53:32', '2017-03-10 16:43:04', '50.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(3, 'Galleta Rellena de Chocolate', 'Galleta Rellena de Chocolate', '11d8f28844ba79c9240100806f82001e.jpg', 2, '2017-03-15 02:20:14', '2017-03-10 16:57:26', '25.00', 0, NULL, 0, 1, NULL, 3, '', 0, 0),
+(4, 'Croquetas de Pollo', 'Croquetas de Pollo', '53b8edaac5908-300x300.jpg', 7, '2017-03-15 02:21:07', '2017-03-10 16:59:31', '45.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(5, 'Botella de Agua ', 'Botella de Agua ', 'botella_de_agua.jpg', 3, '2017-03-15 02:21:45', '2017-03-10 17:00:07', '30.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(6, 'Refresco en Lata', 'Refresco en Lata', 'coca_cola.jpg', 3, '2017-03-15 02:22:24', '2017-03-10 17:01:46', '55.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(7, 'Croasant', 'Croasant', 'croasant.jpg', 7, '2017-03-15 02:23:00', '2017-03-10 17:02:19', '35.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(8, 'Cupcake de Fresa', 'Cupcake de Fresa', 'cupcake.jpg', 2, '2017-03-15 02:23:55', '2017-03-10 17:02:52', '50.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(9, 'Galleta de Mantequilla y Canela', 'Galleta de Mantequilla y Canela', 'galelta_de_mantequilla.jpg', 2, '2017-03-15 02:24:31', '2017-03-10 17:03:17', '25.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(10, 'Galleta de Avena', 'Galleta de Avena', 'galleta_de_avena.jpg', 2, '2017-03-15 02:25:09', '2017-03-10 17:03:42', '35.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(11, 'Galletas de Limon', 'Galletas de Limon', 'galleta_de_limon.jpg', 2, '2017-03-15 02:25:39', '2017-03-10 17:04:11', '50.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(12, 'Galleta de Nueces y Chocolate', 'Galleta de Nueces y Chocolate', 'galleta_de_nueces.jpg', 2, '2017-03-15 02:27:34', '2017-03-10 17:04:41', '48.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(13, 'Galleta Azucarada', 'Galleta Azucarada', 'galletas.jpg', 2, '2017-03-15 02:28:31', '2017-03-10 17:05:16', '35.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(14, 'Jugo de Limon', 'Jugo de Limon', 'jugo_de_limon.jpg', 3, '2017-03-15 02:29:07', '2017-03-10 17:05:51', '30.00', 0, NULL, 0, 1, NULL, 3, '', 0, 0),
+(15, 'Jugo de Naranja', 'Jugo de Naranja', 'jugo_de_naranja.jpg', 3, '2017-03-15 02:30:01', '2017-03-10 17:06:19', '35.00', 0, NULL, 0, 1, NULL, 3, '', 0, 0),
+(16, 'Bizcocho de Chocolate y Nueces', 'Bizcocho de Chocolate y Nueces', 'pastel_chocolate.jpg', 2, '2017-03-15 02:31:30', '2017-03-10 17:10:57', '70.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(17, 'Pastel relleno', 'Empanada de Res', 'pastel_de_cafe.jpg', 2, '2017-03-15 02:32:06', '2017-03-10 17:13:40', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(18, 'Pie de Calabaza', 'Pie de Calabaza', 'pie.jpg', 2, '2017-03-15 02:32:44', '2017-03-10 17:15:12', '65.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(19, 'Bizcocho de coco', 'Bizcocho de coco', 'pastel_de_coco.jpg', 2, '2017-03-15 02:33:52', '2017-03-10 17:16:02', '50.00', 0, NULL, 0, 2, NULL, 2, '', 0, 0),
+(20, 'Sopa de Pollo', 'Sopa de Pollo', 'Crock-Pot-Chicken3.jpg', 4, '0000-00-00 00:00:00', '2017-03-16 10:03:32', '45.00', 0, NULL, 0, 1, NULL, 3, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -521,6 +488,66 @@ INSERT INTO `user_role` (`id`, `name`, `description`) VALUES
 (4, 'Usuario', 'Usuario común'),
 (5, 'Administrador', 'Aministrador del sistema'),
 (6, 'Supervisor', 'Supervisor del sistema');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_order_detail`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_order_detail` (
+`orden` int(11)
+,`fecha_orden` datetime
+,`producto` varchar(100)
+,`cantidad` int(11)
+,`precio` decimal(10,2)
+,`ITBIS_Producto` decimal(26,6)
+,`usuario` varchar(100)
+,`subtotal` decimal(10,2)
+,`ITBIS_Orden` decimal(10,2)
+,`status` varchar(20)
+,`nombre_cliente` varchar(150)
+,`apellido_cliente` varchar(200)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_order_list`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_order_list` (
+`orden` int(11)
+,`fecha` datetime
+,`subtotal` decimal(10,2)
+,`tax` decimal(10,2)
+,`tipo_pago` varchar(50)
+,`status` varchar(20)
+,`usuario` varchar(100)
+,`tipo_orden` varchar(50)
+,`tienda` varchar(200)
+,`nombre_cliente` varchar(150)
+,`apellido_cliente` varchar(200)
+,`username` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_order_detail`
+--
+DROP TABLE IF EXISTS `vw_order_detail`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_order_detail`  AS  select `o`.`id` AS `orden`,`o`.`date` AS `fecha_orden`,`p`.`name` AS `producto`,`od`.`quantity` AS `cantidad`,`p`.`price` AS `precio`,((`od`.`quantity` * `p`.`price`) * (18 / 100)) AS `ITBIS_Producto`,`o`.`username` AS `usuario`,`o`.`subtotal` AS `subtotal`,`o`.`tax` AS `ITBIS_Orden`,`o`.`status` AS `status`,`c`.`name` AS `nombre_cliente`,`c`.`last_name` AS `apellido_cliente` from (((`order_detail` `od` left join `orders` `o` on((`od`.`order_id` = `o`.`id`))) left join `product` `p` on((`od`.`product_id` = `p`.`id`))) left join `customer` `c` on((`o`.`customer_id` = `c`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_order_list`
+--
+DROP TABLE IF EXISTS `vw_order_list`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_order_list`  AS  select `o`.`id` AS `orden`,`o`.`date` AS `fecha`,`o`.`subtotal` AS `subtotal`,`o`.`tax` AS `tax`,`pt`.`name` AS `tipo_pago`,`o`.`status` AS `status`,`o`.`username` AS `usuario`,`ot`.`name` AS `tipo_orden`,`lo`.`name` AS `tienda`,`c`.`name` AS `nombre_cliente`,`c`.`last_name` AS `apellido_cliente`,`o`.`username` AS `username` from ((((`orders` `o` left join `customer` `c` on((`o`.`customer_id` = `c`.`id`))) left join `payment_type` `pt` on((`o`.`payment_type_id` = `pt`.`id`))) left join `order_type` `ot` on((`o`.`oder_type_id` = `ot`.`id`))) left join `location` `lo` on((`o`.`location_id` = `lo`.`id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -666,12 +693,12 @@ ALTER TABLE `measurement_unit`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `order_type`
 --
@@ -691,7 +718,7 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `product_category`
 --
