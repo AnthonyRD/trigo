@@ -33,9 +33,9 @@ class Model_order extends CI_Model {
         }
     }
     public function get_order_details(){
-        $this->db->select('orden, fecha_orden, producto, cantidad, precio, ITBIS_Producto, status, 
-                            usuario, subtotal, ITBIS_Orden, nombre_cliente, apellido_cliente');
-        $this->db->from('vw_order_detail');         
+        $this->db->select('orden, fecha_orden fecha, producto, cantidad, precio, ITBIS_Producto, status, 
+                            usuario username, subtotal, ITBIS_Orden itbis, nombre_cliente, apellido_cliente');
+        $this->db->from('vw_order_detail');                 
         $query = $this->db->get();
         if ($query->num_rows() > 0){
             return $query->result();
@@ -49,6 +49,70 @@ class Model_order extends CI_Model {
                             usuario, subtotal, ITBIS_Orden, nombre_cliente, apellido_cliente');
         $this->db->from('vw_order_detail');  
         $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_order_number(){        
+         $this->db->select('count(*) numero_ordenes');  
+         $query = $this->db->get(' orders');
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_order_number_date($date1, $date2){        
+         $this->db->where('date >=', $date1);
+         $this->db->where('date <=', $date2);
+         $this->db->select('count(*) numero_ordenes');  
+         $query = $this->db->get(' orders');
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_total_sales(){        
+         $this->db->select('sum(tax + subtotal) total_ventas');  
+         $query = $this->db->get(' orders');
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_total_sales_date($date1, $date2){        
+         $this->db->where('date >=', $date1);
+         $this->db->where('date <=', $date2);
+         $this->db->select('sum(tax + subtotal) total_ventas');  
+         $query = $this->db->get(' orders');
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_total_products_sold(){        
+         $this->db->select('sum(od.quantity) cantidad');  
+          $this->db->from('order_detail od');          
+         $this->db->join('orders o', 'od.order_id = o.id','left');
+         $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_total_products_sold_date($date1, $date2){        
+         $this->db->where('o.date >=', $date1);
+         $this->db->where('o.date <=', $date2);
+         $this->db->select('sum(od.quantity) cantidad');  
+         $this->db->from('order_detail od');          
+         $this->db->join('orders o', 'od.order_id = o.id','left');
+         $query = $this->db->get();
         if ($query->num_rows() > 0){
             return $query->result();
         }else{
