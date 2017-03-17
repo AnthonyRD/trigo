@@ -1,7 +1,7 @@
-    <style>
+<style>
 
     .grid {  
-  max-width: 1200px;
+  max-width: 100%;
 }
 
 /* clearfix */
@@ -14,29 +14,31 @@
 /* ---- grid-item ---- */
 
 .grid-item {
-  /*width: 160px;*/
-  /*height: 120px;*/
-  /*float: left;*/
-  /*background: #D26;
-  border: 2px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.5);
-  border-radius: 5px;*/
-  /*margin:1px;*/
+  margin:0px !important;
 }
 
-.grid-item--width2 { width: 320px; }
-.grid-item--width3 { width: 480px; }
-.grid-item--width4 { width: 640px; }
+html, body {height: 100%;}
 
-.grid-item--height2 { height: 200px; }
-.grid-item--height3 { height: 260px; }
-.grid-item--height4 { height: 360px; }
+#wrap {min-height: 100%;}
 
-.main-footer {    
-    display: none;
-}
+#main {overflow:auto;
+	padding-bottom: 180px;}  /* must be same height as the footer */
 
-    </style>
+#footer {position: relative;
+	margin-top: -180px; /* negative value of footer height */
+	height: 180px;
+	clear:both;
+} 
+      /*Opera Fix*/
+ body:before {/* thanks to Maleika (Kohoutec)*/
+        content:"";
+        height:100%;
+        float:left;
+        width:0;
+        margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+      }
+
+</style>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -70,20 +72,18 @@
         </div>
 
         <a class="btn btn-app">
-          <span class="badge bg-teal"><?php $orders_number[0]?></span>
+          <span name="total_sales" class="badge bg-teal"><?=$orders_number[0]->numero_ordenes?></span>
           <i class="fa fa-inbox"></i> Órdenes
         </a>
 
         <a class="btn btn-app">
-          <span class="badge bg-aqua"><?php $total_sales[0]?></span>
+          <span name="total_sales" class="badge bg-aqua"><?=number_format($total_sales[0]->total_ventas, 2, '.', ',');?></span>
           <i class="fa fa-barcode"></i> Venta
         </a>
 
-        <a class="btn btn-app">
-        <?php foreach($products_sold as $key => $value): ?> 
-          <span class="badge bg-purple"><?php $value->cantidad?></span>
-        <?php endforeach;?> 
-          <i class="fa fa-barcode"></i> Artículos
+        <a class="btn btn-app">        
+          <span name="products_sold" class="badge bg-purple"><?=$products_sold[0]->cantidad?></span>        
+          <i class="fa fa-cubes"></i> Artículos
         </a>        
   </h1>
   <ol class="breadcrumb">
@@ -91,9 +91,15 @@
     <li class="active">Órdenes</li>
   </ol>
 </section>
+
+
+<div id="wrap">
+<div id="main">
+
+
 <section class="content">
   <!-- Main content -->  
-    <div class="grid col-md-12">
+    <div class="grid ">
         <?php if (isset($data) && !(is_null($data))): foreach($data as $key => $value): ?>        
            
               <div class=" col-md-3 grid-item"> <!-- /.inicia tarjeta de orden -->
@@ -123,9 +129,11 @@
                   </tbody></table>
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer clearfix">  <!-- /.box-footer -->  
-                  <span class="badge bg-aqua"><?=$value['fecha']?></span>          
-                  <span class="pull-right"><b>Total:</b> <?=number_format($value['itbis'] + $value['subtotal'], 2, '.', ','); ?></span>                
+                <div class="box-footer clearfix">  <!-- /.box-footer -->                              
+                  <span class="pull-right"><b>Subtotal:</b> <?=number_format($value['subtotal'], 2, '.', ','); ?></span></br>              
+                  <span class="pull-right"><b>ITBIS:</b> <?=number_format($value['itbis'], 2, '.', ','); ?></span></br>              
+                  <span class="badge bg-aqua"><?=$value['fecha']?></span>
+                  <span class="pull-right"><b>Total:</b> <?=number_format($value['itbis'] + $value['subtotal'], 2, '.', ','); ?></span>
                 </div>              
                 <!-- /.box-footer --> 
                 <div class="box-footer clearfix">  <!-- /.box-footer -->
@@ -140,5 +148,8 @@
         <?php endforeach;endif;?>
     </div>
     </section>
-  </section>
+
+  </div>
+
+</div>
   <!-- /.content -->

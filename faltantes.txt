@@ -1,22 +1,29 @@
-Dashboard no esta creado
-Edit Productos no funciona editar la imagen
-editar cliente no funciona, solo dice que no se han hecho cambios
-opcion de ordenes todavia no funciona ni la lista ni el detalle
-cambiar icono de cantidad de articulos en detalle de ordenes
-Reportes no esta creado
-Crear y Editar empleado no funciona
-Probar foto de empleado subir y editar
-Revisar la actualizacion de las direcciones porque no identifica si se edita solo la direccion
-Asignar permisos, que puede o no puede ver cada usuario
-Agregar confirmar password al insertar y editar usuario
-Ventas
-Cambiar stilo de las scroll bars en la pantalla de ventas
-Hacer responsive el contenido
-desplegar el menu hamburguesa en en header cuando se reduzca el tamaño de la pantalla
-overflow items list 
-Poner boton para bajar la cantidad de items en una venta
-En ver ordenes agregar buscar orden e imprimir
-Al imprimir, el detalle no está saliendo
-Hay que refrescar la página y limpiar todo luego de pagar, imprimir y terminar una orden
-Agregar location al login
+-Ordenes
+	Poner a funcionar el filtro de ordenes por fecha con ajax
+-Dashboard no esta creado
+-Productos
+	Edit Productos no funciona editar la imagen
+-Cliente
+	Editar cliente no funciona, solo dice que no se han hecho cambios
+-Reportes no esta creado (puede esperar)
+-Empleado
+	Crear y Editar empleado no funciona
+	Probar foto de empleado subir y editar
+-
+-Empleado - Suplidor - Cliente
+	Revisar la actualizacion de las direcciones porque no identifica si se edita solo la direccion
+-Usuarios
+	Agregar confirmar password al insertar y editar usuario	
+	Asignar permisos, que puede o no puede ver cada usuario
+	Agregar location al login	
+-Ventas
+	Cambiar stilo de las scroll bars en la pantalla de ventas
+	Hacer responsive el contenido - agregar masonry y sticky footer
+	desplegar el menu hamburguesa en en header cuando se reduzca el tamaño de la pantalla
+	overflow items list 
+	Poner boton para bajar la cantidad de items en una venta
+	En lista de ordenes agregar ver detalle de orden
+	Al imprimir, el detalle no está saliendo
+	Hay que refrescar la página y limpiar todo luego de pagar, imprimir y terminar una orden
+
 
