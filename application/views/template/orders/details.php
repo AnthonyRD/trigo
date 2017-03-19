@@ -13,9 +13,7 @@
 
 /* ---- grid-item ---- */
 
-.grid-item {
-  margin:0px !important;
-}
+.grid-item { width: 267px; }
 
 html, body {height: 100%;}
 
@@ -38,60 +36,65 @@ html, body {height: 100%;}
         margin-top:-32767px;/* thank you Erik J - negate effect of float*/
       }
 
+  .loading {
+
+position: absolute;
+top: 0;
+z-index: 99999;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.31);
+justify-content: center;
+align-items: center;
+display: none;
+
+}
+.loading .icon-loading {
+color: #fff;
+}
+
 </style>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  <h1>
-    <?=$title_page?>
-    <small> </small>   
-
-      <div class="btn-group">
-          <button type="button" class="btn btn-success">Seleccionar Período</button>
-          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Día</a></li>
-            <li><a href="#">Semana</a></li>
-            <li><a href="#">Mes</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Trimestre</a></li>
-            <li><a href="#">Semestre</a></li>
-            <li><a href="#">Año</a></li>
-          </ul>
-        </div>        
-        <span class="small">Desde</span>
-          <div class="btn-group">
-          <input class="datepicker small" data-date-format="mm/dd/yyyy">          
-        </div>
-        <span class="small">Hasta</span>
-          <div class="btn-group">
-          <input class="datepicker small" data-date-format="mm/dd/yyyy">          
-        </div>
-
-        <a class="btn btn-app">
-          <span name="total_sales" class="badge bg-teal"><?=$orders_number[0]->numero_ordenes?></span>
-          <i class="fa fa-inbox"></i> Órdenes
-        </a>
-
-        <a class="btn btn-app">
-          <span name="total_sales" class="badge bg-aqua"><?=number_format($total_sales[0]->total_ventas, 2, '.', ',');?></span>
-          <i class="fa fa-barcode"></i> Venta
-        </a>
-
-        <a class="btn btn-app">        
-          <span name="products_sold" class="badge bg-purple"><?=$products_sold[0]->cantidad?></span>        
-          <i class="fa fa-cubes"></i> Artículos
-        </a>        
-  </h1>
+  <h1><?=$title_page?> </h1>
+    <small> </small>              
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
     <li class="active">Órdenes</li>
   </ol>
 </section>
 
+<section style="margin:15px;width: 100%;
+    display: flex;list-style: none;justify-content: space-between;;
+    padding: 10px;padding-RIGHT: 50px;margin-left: 0;">
+    
+    <div id="reportrange" class="btn-group" style="height:100%;margin-top:20px;margin-left: 20px;">
+          <button type="button" class="btn btn-success"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp; Seleccionar Período</button>
+          <button type="button" style="height:100%;padding-right:15px;" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+             <span></span> <b class="caret"></b>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>         
+   </div>  
+    
+    <div class="pull-right" style="padding-rigt: 20px;display:inline-block">
+        <a class="btn btn-app">
+          <span id="number_of_orders" class="badge bg-teal"><?=$orders_number[0]->numero_ordenes?></span>
+          <i class="fa fa-inbox"></i> Órdenes
+        </a>
+
+        <a class="btn btn-app">
+          <span id="total_sales" class="badge bg-aqua">$<?=number_format($total_sales[0]->total_ventas, 2, '.', ',');?></span>
+          <i class="fa fa-barcode"></i> Venta
+        </a>
+
+        <a class="btn btn-app">        
+          <span id="products_sold" class="badge bg-purple"><?=$products_sold[0]->cantidad?></span>        
+          <i class="fa fa-cubes"></i> Artículos
+        </a>         
+    </div>
+
+    </section>            
 
 <div id="wrap">
 <div id="main">
@@ -153,3 +156,10 @@ html, body {height: 100%;}
 
 </div>
   <!-- /.content -->
+
+<!-- /.loading waut dialog -->
+  <section class="loading">
+    <section class="icon-loading">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    </section>
+</section>

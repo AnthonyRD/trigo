@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="<?=base_url()?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">  
   <!-- Theme style -->
   <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/AdminLTE.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?=base_url()?>assets/plugins/daterangepicker/daterangepicker.css">
   
   <!-- Load CSS -->
   <?php if (isset($plugin_css)):foreach($plugin_css as $key_href => $value_href):?>

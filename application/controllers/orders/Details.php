@@ -12,17 +12,18 @@ class Details extends CI_Controller {
 	        'css' => array(
 	            'css/skins/_all-skins.min.css'
 	        ),
-	        'plugin_js' => array(
-	        	'js' => 'fastclick/fastclick.js',
-				'js' => 'masonry/masonry.pkgd.min.js'
+	        'plugin_js' => array(												
+	        	'js' => 'fastclick/fastclick.js',				
+				'js' => 'numeral/numeral.min.js'
 	        ),
 	        'js' => array(
 	            'js/app.min.js',
-	            'js/demo.js'
+	            'js/demo.js',
+	            'js/config/orders.js'
 	        ),
 	        'sidebar_menu'=> true
 	    );
-	    $this->load->library("template");
+	    $this->load->library("template");		
 	}
 	public function index()
 	{

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 16, 2017 at 10:59 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.0.15
+-- Host: 127.0.0.1
+-- Generation Time: Mar 19, 2017 at 06:55 AM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.5.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -197,7 +197,8 @@ INSERT INTO `measurement_unit` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `date` datetime NOT NULL,
+  `date` date NOT NULL,
+  `creation_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `customer_id` int(11) DEFAULT NULL,
   `subtotal` decimal(10,2) NOT NULL,
   `tax` decimal(10,2) NOT NULL,
@@ -213,15 +214,16 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `date`, `customer_id`, `subtotal`, `tax`, `payment_type_id`, `payment_date`, `status`, `username`, `oder_type_id`, `location_id`) VALUES
-(33, '2017-03-13 10:46:08', 1, '120.00', '21.60', 1, '2017-03-13', 'completada', 'admin', 1, 1),
-(35, '2017-03-13 10:49:41', 1, '120.00', '21.60', 1, '2017-03-13', 'completada', 'admin', 2, 1),
-(36, '2017-03-13 14:52:30', 1, '1485.00', '267.30', 1, '2017-03-13', 'completada', 'admin', 1, 1),
-(37, '2017-03-15 02:40:52', 1, '125.00', '22.50', 1, '2017-03-15', 'completada', 'admin', 2, 1),
-(38, '2017-03-15 02:41:07', 1, '125.00', '22.50', 1, '2017-03-15', 'completada', 'admin', 2, 1),
-(39, '2017-03-16 10:44:57', 2, '325.00', '58.50', 3, '2017-03-16', 'completada', 'admin', 2, 1),
-(42, '2017-03-16 10:48:30', 1, '75.00', '13.50', 1, '2017-03-16', 'completada', 'admin', 2, 1),
-(44, '2017-03-16 10:50:19', 1, '50.00', '9.00', 1, '2017-03-16', 'completada', 'admin', 2, 1);
+INSERT INTO `orders` (`id`, `date`, `creation_time`, `customer_id`, `subtotal`, `tax`, `payment_type_id`, `payment_date`, `status`, `username`, `oder_type_id`, `location_id`) VALUES
+(33, '2017-03-13', '2017-03-19 04:00:00', 1, '120.00', '21.60', 1, '2017-03-13', 'completada', 'admin', 1, 1),
+(35, '2017-03-13', '2017-03-19 04:00:00', 1, '120.00', '21.60', 1, '2017-03-13', 'completada', 'admin', 2, 1),
+(36, '2017-03-13', '2017-03-19 04:00:00', 1, '1485.00', '267.30', 1, '2017-03-13', 'completada', 'admin', 1, 1),
+(37, '2017-03-15', '2017-03-19 04:00:00', 1, '125.00', '22.50', 1, '2017-03-15', 'completada', 'admin', 2, 1),
+(38, '2017-03-15', '2017-03-19 04:00:00', 1, '125.00', '22.50', 1, '2017-03-15', 'completada', 'admin', 2, 1),
+(39, '2017-03-16', '2017-03-19 04:00:00', 2, '325.00', '58.50', 3, '2017-03-16', 'completada', 'admin', 2, 1),
+(42, '2017-03-16', '2017-03-19 04:00:00', 1, '75.00', '13.50', 1, '2017-03-16', 'completada', 'admin', 2, 1),
+(44, '2017-03-16', '2017-03-19 04:00:00', 1, '50.00', '9.00', 1, '2017-03-16', 'completada', 'admin', 2, 1),
+(46, '2017-03-18', '2017-03-19 04:00:00', 2, '25.00', '4.50', 1, '2017-03-18', 'completada', 'admin', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -268,7 +270,8 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`) VALUES
 (46, 39, 2, 1),
 (47, 42, 3, 1),
 (48, 42, 8, 1),
-(49, 44, 8, 1);
+(49, 44, 8, 1),
+(50, 46, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -493,11 +496,10 @@ INSERT INTO `user_role` (`id`, `name`, `description`) VALUES
 
 --
 -- Stand-in structure for view `vw_order_detail`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_order_detail` (
 `orden` int(11)
-,`fecha_orden` datetime
+,`fecha_orden` date
 ,`producto` varchar(100)
 ,`cantidad` int(11)
 ,`precio` decimal(10,2)
@@ -514,11 +516,10 @@ CREATE TABLE `vw_order_detail` (
 
 --
 -- Stand-in structure for view `vw_order_list`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_order_list` (
 `orden` int(11)
-,`fecha` datetime
+,`fecha` date
 ,`subtotal` decimal(10,2)
 ,`tax` decimal(10,2)
 ,`tipo_pago` varchar(50)
@@ -693,12 +694,12 @@ ALTER TABLE `measurement_unit`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `order_type`
 --

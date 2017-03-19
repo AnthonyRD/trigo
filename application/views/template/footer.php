@@ -209,7 +209,9 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootstrap Calendar -->
-<script src="<?=base_url()?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="<?=base_url()?>assets/plugins/daterangepicker/moment.min.js"></script>
+<script src="<?=base_url()?>assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="<?=base_url()?>assets/plugins/masonry/masonry.pkgd.min.js"></script>
 <!-- Load JS -->
 <?php if (isset($plugin_js)):foreach($plugin_js as $key_src => $value_src):?>
 <?="<script src='".base_url()."assets/plugins/".$value_src."'></script>"?>
@@ -266,15 +268,15 @@ $("#search").submit(function(e){
 }
 </script>
 
-<script type="text/javascript">
-  $('.datepicker').datepicker({
-    format: 'mm/dd/yyyy',
-    startDate: '-3d'
-  });
-
+<script type="text/javascript"> 
   $('.grid').masonry({
   itemSelector: '.grid-item',
-  columnWidth: 160
+  isAnimated: true,
+  animationOptions: {
+    duration: 750,
+    easing: 'linear',
+    queue: false
+  }
 });
 
 </script>

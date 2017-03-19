@@ -33,4 +33,47 @@ class Orders extends CI_Controller {
           
         $this->load->view('template/ajax/response', $data);
     }
+
+     public function search_by_period(){      
+
+        $start_date = $this->input->post('start_date');
+        $end_date=$this->input->post('end_date');
+
+        $this->load->model('model_order');		
+		$order_list = array ();
+		$orders = $this->model_order->get_order_list_by_date($start_date,$end_date);		
+		
+		$orders_number = $this->model_order->get_order_number_by_date($start_date,$end_date)[0]->numero_ordenes;
+		$total_sales = $this->model_order->get_total_sales_by_date($start_date,$end_date)[0]->total_ventas;
+		$products_sold = $this->model_order->get_total_products_sold_by_date($start_date,$end_date)[0]->cantidad;
+		
+        if($orders!=null){
+            foreach ( $orders as $values ) {	
+                $order_detail = $this->model_order->get_order($values->orden);	
+                $tmp = array (		
+                    'orden'=>$values->orden, 
+                    'fecha'=>$values->fecha, 
+                    'subtotal'=>$values->subtotal, 
+                    'itbis'=>$values->itbis, 
+                    'username'=>$values->username, 
+                    'nombre_cliente'=>$values->nombre_cliente, 
+                    'apellido_cliente'=>$values->apellido_cliente, 		
+                    'status'=>$values->status, 		
+                    'detail'=>$order_detail,                    
+                    'orders_number' => $orders_number,
+                    'total_sales' => $total_sales,
+                    'products_sold' => $products_sold
+                );
+                array_push ( $order_list, $tmp );
+            }	
+            
+            $data = array(
+                'data' => $order_list
+            );
+        } else {
+            $data = array('data' => null );
+        }
+
+        $this->load->view('template/ajax/response', $data);
+    }
 }
