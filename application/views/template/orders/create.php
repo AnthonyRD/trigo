@@ -373,6 +373,15 @@ section#my0 {
 .loading .icon-loading {
     color: #fff;
 }
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
     </style>
 <?php if(!isset($print)): ?>
 <body class="hold-transition skin-yellow-light sidebar-mini">

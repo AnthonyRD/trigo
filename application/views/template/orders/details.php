@@ -1,6 +1,6 @@
 <style>
 
-    .grid {  
+.grid {  
   max-width: 100%;
 }
 
