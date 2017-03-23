@@ -1,12 +1,7 @@
 ﻿-Ventas
-	Cambiar stilo de las scroll bars en la pantalla de ventas
-	Hacer responsive el contenido - agregar masonry y sticky footer
-	desplegar el menu hamburguesa en en header cuando se reduzca el tamaño de la pantalla
-	overflow items list 
-	Poner boton para bajar la cantidad de items en una venta
-	En lista de ordenes agregar ver detalle de orden
+
 	Al imprimir, el detalle no está saliendo
-	Hay que refrescar la página y limpiar todo luego de pagar, imprimir y terminar una orden
+	Hay que refrescar la página y limpiar todo luego de pagar, imprimir y terminar una orden	
 -Dashboard no esta creado
 -Productos
 	Edit Productos no funciona editar la imagen
@@ -24,6 +19,7 @@
 	Asignar permisos, que puede o no puede ver cada usuario
 	Agregar location al login	
 -Ordenes
+	En lista de ordenes agregar ver detalle de orden
 	ver detalle de una orden por numero de orden
 	Actualizar el masonry cuando selecciones el ajax
 	Para el futuro: filtrar ordenes por cliente, por hora, por usuario
