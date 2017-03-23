@@ -85,7 +85,7 @@ section.sales-content section.item .name {
 section.sales-content section.action {
     border: 1px solid #c3c3c3;
     padding: 2px 5px 2px 5px;
-    border-radius: 50%;
+    border-radius: 10%;
     font-size: 10px;
 }
 

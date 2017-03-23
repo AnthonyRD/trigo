@@ -70,22 +70,26 @@ function addItem(data) {
     var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section>' +
         '<section class="name"><p>{name}</p></section>' +
         '<section class="tax"><p>{price}</p></section>' +
-        '<section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-close"></i></a></section></section>';
+        '<section class="action subtract"><a data-item= "\"{data}\" href="#" onclick="subtractItem()"><i class="fa fa-sort-down"></i></a></section>'+
+        '<section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-times"></i></a></section></section>';
     var get_all = storage.get('item');
     var temp = null;
     var impuesto = 0.00;
     var item = "";
-    var totalImpuesto = 0;
-    var totalSubtotal = 0;
+    var totalImpuesto = 0.00;
+    var totalSubtotal = 0.00;
     var total = 0.00;
     if (get_all !== null) {
-        $.each(get_all, function(index, value) {
-            temp = itemHTML.replace('{cantidad}', value.unidad);
+        $.each(get_all, function(index, value) {            
+            temp = itemHTML.replace('{data}', JSON.stringify(value, null));
+            temp = temp.replace('{cantidad}', value.unidad);
             temp = temp.replace('{name}', value.name);
             impuesto = (value.price * 18 / 100.00);
             //temp = temp.replace('{tax}', impuesto);
-            temp = temp.replace('{price}', value.unidad * value.price);
+            var precio = value.unidad * value.price;
+            temp = temp.replace('{price}', precio.toFixed(2));
             temp = temp.replace('{index}', index);
+            temp = temp.replace('{index1}', index);
             item += temp;
             temp = null;
             totalImpuesto += impuesto * value.unidad;
@@ -99,8 +103,6 @@ function addItem(data) {
         $("#tax, .impuesto").html(totalImpuesto.toFixed(2));
         $("#total, #total-btn, .toPay").html(total.toFixed(2));
         contentItem.html(item);
-
-        console.log(item);
     }
     if (storage.get('customer') == null) {
         storage.set('customer', 'Default');
@@ -111,19 +113,94 @@ function addItem(data) {
 
 }
 
+function subtractItem(data) {
+var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section>' +
+        '<section class="name"><p>{name}</p></section>' +
+        '<section class="tax"><p>{price}</p></section>' +
+        '<section class="action subtract"><a data-item="\"{{data}}\" href="#" onclick="subtractItem()"><i class="fa fa-sort-down"></i></a></section>'+
+        '<section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-times"></i></a></section></section>';
+
+       $('.subtract a').click(function() {
+            console.log($(this).attr('data-item'));
+        });
+
+    //console.log($(".item").attr('data-item'));
+        
+    /*var data = JSON.parse(this.dataset.item);
+
+    $*(".item")
+
+    data = {
+        id: data.id,
+        price: data.price,
+        name: data.name,
+        impuesto: null,
+        unidad: 1,
+        category: data.name_category,
+        supplier: data.suppier_name
+    };
+
+    setStorage(data);
+    addItem();*/
+
+    //console.log(data);
+    
+    /*var temp = null;
+    var impuesto = 0.00;
+    var item = "";
+    var totalImpuesto = 0.00;
+    var totalSubtotal = 0.00;
+    var total = 0.00;
+    if (get_all !== null) {
+        $.each(get_all, function(index, value) {
+            temp = itemHTML.replace('{cantidad}', value.unidad);
+            temp = temp.replace('{name}', value.name);
+            impuesto = (value.price * 18 / 100.00);
+            //temp = temp.replace('{tax}', impuesto);
+            temp = temp.replace('{price}', value.unidad * value.price);            
+            temp = temp.replace('{index}', index);
+            temp = temp.replace('{index1}', index);
+            item += temp;
+            temp = null;
+            totalImpuesto += impuesto * value.unidad;
+            totalSubtotal += value.price * value.unidad;
+        });
+        total = totalImpuesto + totalSubtotal;
+        storage.set('total', total);
+        storage.set('tax', totalImpuesto);
+        storage.set('subtotal', totalSubtotal);
+        $("#subtotal, .subtotalPay").html(totalSubtotal.toFixed(2));
+        $("#tax, .impuesto").html(totalImpuesto.toFixed(2));
+        $("#total, #total-btn, .toPay").html(total.toFixed(2));
+        contentItem.html(item);
+    }
+    if (storage.get('customer') == null) {
+        storage.set('customer', 'Default');
+        $("#customer").html(storage.get('customer'));
+    } else {
+        $("#customer").html(storage.get('customer'));
+    }*/
+
+}
+
 function removeItem(index) {
-    var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section><section class="name"><p>{name}</p></section><section class="tax"><p>{tax}</p></section><section class="price"><p>{price}</p></section><section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-close"></i></a></section></section>';
+    var itemHTML = '<section class="item"><section class="cantidad"><p>{cantidad}</p></section>' +
+        '<section class="name"><p>{name}</p></section>' +
+        '<section class="tax"><p>{price}</p></section>' +
+        '<section class="action subtract"><a data-item="\"{{data}}\" href="#" onclick="subtractItem()"><i class="fa fa-sort-down"></i></a></section>'+
+        '<section class="action"><a href="#" onclick="removeItem({index})"><i class="fa fa-times"></i></a></section></section>';
     var gets = storage.get('item');
     gets.splice(index, 1);
     var temp = null;
-    var impuesto = 0;
+    var impuesto = 0.00;
     var item = "";
-    var totalImpuesto = 0;
-    var totalSubtotal = 0;
-    var total = 0;
+    var totalImpuesto = 0.00;
+    var totalSubtotal = 0.00;
+    var total = 0.00;
     if (gets !== null) {
         $.each(gets, function(index, value) {
-            temp = itemHTML.replace('{cantidad}', value.unidad);
+            temp = itemHTML.replace('{{data}}', JSON.stringify(value));
+            temp = temp.replace('{cantidad}', value.unidad);
             temp = temp.replace('{name}', value.name);
             impuesto = (value.price * 18 / 100);
             temp = temp.replace('{tax}', impuesto);
