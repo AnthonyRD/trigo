@@ -756,7 +756,7 @@ html {
                                     <section class="col-md-12">
                                         <section class="paymend-details">
                                             <section class="total">
-                                                <span>Pago con: </span>
+                                                <span>Pagó con: </span>
                                                 <span class="pago">0.00</span>
                                             </section>
                                             <section class="tendered">
@@ -776,7 +776,7 @@ html {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" id="cobro">Pagar e Imprimir</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" onClick="reloadPage()">Cerrar</button>
         </div>
       </div>
     </div>
@@ -919,7 +919,7 @@ td {
     </section>
 </section>
 </section>
-<!--<script type="text/javascript">
+<script type="text/javascript">
     window.onload = function(){
     var item = null;
     var itemT = null;
@@ -955,7 +955,7 @@ td {
         window.print();
         clear();
     }
-</script>-->
+</script>
 
 
 

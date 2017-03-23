@@ -42,7 +42,9 @@ section.customer section.lb {
 section.sidebar-sales {
     padding: 10px;
     background: #fff;
-    min-height: 517px;
+    min-height: 217px;
+    height: 217px;
+    overflow: auto;
 }
 
 section.sales-content {
@@ -58,6 +60,7 @@ section.sales-content section.item {
     align-items: center;
     background: #ecf0f5;
     padding: 10px;
+    border-top: solid 1px #fff;
 }
 
 section.sales-content section.item p {
@@ -198,7 +201,3 @@ section.btn-pay button {
     background-color: #fff !important;
     margin-bottom: 0px !important;
 }
-
-
-    
-    
