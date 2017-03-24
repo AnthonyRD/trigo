@@ -2,6 +2,10 @@ body {
     overflow: hidden;
 }
 
+label.button-pay:active, label.button-pay:focus, label.button-pay:visited, label.button-pay.active {
+    background: #f39c12 !important;
+}
+
 .content-wrapper,
 .main-footer {
     margin-left: 0px !important;
@@ -86,7 +90,7 @@ section.sales-content section.item .name {
 }
 
 section.sales-content section.action {
-    border: 1px solid #c3c3c3;
+    border: 1px dotted #c3c3c3;
     padding: 2px 5px 2px 5px;
     border-radius: 10%;
     font-size: 10px;

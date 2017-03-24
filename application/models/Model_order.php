@@ -13,12 +13,15 @@ class Model_order extends CI_Model {
         if ($this->db->affected_rows() > 0){
             $order_id = $this->db->insert_id();
             $data['order_detail']['order_id'] = $order_id;
-            $this->order_detail_create($data['order_detail']);
-            if($this->db->affected_rows() > 0){
+            $this->order_detail_create($data['order_detail']);  
+
+            return $order_id;
+
+            /*if($this->db->affected_rows() > 0){
                 return TRUE;
             }else{
                 return FALSE;
-            }
+            }*/
         }                
     }
     public function get_order_list(){

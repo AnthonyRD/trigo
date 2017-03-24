@@ -567,7 +567,7 @@ html {
                 </section>
                 <section class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success" id="add-type">Añadir</button>
+                    <button type="button" class="btn btn-success" id="add-type">Seleccionar</button>
                 </section>
             </section><!-- /.modal-content -->
         </section><!-- /.modal-dialog -->
@@ -586,11 +586,13 @@ html {
                                 <section class="col-xs-6">
                                     <section class="pay-type">
                                         <label class="button-pay active"><input type="radio" name="pay-type" style="display:none;" value="1"/> <i class="icon ion-cash"></i></label>
+                                        <span active><b class="col-xs-8">Efectivo</b></span>
                                     </section>
                                 </section>
                                 <section class="col-xs-6">
                                     <section class="pay-type">
                                         <label class="button-pay"><input type="radio" name="pay-type" style="display:none;" value="3"/> <i class="fa fa-credit-card"></i></label>
+                                        <span active><b class="col-xs-8">Tarjeta</b></span>
                                     </section>
                                 </section>
                             </section>
@@ -600,16 +602,15 @@ html {
                                 <section class="invoic">
                                     <section class="headPay" style="display:none">
                                         <section class="column">
-                                            <span>Atendió: Williams</span>
-                                            <span>2017-02-06</span>
+                                            <span>Atendió: <?php echo $username?></span>
+                                            <span><?php echo date("d-m-Y, g:i a");?></span>
+                                        </section>
+                                        <section class="column">                                                      
+                                                <span id="orderNumber">This is a paragraph.</span>
                                         </section>
                                         <section class="column">
-                                            <span>Orden</span>
-                                            <span>Factura #: 01</span>
-                                        </section>
-                                        <section class="column">
-                                            <span>REG-012</span>
-                                            <span>12:53</span>
+                                            <span>Tienda</span>
+                                            <span><?php echo $location?></span>
                                         </section>
                                     </section>
                                     <table>
@@ -633,45 +634,31 @@ html {
                                             </section>
                                             <section class="ttendered">
                                                 <span>ITBIS 18%:</span>
-                                                <span class="impuesto">0.00</span>
-                                            </section>
-                                            <section class="texchanged">
-                                                <span>Total a pagar:</span>
-                                                <span class="toPay">0.00</span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </section>
-                                <section class="row">
-                                    <section class="col-xs-12">
-                                        <section class="paymend-details">
-                                            <section class="total">
-                                                <span>Subtotal: </span>
-                                                <span class="subtotalPay">0.00</span>
-                                            </section>
-                                            <section class="tendered">
-                                                <span>ITBIS 18%:</span>
                                                 <span class="color-red impuesto">0.00</span>
                                             </section>
-                                            <section class="exchanged">
-                                                <span>Total a pagar:</span>
+                                            <section class="texchanged">
+                                                <span> Total a pagar:</span>
                                                 <span class="color-green toPay">0.00</span>
                                             </section>
                                         </section>
                                     </section>
-                                </section>
+                                </section>                                
                             </section>
                         </section>
                     </section>
-                </section>
+                </section>          
                 <section class="modal-footer" id="my0">
-                    <button type="button" class="btn btn-default" id="confirm">Confirmar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <!--<button type="button" class="btn btn-default" id="confirm">Confirmar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>-->
+                    <button type="button" class="btn btn-default" id="cobro">Pagar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    
                 </section>
             </section><!-- /.modal-content -->
         </section><!-- /.modal-dialog -->
     </section><!-- /.modal -->
-<div class="modal fade" id="confirmM" role="dialog">
+
+<!--<div class="modal fade" id="confirmM" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
@@ -695,7 +682,8 @@ html {
       </div>
     </div>
   </div>
-</div>
+</div>-->
+<!-- Pagina para pagar
 <div class="modal fade" id="cobro-invoice" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -776,12 +764,12 @@ html {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" id="cobro">Pagar e Imprimir</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal" onClick="reloadPage()">Cerrar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" onClick="reloadPage()">Cancelar Orden</button>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div>-->
 <section class="loading">
     <section class="icon-loading">
         <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
@@ -881,8 +869,8 @@ td {
             <span>Atendió: <?php echo $username?></span>
             <span><?php echo date("d-m-Y, g:i a");?></span>
         </section>
-        <section class="column">            
-            <span>Orden #: 01</span>
+        <section class="column">                        
+                <span id="orderNumber1">This is another paragraph.</span>          
         </section>
         <section class="column">
             <span>Tienda</span>
@@ -905,15 +893,15 @@ td {
         <section class="tpaymend">
             <section class="ttotal">
                 <span>Sub Total: </span>
-                <span class="subtotalPay">0.00</span>
+                <span class="subtotalPay">10.00</span>
             </section>
             <section class="ttendered">
                 <span>ITBIS 18%:</span>
-                <span class="impuesto">0.00</span>
+                <span class="impuesto">10.00</span>
             </section>
             <section class="texchanged">
                 <span>Total a pagar:</span>
-                <span class="toPay">0.00</span>
+                <span class="toPay">10.00</span>
             </section>
         </section>
     </section>
@@ -953,7 +941,7 @@ td {
         $("#tipo").modal('show');
     }
         window.print();
-        clear();
+        //cancel();
     }
 </script>
 

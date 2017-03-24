@@ -44,4 +44,11 @@ class Create extends CI_Controller {
 		$this->page_config += $data;
 		$this->template->view($this->page_config);
 	}
+	public function receiveOrderNumber(){
+
+		$data = array(
+			'orderNumber' => $this->input->post('order')			
+		);
+		
+	}
 }

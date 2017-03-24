@@ -317,8 +317,7 @@ function prm() {
                 $("#payModal").modal('show');
                 $.each(storage.get('item'), function (index, value) {
                     subtotal += (value.price * value.unidad);
-                    impuesto += ((value.price * 18 / 100) * value.unidad);
-                    console.log(value);
+                    impuesto += ((value.price * 18 / 100) * value.unidad);                    
                     itemT = itemPay.replace("{{nameProduct}}", value.name);
                     itemT = itemT.replace("{{qty}}", value.unidad);
                     itemT = itemT.replace("{{prece}}", value.price);
@@ -371,8 +370,21 @@ $(".button-pay").click(function () {
     }
 
 });
-$("#confirm").click(function () {
+////Dialogo para confirmar pago de orden que pide la cantidad de efectivo
+///Desactivado para activarlo en caso de que se solicite
+ /*$("#confirm").click(function () {
     var type = $(".active input[name='pay-type']").val();
+
+    console.log(type);
+    storage.set('payment_type', type);    
+    
+    $("#payModal").modal("hide");
+    $("#hs").addClass('hide');
+    $("#cobro-invoice").modal('show', {
+            backdrop: 'static',
+            keyboard: false
+        });
+   var type = $(".active input[name='pay-type']").val();
     storage.set('payment_type', type);
     if (type == "1") {
         $("#payModal").modal("hide");
@@ -388,24 +400,22 @@ $("#confirm").click(function () {
             keyboard: false
         });
     }
+});*/
 
-});
-$("#efectivo").click(function () {
-    var efectivo = $("input[name='efectivo']");
-    var efectivo_val = parseFloat(efectivo.val());
-    var total_pago = storage.get('total');
-    if (efectivo_val != '' && !isNaN(efectivo_val) && efectivo_val >= total_pago) {
-        var devuelta = efectivo_val - total_pago;
-        $(".devuelta").html(devuelta.toFixed(2));
-        $(".pago").html(efectivo_val);
-        storage.set('pago', efectivo_val);
+$("#efectivo").click(function () {    
+    //$("#cobro-invoice").modal('show');
+    /*if (efectivo_val != '' && !isNaN(efectivo_val) && efectivo_val >= total_pago) {
+        //var devuelta = efectivo_val - total_pago;
+       // $(".devuelta").html(devuelta.toFixed(2));
+        //$(".pago").html(efectivo_val);
+        //storage.set('pago', efectivo_val);
         efectivo
             .parent()
             .removeClass('has-error');
         efectivo
             .parent()
             .addClass('has-success');
-        $("#confirmM").modal('hide');
+      //  $("#confirmM").modal('hide');
         $("#cobro-invoice").modal('show');
     } else {
         efectivo
@@ -414,9 +424,13 @@ $("#efectivo").click(function () {
         efectivo
             .parent()
             .addClass('has-error');
-    }
+    }*/
 });
 $("#cobro").click(function () {
+
+    var type = $(".active input[name='pay-type']").val();    
+    storage.set('payment_type', type);  
+
     var customer = (storage.get('customer') == null)
         ? 'Default'
         : storage.get('customer');
@@ -440,7 +454,24 @@ $("#cobro").click(function () {
         beforeSend: function () {
             $(".loading").css('display', 'flex');
         },
-        success: function (resp) {
+        success: function (resp) {            
+            $('body').append($("#orderNumber").text("Hello world!"));
+            $('body').append($("#orderNumber1").text("Hello world!"));
+            storage.set('order_number', resp);  
+            //alert("OK");
+             
+            //$("#orderNumber").text("Orden #: " + (resp>100?resp:"00" + resp));
+            //$("#orderNumber1").text("Orden #: " + (resp>100?resp:"00" + resp));
+                /*
+                $.ajax({
+                type: "POST",
+                url: "/trigo/orders/create/receiveOrderNumber",
+                // path to the controller 
+                data: {order: resp},              
+                success: function(data){        
+                    console.log(storage.get('order_number') + " Data sent to server.");                    
+                }
+            });*/
             $("#hs").removeClass('hide');
         },
         error: function (resp) {
@@ -450,20 +481,19 @@ $("#cobro").click(function () {
             });
         },
         complete: function (data, a) {
-            if (a == "success") {
+            if (a == "success") {               
+
                 $(".loading").css("display", 'none');
-                PopupCenter("/trigo/order/print", "Print Invoice", '900', '500');
-                reloadPage();
+                PopupCenter("/trigo/order/print", "Print Invoice", '900', '500');               
             } else {
                 alert("Error al guardar la factura.");
-            }
+            }                        
         }
     });
 
 });
 
-function reloadPage() {
-    location.reload();
+function reloadPage() {    
     cancel();
 }
 
