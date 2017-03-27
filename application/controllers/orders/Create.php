@@ -14,7 +14,8 @@ class Create extends CI_Controller {
 	            'css/sales.css'
 	        ),
 	        'plugin_js' => array(
-	        	'fastclick/fastclick.js'
+	        	'fastclick/fastclick.js',				
+				'js' => 'numeral/numeral.min.js'
 	        ),
 	        'js' => array(
 	        	'js/jquery.storageapi.min.js',

@@ -243,7 +243,7 @@ function removeItem(index) {
     }
 }
 
-function PopupCenter(url, title, w, h) {
+function popupCenter(url, title, w, h) {
     // Fixes dual-screen position                         Most browsers      Firefox
     var dualScreenLeft = window.screenLeft != undefined
         ? window.screenLeft
@@ -308,9 +308,8 @@ function prm() {
         var itemT = null;
         var subtotal = 0;
         var impuesto = 0;
-        var total = 0;
-        var itemPay = '<tr><td>{{nameProduct}}</td><td>{{qty}}</td><td>{{prece}}</td><td>{{total}}</td>' +
-                '</tr>';
+        var total = 0;                
+        var itemPay = '<tr><td>{{qty}}</td><td>{{productName}}</td><td>{{tax}}</td><td>{{price}}</td></tr>';
         var totalStorage = storage.get('total');
         if (storage.get('tipo') !== null) {
             if (totalStorage != 0) {
@@ -318,10 +317,11 @@ function prm() {
                 $.each(storage.get('item'), function (index, value) {
                     subtotal += (value.price * value.unidad);
                     impuesto += ((value.price * 18 / 100) * value.unidad);                    
-                    itemT = itemPay.replace("{{nameProduct}}", value.name);
+                    ITBIS = ((value.price * 18 / 100) * value.unidad);                    
+                    itemT = itemPay.replace("{{productName}}", value.name);
                     itemT = itemT.replace("{{qty}}", value.unidad);
-                    itemT = itemT.replace("{{prece}}", value.price);
-                    itemT = itemT.replace("{{total}}", (value.price * value.unidad));
+                    itemT = itemT.replace("{{tax}}", numeral(ITBIS).format('0,0.00'));                    
+                    itemT = itemT.replace("{{price}}", numeral(value.price).format('0,0.00'));                    
                     item += itemT;
                 });
                 total = (subtotal + impuesto);
@@ -426,10 +426,25 @@ $("#efectivo").click(function () {
             .addClass('has-error');
     }*/
 });
+
+function restoreValues(){
+        var cero = 0;
+        localStorage.clear();
+        $(contentItem).html("");
+        $("#subtotal, .subtotalPay").html(cero.toFixed(2));
+        $("#tax, .impuesto").html(cero.toFixed(2));
+        $("#total, #total-btn, .toPay").html(cero.toFixed(2));
+        $("#customer").html("Default");
+}
+
 $("#cobro").click(function () {
 
     var type = $(".active input[name='pay-type']").val();    
-    storage.set('payment_type', type);  
+    var location_id = $('#location_id').val();
+    var username = $('#username').val();
+    storage.set('payment_type', type);      
+    storage.set('location_id', location_id);
+    storage.set('username', username);
 
     var customer = (storage.get('customer') == null)
         ? 'Default'
@@ -454,24 +469,8 @@ $("#cobro").click(function () {
         beforeSend: function () {
             $(".loading").css('display', 'flex');
         },
-        success: function (resp) {            
-            $('body').append($("#orderNumber").text("Hello world!"));
-            $('body').append($("#orderNumber1").text("Hello world!"));
-            storage.set('order_number', resp);  
-            //alert("OK");
-             
-            //$("#orderNumber").text("Orden #: " + (resp>100?resp:"00" + resp));
-            //$("#orderNumber1").text("Orden #: " + (resp>100?resp:"00" + resp));
-                /*
-                $.ajax({
-                type: "POST",
-                url: "/trigo/orders/create/receiveOrderNumber",
-                // path to the controller 
-                data: {order: resp},              
-                success: function(data){        
-                    console.log(storage.get('order_number') + " Data sent to server.");                    
-                }
-            });*/
+        success: function (resp) {                        
+            storage.set('order_number', resp);          
             $("#hs").removeClass('hide');
         },
         error: function (resp) {
@@ -482,20 +481,15 @@ $("#cobro").click(function () {
         },
         complete: function (data, a) {
             if (a == "success") {               
-
                 $(".loading").css("display", 'none');
-                PopupCenter("/trigo/order/print", "Print Invoice", '900', '500');               
+                popupCenter("/trigo/order/print", "Imprimir Factura", '900', '500');                                                    
             } else {
                 alert("Error al guardar la factura.");
             }                        
         }
-    });
+    });    
 
 });
-
-function reloadPage() {    
-    cancel();
-}
 
 function result(category, str) {
     $.ajax('/trigo/ajax/products/getall', {
@@ -526,12 +520,7 @@ function result(category, str) {
     });
 }
 $(document)
-    .ready(function () {
-        var location_id = $('#location_id').val();
-        var username = $('#username').val();
-        storage.set('location_id', location_id);
-        storage.set('username', username);
-
+    .ready(function () {        
         var ul = $(".navbar-nav")[1];
         var category = ul.children[0].innerText;
         result(category, "");

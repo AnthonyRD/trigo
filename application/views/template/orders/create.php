@@ -242,7 +242,13 @@ tr {
 }
 
 th:first-child {
-    width: 60%;
+    width: 15%;
+}
+td:nth-of-type(2), td:nth-child(2){
+    width: 80%;
+}
+th:nth-of-type(2), th:nth-child(2){
+    width: 80%;
 }
 th {
     width: 20%;
@@ -256,7 +262,7 @@ tbody {
 }
 
 td:first-child {
-    width: 60%;
+    width: 15%;
 }
 
 td {
@@ -343,6 +349,7 @@ span.color-green {
 
 .tfooter {
     padding: 5px;
+    padding-right: 10px;
     position: relative;
     display: flex;
     width: 100%;
@@ -586,13 +593,13 @@ html {
                                 <section class="col-xs-6">
                                     <section class="pay-type">
                                         <label class="button-pay active"><input type="radio" name="pay-type" style="display:none;" value="1"/> <i class="icon ion-cash"></i></label>
-                                        <span active><b class="col-xs-8">Efectivo</b></span>
+                                        <span class="button-pay-text"><b>Efectivo</b></span>
                                     </section>
                                 </section>
                                 <section class="col-xs-6">
                                     <section class="pay-type">
                                         <label class="button-pay"><input type="radio" name="pay-type" style="display:none;" value="3"/> <i class="fa fa-credit-card"></i></label>
-                                        <span active><b class="col-xs-8">Tarjeta</b></span>
+                                        <span class="button-pay-text"><b>Tarjeta</b></span>
                                     </section>
                                 </section>
                             </section>
@@ -606,7 +613,7 @@ html {
                                             <span><?php echo date("d-m-Y, g:i a");?></span>
                                         </section>
                                         <section class="column">                                                      
-                                                <span id="orderNumber">This is a paragraph.</span>
+                                                <span id="orderNumber"></span>
                                         </section>
                                         <section class="column">
                                             <span>Tienda</span>
@@ -616,10 +623,11 @@ html {
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>Nombre</th>
                                                 <th>Cant.</th>
-                                                <th>Precio</th>
-                                                <th>Total</th>
+                                                <th>Desc.</th>                
+                                                <th>ITBIS</th>
+                                                <th>Valor</th>
+                                                <!--<th>Total</th>-->
                                             </tr>
                                         </thead>
                                         <tbody class="itemPay">
@@ -647,129 +655,15 @@ html {
                         </section>
                     </section>
                 </section>          
-                <section class="modal-footer" id="my0">
-                    <!--<button type="button" class="btn btn-default" id="confirm">Confirmar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>-->
+                <section class="modal-footer" id="my0">                    
                     <button type="button" class="btn btn-default" id="cobro">Pagar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="restoreValues()">Terminar</button>
                     
                 </section>
             </section><!-- /.modal-content -->
         </section><!-- /.modal-dialog -->
     </section><!-- /.modal -->
 
-<!--<div class="modal fade" id="confirmM" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Efectivo</h4>
-        </div>
-        <div class="modal-body">
-          <section class="row">
-              <section class="col-md-12">
-                  <section class="form-group">
-                      <label for="">Efectivo a cuanto apagar</label>
-                      <input type="text" name="efectivo" class="form-control" placeholder="Efectivo" />
-                  </section>
-              </section>
-          </section>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" id="efectivo">Pagar</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
-<!-- Pagina para pagar
-<div class="modal fade" id="cobro-invoice" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Factura</h4>
-        </div>
-        <div class="modal-body">
-          <section class="row">
-                        <section class="col-xs-8 col-xs-offset-2">
-                            <section class="row">
-                                <section class="invoic">
-                                    <section class="headPay" style="display:none">
-                                        <section class="column">
-                                            <span>Atendió: Williams</span>
-                                            <span>2017-02-06</span>
-                                        </section>
-                                        <section class="column">
-                                            <span>Ordern</span>
-                                            <span>Factura. #: 01</span>
-                                        </section>
-                                        <section class="column">
-                                            <span>REG-012</span>
-                                            <span>12:53</span>
-                                        </section>
-                                    </section>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Cant.</th>
-                                                <th>Precio</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="itemPay">
-                                            
-                                        </tbody>
-                                    </table>
-                                    <section class="tfooter">
-                                        <section class="tpaymend">
-                                            <section class="ttotal">
-                                                <span>Sub Total: </span>
-                                                <span class="subtotalPay">0.00</span>
-                                            </section>
-                                            <section class="ttendered">
-                                                <span>ITBIS 18%:</span>
-                                                <span class="impuesto">0.00</span>
-                                            </section>
-                                            <section class="texchanged">
-                                                <span>Total a pagar:</span>
-                                                <span class="toPay">0.00</span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </section>
-                                <section class="row" id="hs">
-                                    <section class="col-md-12">
-                                        <section class="paymend-details">
-                                            <section class="total">
-                                                <span>Pagó con: </span>
-                                                <span class="pago">0.00</span>
-                                            </section>
-                                            <section class="tendered">
-                                                <span>Devuelta:</span>
-                                                <span class="color-red devuelta">0.00</span>
-                                            </section>
-                                            <section class="exchanged">
-                                                <span>Total pagado:</span>
-                                                <span class="color-green toPay">0.00</span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </section>
-                            </section>
-                        </section>
-                    </section>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" id="cobro">Pagar e Imprimir</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal" onClick="reloadPage()">Cancelar Orden</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
 <section class="loading">
     <section class="icon-loading">
         <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
@@ -811,10 +705,10 @@ tr {
 }
 
 th:first-child {
-    width: 60%;
+    width: 10%;
 }
 th {
-    width: 20%;
+    width: 10%;
 }
 
 tbody {
@@ -825,11 +719,13 @@ tbody {
 }
 
 td:first-child {
-    width: 60%;
+    width: 10%;
 }
-
 td {
-    width: 20%;
+    width: 10%;
+}
+td:nth-of-type(2), td:nth-child(2){
+    width: 80%;
 }
 .headPay {
     position: relative;
@@ -870,7 +766,7 @@ td {
             <span><?php echo date("d-m-Y, g:i a");?></span>
         </section>
         <section class="column">                        
-                <span id="orderNumber1">This is another paragraph.</span>          
+                <span id="orderNumber1"></span>          
         </section>
         <section class="column">
             <span>Tienda</span>
@@ -880,10 +776,11 @@ td {
     <table>
         <thead>
             <tr>
-                <th>Item</th>
                 <th>Cant.</th>
-                <th>Precio</th>
-                <th>Total</th>
+                <th>Desc.</th>                
+                <th>ITBIS</th>
+                <th>Valor</th>
+                <!--<th>Total</th>-->
             </tr>
         </thead>
         <tbody class="itemPays">
@@ -901,50 +798,54 @@ td {
             </section>
             <section class="texchanged">
                 <span>Total a pagar:</span>
-                <span class="toPay">10.00</span>
+                <span class="toPay"><b>10.00</b></span>
             </section>
         </section>
     </section>
 </section>
 </section>
 <script type="text/javascript">
-    window.onload = function(){
+    window.onload = function(){    
     var item = null;
     var itemT = null;
-    var subtotal = 0;
-    var impuesto = 0;
-    var total = 0;
-    var itemPay = '<tr><td>{{nameProduct}}</td><td>{{qty}}</td><td>{{prece}}</td><td>{{total}}</td></tr>';
+    var subtotal = 0.00;
+    var impuesto = 0.00;
+    var ITBIS = 0.00;
+    var total = 0.00;
+    var price = 0.00;    
+    var itemPay = '<tr><td>{{qty}}</td><td>{{productName}}</td><td>{{tax}}</td><td>{{price}}</td></tr>';
     var totalStorage = storage.get('total');
     if (storage.get('tipo') !== null){
         if(totalStorage != 0){
             $("#payModal").modal('show');
             $.each(storage.get('item'), function(index, value){
-                subtotal += (value.price*value.unidad);
-                impuesto += ((value.price*18/100)*value.unidad);
-                console.log(impuesto);
-                itemT = itemPay.replace("{{nameProduct}}", value.name);
-                itemT = itemT.replace("{{qty}}", value.unidad);
-                itemT = itemT.replace("{{prece}}", value.price);
-                itemT = itemT.replace("{{total}}", (value.price*value.unidad));
+                subtotal += (value.price * value.unidad);
+                    impuesto += ((value.price * 18 / 100) * value.unidad);                    
+                    ITBIS = ((value.price * 18 / 100) * value.unidad);                    
+                    itemT = itemPay.replace("{{productName}}", value.name);
+                    itemT = itemT.replace("{{qty}}", value.unidad);
+                    itemT = itemT.replace("{{tax}}", numeral(ITBIS).format('0,0.00'));                    
+                    itemT = itemT.replace("{{price}}", numeral(value.price).format('0,0.00'));                              
                 item += itemT;
             });
             total = (subtotal + impuesto);
+            var orderNumber=storage.get('order_number');            
+            $("#orderNumber").text("Orden #: " + (orderNumber>100?orderNumber:"00" + orderNumber));
+            $("#orderNumber1").text("Orden #: " + (orderNumber>100?orderNumber:"00" + orderNumber));
             $(".itemPay, .itemPays").html(item);
             $(".subtotalPay").html(subtotal.toFixed(2));
             $(".impuesto").html(impuesto.toFixed(2));
             $(".toPay").html(total.toFixed(2));
-        }else{
-            alert('No hay ningun articulo en la cesta');
+            $("#payModal").modal('hide');
+        }else{            
+            alert('No hay ningún artículo en la Cesta.');
         }
     }else{
         $("#tipo").modal('show');
-    }
+    }                    
         window.print();
-        //cancel();
-    }
+        setTimeout(window.close, 500);  
+}
 </script>
-
-
 
 <?php endif; ?>

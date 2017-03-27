@@ -3,7 +3,16 @@ body {
 }
 
 label.button-pay:active, label.button-pay:focus, label.button-pay:visited, label.button-pay.active {
-    background: #f39c12 !important;
+    background: #eee !important;    
+}
+
+label.button-pay{
+    background: #ffffff !important;
+    border: 2px solid #cccccc !important;
+}
+
+.button-pay-text{
+    padding-left:35px;            
 }
 
 .content-wrapper,
