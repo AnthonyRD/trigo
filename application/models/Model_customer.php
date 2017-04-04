@@ -69,6 +69,29 @@ class Model_customer extends CI_Model {
             return NULL;
         }
     }
+    public function get_customers_number(){
+        $this->db->select('count(*) customers_number');  
+        $this->db->from('customer');  
+        $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+
+    public function get_customer_number_by_date($startdate, $endtdate){
+        $this->db->where('creation_date >=', $startdate);
+        $this->db->where('creation_date <=', $endtdate);
+        $this->db->select('count(*) customers_number');  
+        $this->db->from('customer');              
+        $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
     public function update_customer($data = array(), $str, $str_address){
         $address = $this->model_address->update_address($data['address'], $str_address);
         if ($address){

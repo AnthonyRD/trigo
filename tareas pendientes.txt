@@ -1,8 +1,7 @@
-﻿-Ventas
-
-	Al imprimir, el detalle no está saliendo
-	Hay que refrescar la página y limpiar todo luego de pagar, imprimir y terminar una orden	
--Dashboard no esta creado
+﻿-Dashboard 
+	Agregar pantalla de ver lista completa de productos más vendidos
+	Agregar reporte de ventas y metas trimestrales	
+	Argegar Últimas Órdenes
 -Productos
 	Edit Productos no funciona editar la imagen
 -Cliente
@@ -24,4 +23,5 @@
 	Actualizar el masonry cuando selecciones el ajax
 	Para el futuro: filtrar ordenes por cliente, por hora, por usuario
 		agregar imprimir orden
-
+-Ventas
+	Configurar impresora fiscal Hay que comprar la impresora	

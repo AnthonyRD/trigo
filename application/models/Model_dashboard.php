@@ -14,10 +14,10 @@ class Model_dashboard extends CI_Model {
     //PRODUCTS 
     public function get_products_number(){
         $this->db->select('count(*) products_number');  
-        $this->db->from('customer');  
+        $this->db->from('product');  
         $query = $this->db->get();
         if ($query->num_rows() > 0){
-            return $query->result();
+            return $query->result();    
         }else{
             return NULL;
         }

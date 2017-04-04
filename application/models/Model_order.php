@@ -137,6 +137,28 @@ class Model_order extends CI_Model {
             return NULL;
         }
     }
+    public function get_most_sold_products(){        
+         $this->db->select('*');  
+         $this->db->from('vw_most_sold_products');                   
+         $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
+    public function get_most_sold_products_by_date($startdate, $endtdate){     
+         $this->db->where('o.date >=', $startdate);
+         $this->db->where('o.date <=', $endtdate);   
+         $this->db->select('*');  
+         $this->db->from('vw_most_sold_products_by_date');                   
+         $query = $this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return NULL;
+        }
+    }
     public function order_detail_create($data = array()){
         foreach($data['item'] as $key => $value){
             $item = array(

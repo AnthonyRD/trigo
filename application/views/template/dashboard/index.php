@@ -3,23 +3,7 @@
   <h1>
     <?=$title_page?>
     <small> </small>   
-
-      <div class="btn-group">
-          <button type="button" class="btn btn-success">Seleccionar Período</button>
-          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Día</a></li>
-            <li><a href="#">Semana</a></li>
-            <li><a href="#">Mes</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Trimestre</a></li>
-            <li><a href="#">Semestre</a></li>
-            <li><a href="#">Año</a></li>
-          </ul>
-        </div>        
+             
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -43,8 +27,8 @@
                   <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
 
                   <div class="info-box-content">
-                      <span class="info-box-text">CLIENTES</span>
-                      <span class="info-box-number">90<small></small></span>
+                      <span class="info-box-text">CLIENTES ACTUALES</span>
+                      <span class="info-box-number"><?=$customer_number[0]->customers_number?><small></small></span>
                   </div>
                   <!-- /.info-box-content -->
               </div>
@@ -56,8 +40,8 @@
                   <span class="info-box-icon bg-red"><i class="fa fa-cubes"></i></span>
 
                   <div class="info-box-content">
-                      <span class="info-box-text">PRODUCTOS</span>
-                      <span class="info-box-number">41</span>
+                      <span class="info-box-text">PRODUCTOS VENDIDOS</span>
+                      <span class="info-box-number"><?=$products_sold[0]->cantidad?></span>
                   </div>
                   <!-- /.info-box-content -->
               </div>
@@ -72,8 +56,8 @@
                   <span class="info-box-icon bg-green"><i class="fa fa-tags"></i></span>
 
                   <div class="info-box-content">
-                      <span class="info-box-text">ORDENES</span>
-                      <span class="info-box-number">760</span>
+                      <span class="info-box-text">ORDENES REALIZADAS</span>
+                      <span class="info-box-number"><?=$orders_number[0]->numero_ordenes?></span>
                   </div>
                   <!-- /.info-box-content -->
               </div>
@@ -86,7 +70,7 @@
 
                   <div class="info-box-content">
                       <span class="info-box-text">TOTAL EN VENTAS</span>
-                      <span class="info-box-number">2,000</span>
+                      <span class="info-box-number">$<?=number_format($total_sales[0]->total_ventas, 2, '.', ',');?></span>
                   </div>
                   <!-- /.info-box-content -->
               </div>
@@ -519,7 +503,7 @@
               <!-- PRODUCT LIST -->
               <div class="box box-primary">
                   <div class="box-header with-border">
-                      <h3 class="box-title">Productos Vendidos Recientemente</h3>
+                      <h3 class="box-title">Productos Más Vendidos</h3> 
 
                       <div class="box-tools pull-right">
                           <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -531,68 +515,30 @@
                   <!-- /.box-header -->
                   <div class="box-body">
                       <ul class="products-list product-list-in-box">
+                      <?php $i=0; foreach($most_sold_product as $key => $value): $i++;if($i==5) break;?> 
+                        <!--.item -->     
                           <li class="item">
                               <div class="product-img">
-                                  <img src="<?=base_url()?>assets/dist/img/default-50x50.gif" class="user-image" alt="User Image">                                        
+                                  <img src="<?=base_url()?>uploads/products/<?=$value->image_url?>" class="user-image" alt="User Image">                                        
                               </div>
                               <div class="product-info">
                                   <a href="javascript:void(0)" class="product-title">
-                                      Desayuno
-                                      <span class="label label-warning pull-right">$300</span>
+                                      <?=$value->name?>
+                                      <span <?= (floatval($value->price)<=25) ? 'class="label label-warning pull-right"' : 'class="label label-success pull-right"'?>>$<?=$value->price?></span>
                                   </a>
                                   <span class="product-description">
-                                      Pan tostado, huevos fritos y tocineta.
+                                      <?=$value->description?>
                                   </span>
                               </div>
                           </li>
-                          <!-- /.item -->
-                          <li class="item">
-                              <div class="product-img">
-                                  <img src="<?=base_url()?>assets/dist/img/muffin.jpg" class="user-image" alt="User Image">
-                              </div>
-                              <div class="product-info">
-                                  <a href="javascript:void(0)" class="product-title">
-                                      Cupcake
-                                      <span class="label label-info pull-right">$80</span>
-                                  </a>
-                                  <span class="product-description">
-                                      Cupcake de chocolate.
-                                  </span>
-                              </div>
-                          </li>
-                          <!-- /.item -->
-                          <li class="item">
-                              <div class="product-img">
-                                  <img src="<?=base_url()?>assets/dist/img/macaroon.jpg" class="user-image" alt="User Image">
-                              </div>
-                              <div class="product-info">
-                                  <a href="javascript:void(0)" class="product-title">Macaroon <span class="label label-danger pull-right">$50</span></a>
-                                  <span class="product-description">
-                                      Macaroon de Coco.
-                                  </span>
-                              </div>
-                          </li>
-                          <!-- /.item -->
-                          <li class="item">
-                              <div class="product-img">
-                                  <img src="<?=base_url()?>assets/dist/img/empanada.jpg" class="user-image" alt="User Image">
-                              </div>
-                              <div class="product-info">
-                                  <a href="javascript:void(0)" class="product-title">
-                                      Empanada
-                                      <span class="label label-success pull-right">$120</span>
-                                  </a>
-                                  <span class="product-description">
-                                      Empanada de varios ingredientes.
-                                  </span>
-                              </div>
-                          </li>
-                          <!-- /.item -->
+                          <!-- /.item -->      
+                          
+                          <?php endforeach;?>                                             
                       </ul>
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer text-center">
-                      <a href="javascript:void(0)" class="uppercase">Ver lista de Productos</a>
+                      <a href="javascript:void(0)" class="uppercase">Ver lista Completa</a>
                   </div>
                   <!-- /.box-footer -->
               </div>
