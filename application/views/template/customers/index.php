@@ -51,7 +51,7 @@
                             <th>Móvil</th>
                             <th>Email</th>
                             <th>Origen</th>
-                            <th>Fecha de nacimiento</th>
+                            <!--<th>Fecha de nacimiento</th>-->
                             <th>Dirección</th>
                           </tr>
                         </thead>
@@ -70,7 +70,7 @@
                             <td><?=$value->cellphone?></td>
                             <td><?=$value->email?></td>
                             <td><?=$value->origin?></td>
-                            <td><?=$value->birthdate?></td>
+                            <!--<td><?=$value->birthdate?></td>-->
                             <td><?=$value->address_line_1?></td>
                           </tr>
                           <?php endforeach;endif;?>

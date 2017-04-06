@@ -44,7 +44,7 @@
                                     </section>
                                     <section class="form-group">
                                         <label for="">Apellido</label>
-                                        <input type="text" name="last_name" class="form-control" placeholder="Apellido" />
+                                        <input type="text" name="last_name" class="form-control" placeholder="Apellido" required/>
                                     </section>
                                     <section class="form-group">
                                         <label for="">Teléfono Fijo</label>
@@ -52,7 +52,7 @@
                                     </section>
                                     <section class="form-group">
                                         <label for="">Teléfono Móvil</label>
-                                        <input type="text" name="cellphone" class="form-control" placeholder="Numero de telefono movil" />
+                                        <input type="text" name="cellphone" class="form-control" placeholder="Numero de telefono movil" required/>
                                     </section>
                                 </section>
                                 <section class="col-md-6">
@@ -67,10 +67,10 @@
                                             <option value="Extranjero">Extranjero</option>
                                         </select>
                                     </section>
-                                    <section class="form-group">
+                                    <!--<section class="form-group">
                                         <label>Fecha de nacimiento</label>
                                         <input type="date" name="birthdate" class="form-control" placeholder="Y-m-d" />
-                                    </section>
+                                    </section>-->
                                 </section>
                             </section>
                             <section class="row">
@@ -111,7 +111,7 @@
                                     <section class="row">
                                         <section class="col-md-offset-10 col-md-2">
                                             <section class="form-group">
-                                                <button type="submit" class="btn btn-primary">Añadir Empleado</button>
+                                                <button type="submit" class="btn btn-primary">Añadir Cliente</button>
                                             </section>
                                         </section>
                                     </section>

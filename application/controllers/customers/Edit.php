@@ -6,8 +6,8 @@ class Edit extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Editar Cliente",
-	        'title_page' => "Editar Cliente",
+	        'title' => "Actualizar cliente",
+	        'title_page' => "Actualizar nuevo cliente",
 	        'view_content' => "customers/edit",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
@@ -49,20 +49,18 @@ class Edit extends CI_Controller {
 	    }
 	    $this->template->view($this->page_config);
 	}
-	public function confirm(){
-	    $this->form_validation->set_rules('id', 'customer', 'callback_name_isExisted');		
+	public function confirm(){	   
 	    if ($this->form_validation->run() === FALSE){
-	    	$this->session->set_flashdata('error', true);
-	        redirect('customer/edit/'.$this->input->post('id'));
+	        $this->template->view($this->page_config);
+			$this->session->set_flashdata('customer_success', false);
+			redirect('customers');
 	    }else{
-	        $this->session->set_flashdata('customer_success', false);
-	        redirect('customers');
+	        $this->session->set_flashdata('customer_success', true);
+	        redirect('customer/edit/'.$this->input->post('id'));
 	    }
 	}
-	
-	public function update_customer(){
-	    $this->load->model('model_customer');
-        $data = array(
+	public function update_customer(){	    
+	    $data = array(
 	        'name' => $this->input->post('name'),
 	        'last_name' => $this->input->post('last_name'),
 	        'telephone' => $this->input->post('telephone'),
@@ -77,7 +75,9 @@ class Edit extends CI_Controller {
 	            'country' => $this->input->post('country'),
 	            'state' => $this->input->post('state'),
 	            'zip_code' => $this->input->post('zip_code')
-	        ));	    
+	        )
+	    );
+		$this->load->model('model_customer');
 	    if ($this->model_customer->update_customer($data, $this->input->post("id"), $this->input->post('address_id'))){
 	        $this->session->set_flashdata('customer_success',true);
 	        redirect('customers');

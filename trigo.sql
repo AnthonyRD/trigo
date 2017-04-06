@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 19, 2017 at 06:55 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.5.37
+-- Host: localhost
+-- Generation Time: Apr 06, 2017 at 11:27 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -68,7 +68,8 @@ INSERT INTO `address` (`id`, `address_line_1`, `address_line_2`, `number`, `coun
 (27, 'Jacobo Majluta Av', 'Jacobo Majluta Av', 0, 'Dominican Republic', 'asd', 'asd'),
 (35, '700 FUlton ST apt c21', '700 FUlton ST apt c2', 0, '', 'NEW YORK', '11735'),
 (36, 'Jacobo Majluta Av', 'Jacobo Majluta Av', 0, 'Dominican Republic', '', ''),
-(37, '700 FUlton ST apt c2', '700 FUlton ST apt c2', 0, '', 'NEW YORK', '11735');
+(37, '700 FUlton ST apt c2', '700 FUlton ST apt c2', 0, '', 'NEW YORK', '11735'),
+(38, 'Main Av ', '', 5, 'USA', 'NY', '1463');
 
 -- --------------------------------------------------------
 
@@ -80,12 +81,11 @@ CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `name` varchar(150) NOT NULL,
   `last_name` varchar(200) NOT NULL,
-  `telephone` varchar(12) NOT NULL,
+  `telephone` varchar(12) DEFAULT NULL,
   `cellphone` varchar(12) NOT NULL,
   `email` varchar(100) NOT NULL,
   `type` varchar(100) NOT NULL,
   `origin` varchar(50) NOT NULL,
-  `birthdate` date NOT NULL,
   `address_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -93,10 +93,11 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `name`, `last_name`, `telephone`, `cellphone`, `email`, `type`, `origin`, `birthdate`, `address_id`) VALUES
-(1, 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', '2017-03-10', 1),
-(2, 'Victor', 'Suarez', '', '', 'vsuarez3@gmail.com', '', 'Nacional', '0000-00-00', 36),
-(3, 'luisa', 'NINOSKA', '6467014946', '6467014946', 'ninoskavictoria@hotmail.com', '', 'Nacional', '0000-00-00', 37);
+INSERT INTO `customer` (`id`, `name`, `last_name`, `telephone`, `cellphone`, `email`, `type`, `origin`, `address_id`) VALUES
+(1, 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 'Default', 1),
+(2, 'Victor', 'Suarez', '', '', 'vsuarez3@gmail.com', '', 'Nacional', 36),
+(3, 'luisa', 'NINOSKA', '6467014946', '6467014946', 'ninoskavictoria@hotmail.com', '', 'Nacional', 37),
+(4, 'Jose', 'Madero', '5555555555', '5555555555', 'vsuarez3@gmail.com', '', 'Extranjero', 38);
 
 -- --------------------------------------------------------
 
@@ -116,9 +117,9 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`id`, `name`, `description`, `status`) VALUES
-(1, 'Servicio al cliente', 'Servicio al cliente', 'I'),
+(1, 'Servicio al cliente', 'Servicio al cliente', 'A'),
 (2, 'Gerencia', 'Gerencia', 'A'),
-(3, 'Departament 2', 'Department 21', 'A');
+(3, 'Departament 2', 'Department 2', 'I');
 
 -- --------------------------------------------------------
 
@@ -147,7 +148,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `name`, `last_name`, `telephone`, `cellphone`, `email`, `department_id`, `start_date`, `status`, `position_id`, `image_url`, `address_id`, `location_id`) VALUES
-(1, 'Victor', 'Suarez', '6467014946', '6467014946', 'vsuarez3@gmail.com', 1, '2017-03-08', 'A', 3, '', 27, 1);
+(1, 'Victor', 'Suarez', '6467014946', '6467014946', 'vsuarez3@gmail.com', 1, '2017-04-06', 'A', 3, '', 27, 1);
 
 -- --------------------------------------------------------
 
@@ -223,7 +224,8 @@ INSERT INTO `orders` (`id`, `date`, `creation_time`, `customer_id`, `subtotal`, 
 (39, '2017-03-16', '2017-03-19 04:00:00', 2, '325.00', '58.50', 3, '2017-03-16', 'completada', 'admin', 2, 1),
 (42, '2017-03-16', '2017-03-19 04:00:00', 1, '75.00', '13.50', 1, '2017-03-16', 'completada', 'admin', 2, 1),
 (44, '2017-03-16', '2017-03-19 04:00:00', 1, '50.00', '9.00', 1, '2017-03-16', 'completada', 'admin', 2, 1),
-(46, '2017-03-18', '2017-03-19 04:00:00', 2, '25.00', '4.50', 1, '2017-03-18', 'completada', 'admin', 2, 1);
+(46, '2017-03-18', '2017-03-19 04:00:00', 2, '25.00', '4.50', 1, '2017-03-18', 'completada', 'admin', 2, 1),
+(47, '2017-04-04', '2017-04-04 19:57:01', 1, '48.00', '8.64', 1, '2017-04-04', 'completada', 'admin', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -271,7 +273,8 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`) VALUES
 (47, 42, 3, 1),
 (48, 42, 8, 1),
 (49, 44, 8, 1),
-(50, 46, 3, 1);
+(50, 46, 3, 1),
+(51, 47, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -374,7 +377,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `image_url`, `id_category`, `last_entry`, `entry_date`, `price`, `reorder_level`, `barcode`, `charge_tax`, `measurement_unit_id`, `barcode_symbol`, `suplier_id`, `status`, `cantidad_en_existencia`, `cantidad_ultima_entrada`) VALUES
-(2, 'Empanada de Pollo', 'Empanada de Pollo', 'empanda.jpg', 7, '2017-03-14 01:53:32', '2017-03-10 16:43:04', '50.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
+(2, 'Empanada de Pollo', 'Empanada de Pollo', 'empanda.jpg', 7, '2017-04-06 17:15:00', '2017-03-10 16:43:04', '50.00', 0, NULL, 0, 1, NULL, 3, '', 0, 0),
 (3, 'Galleta Rellena de Chocolate', 'Galleta Rellena de Chocolate', '11d8f28844ba79c9240100806f82001e.jpg', 2, '2017-03-15 02:20:14', '2017-03-10 16:57:26', '25.00', 0, NULL, 0, 1, NULL, 3, '', 0, 0),
 (4, 'Croquetas de Pollo', 'Croquetas de Pollo', '53b8edaac5908-300x300.jpg', 7, '2017-03-15 02:21:07', '2017-03-10 16:59:31', '45.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
 (5, 'Botella de Agua ', 'Botella de Agua ', 'botella_de_agua.jpg', 3, '2017-03-15 02:21:45', '2017-03-10 17:00:07', '30.00', 0, NULL, 0, 1, NULL, 2, '', 0, 0),
@@ -495,7 +498,22 @@ INSERT INTO `user_role` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `vw_most_sold_products`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_most_sold_products` (
+`vendidos` bigint(21)
+,`name` varchar(100)
+,`description` varchar(200)
+,`image_url` varchar(300)
+,`price` decimal(10,2)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `vw_order_detail`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_order_detail` (
 `orden` int(11)
@@ -516,6 +534,7 @@ CREATE TABLE `vw_order_detail` (
 
 --
 -- Stand-in structure for view `vw_order_list`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_order_list` (
 `orden` int(11)
@@ -531,6 +550,15 @@ CREATE TABLE `vw_order_list` (
 ,`apellido_cliente` varchar(200)
 ,`username` varchar(100)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_most_sold_products`
+--
+DROP TABLE IF EXISTS `vw_most_sold_products`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_most_sold_products`  AS  select count(`p`.`name`) AS `vendidos`,`p`.`name` AS `name`,`p`.`description` AS `description`,`p`.`image_url` AS `image_url`,`p`.`price` AS `price` from (`order_detail` `od` left join `product` `p` on((`od`.`product_id` = `p`.`id`))) group by `p`.`name` order by count(`p`.`name`) desc ;
 
 -- --------------------------------------------------------
 
@@ -664,12 +692,12 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `department`
 --
@@ -694,12 +722,12 @@ ALTER TABLE `measurement_unit`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `order_type`
 --
