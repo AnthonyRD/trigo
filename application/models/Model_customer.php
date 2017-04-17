@@ -43,8 +43,8 @@ class Model_customer extends CI_Model {
     }
     public function get_customers(){
         $this->db->select('customer.id as id, customer.name, customer.last_name, customer.telephone, 
-                          customer.cellphone, customer.email, customer.type, customer.origin, 
-                          address.address_line_1, address.address_line_2, address.number, 
+                          customer.cellphone, customer.email, customer.type, customer.origin, customer.birthdate,
+                          customer.address_id,address.address_line_1, address.address_line_2, address.number, 
                           address.country, address.state, address.zip_code');
         $this->db->join('address', 'customer.address_id = address.id');
         $query = $this->db->get('customer');
@@ -57,7 +57,7 @@ class Model_customer extends CI_Model {
     public function get_customer($str){
         $this->db->limit(1);        
         $this->db->select('customer.id, customer.name, customer.last_name, customer.telephone, 
-                           customer.cellphone, customer.email, customer.type, customer.origin, 
+                           customer.cellphone, customer.email, customer.type, customer.origin,customer.birthdate, 
                            customer.address_id, address.address_line_1 address_1, address.address_line_2 address_2, address.number, 
                            address.country, address.state, address.zip_code');        
         $this->db->join('address', 'address.id = customer.address_id','right');
@@ -91,20 +91,20 @@ class Model_customer extends CI_Model {
         }else{
             return NULL;
         }
-    }
-    public function update_customer($data, $id){
-        //$address = $this->model_address->update_address($data['address'], $id_address);
-        //if ($address){
-            //unset($data['address']);
-            //extract($data);
-            $this->db->where('id', "2");
+    }  
+    public function update_customer($data, $id, $id_address){
+        $address = $this->model_address->update_address($data['address'], $id_address);
+        if ($address){
+            unset($data['address']);
+            extract($data);
+            $this->db->where('id', $id);
             $this->db->update('customer', $data);
-            if ($this->db->affected_rows() > 0){
+            if ($address || $this->db->affected_rows() > 0){
                 return TRUE;
             }else{
                 return FALSE;
             }
-        //}
+        }
     }
     public function delete_customer($str, $str_address){
         $address = $this->model_address->delete_address($str_address);

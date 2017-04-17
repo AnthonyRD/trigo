@@ -24,6 +24,7 @@
                                 <?php if (!is_null($this->session->flashdata('error'))):?>
                                 <section class="alert alert-danger">
                                     <!--<p>El cliente ya existe.</p>-->
+                                        <p>No ha realizado cambios.</p>
                                 </section>
                                 <?php endif; ?>
                             </section>
@@ -66,15 +67,20 @@
                                     </section>
                                     <section class="form-group">
                                         <label for="">Origen</label>
-                                        <select name="origin" class="form-control">
-                                            <option value="Nacional">Nacional</option>
-                                            <option value="Extranjero">Extranjero</option>
+                                        <select name="origin" class="form-control">                                            
+                                            <?php if($data->origin == 'Nacional'):?>
+                                                    <option value="Nacional" selected><?=$data->origin?></option>
+                                                    <option value="Extranjero">Extranjero</option>
+                                                <?php else: ?>
+                                                    <option value="Extranjero" selected><?=$data->origin?></option>
+                                                    <option value="Nacional" >Nacional</option>
+                                            <?php endif;?>                                                                                             
                                         </select>
                                     </section>
-                                     <!--<section class="form-group">
+                                     <section class="form-group">
                                         <label>Fecha de nacimiento</label>
-                                        <input type="date" name="birthdate" class="form-control" placeholder="Y-m-d" value="<?=$data->birthdate?>"/>
-                                    </section>-->                                    
+                                        <input name="birthdate"  class="form-control" type="date" value="<?php echo date('Y-m-d',strtotime($data->birthdate)) ?>"/>                                        
+                                    </section>
                                 </section>
                             </section>
                             <section class="row">

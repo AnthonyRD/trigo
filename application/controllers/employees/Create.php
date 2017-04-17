@@ -6,8 +6,8 @@ class Create extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->page_config = array(
-	        'title' => "Create new employee",
-	        'title_page' => "Create new employee",
+	        'title' => "Agregar Empleado",
+	        'title_page' => "Agregar Empleado",
 	        'view_content' => "employees/create",
 	        'css' => array(
 	            'css/skins/_all-skins.min.css',
@@ -36,63 +36,35 @@ class Create extends CI_Controller {
 	    $this->load->library("form_validation");
 	    $this->form_validation->set_error_delimiters('<section class="alert alert-danger">', '</section>');
 	}
-	public function index()
-	{
-		$this->load->model(array('model_employee', 'model_department', 'model_position'));
-	    $data = array(
-	         'department' => $this->model_department->get_departments(),
-    	     'model_employee' => $this->model_employee->get_employees(),
-    	     'position' => $this->model_position->get_positions()
-	    );
-	    $this->page_config += $data;
-		$this->template->view($this->page_config);
+	public function index($str = NULL)
+	{	    
+	        $this->load->model(array('model_department','model_position', 'model_employee'));
+	        $data = array(
+    	        'position' => $this->model_position->get_positions(),
+    	        'department' => $this->model_department->get_departments(),
+    	        'data' => $this->model_employee->get_employee($str)
+    	    );
+	        $this->page_config += $data;	    
+	    $this->template->view($this->page_config);
 	}
 	public function confirm(){
-	    $this->form_validation->set_rules('name', 'Nombre', 'callback_name_check');
+	    $this->form_validation->set_rules('id', 'employee', 'callback_id_isExisted');
+		$this->form_validation->set_rules('address_id', 'address', 'callback_id_isExisted');
 	    if ($this->form_validation->run() === FALSE){
-	        $this->template->view($this->page_config);
+	    	$this->session->set_flashdata('error', true);	       
 	    }else{
-	        $this->session->set_flashdata('error', true);
+	        $this->session->set_flashdata('employee_success', false);
 	        redirect('employee/create');
 	    }
 	}
-	public function name_check($str){
-	    $this->load->model('model_employee');
-	    if ($this->model_employee->category_name_validation($str)){
-	        return TRUE;
-	    }else{
-	        return $this->add_employee();
-	    }
+	public function id_isExisted($str){
+        if (empty($_FILE['image_url'])){
+            return $this->add_employee();
+        }else{
+            return do_upload();
+        }
 	}
-	public function add_employee(){
-	    $this->load->model('model_employee');
-		$this->form_validation->set_rules('image_url', 'Imagen', 'callback_do_upload');
-	     $data = array(
-	        'name' => $this->input->post('employee_name'),
-	        'last_name' => $this->input->post('last_name'),
-			'telephone' => $this->input->post('telephone'),
-			'cellphone' => $this->input->post('cellphone'),
-			'email' => $this->input->post('email'),			
-			'status' => $this->input->post('status'),	        
-	        'department_id' => $this->input->post('department'),
-			'position_id' => $this->input->post('position'),			
-	        'start_date' => date('Y-m-d H:i:s'),
-	        'address' => array(
-	            'address_line_1' => $this->input->post('address_1'),
-	            'address_line_2' => $this->input->post('address_2'),
-	            'number' => $this->input->post('number'),
-	            'country' => $this->input->post('country'),
-	            'state' => $this->input->post('state'),
-	            'zip_code' => $this->input->post('zip_code')
-		 )
-	    );
-	    if ($this->model_employee->insert_employee($data)){
-	        $this->session->set_flashdata('employee_success',true);
-	        redirect('employees');
-	    }
-	    return FALSE;
-	}
-	public function do_upload()
+    public function do_upload()
     {
             $config['upload_path']          = './uploads/employees/';
             $config['allowed_types']        = 'gif|jpg|png';
@@ -111,7 +83,34 @@ class Create extends CI_Controller {
             {
                     $this->image_url = $this->upload->data();
                     
-                    return $this->add_product();
+                    return $this->add_employee();
             }
     }
+	public function add_employee(){
+	    $this->load->model('model_employee');
+        $data = array(
+	        'name' => $this->input->post('employee_name'),
+	        'last_name' => $this->input->post('last_name'),
+			'telephone' => $this->input->post('telephone'),
+			'cellphone' => $this->input->post('cellphone'),
+			'email' => $this->input->post('email'),			
+			'status' => $this->input->post('status'),	        
+	        'department_id' => $this->input->post('department'),
+			'position_id' => $this->input->post('position'),			
+	        'start_date' => date('Y-m-d H:i:s'),
+	        'address' => array(
+	            'address_line_1' => $this->input->post('address_1'),
+	            'address_line_2' => $this->input->post('address_2'),
+	            'number' => $this->input->post('number'),
+	            'country' => $this->input->post('country'),
+	            'state' => $this->input->post('state'),
+	            'zip_code' => $this->input->post('zip_code')
+		 ));
+	    if (is_null($this->image_url)) unset($data['image_url']);
+	    if ($this->model_employee->add_employee($data, $this->input->post("id"), $this->input->post('address_id'))){
+	        $this->session->set_flashdata('employee_success',true);
+	        redirect('employees');
+	    }
+	    return FALSE;
+	}
 }

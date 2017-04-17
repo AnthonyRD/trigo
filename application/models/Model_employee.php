@@ -79,7 +79,7 @@ class Model_employee extends CI_Model {
             unset($data['address']);
             $this->db->where('id', $str);            
             $this->db->update('employee', $data);            
-            if ($this->db->affected_rows() > 0){
+            if ($address || $this->db->affected_rows() > 0){
                 return TRUE;
             }else{
                 return FALSE;
