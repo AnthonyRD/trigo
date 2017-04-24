@@ -1,27 +1,30 @@
-﻿-Dashboard 
-	Agregar pantalla de ver lista completa de productos más vendidos
-	Agregar reporte de ventas y metas trimestrales	
-	Argegar Últimas Órdenes
 -Productos
-	Edit Productos no funciona editar la imagen
--Cliente
-	Editar cliente no funciona, solo dice que no se han hecho cambios
--Reportes no esta creado (puede esperar)
+	Editar Productos no funciona editar/cambiar la imagen
+
 -Empleado
-	Crear y Editar empleado no funciona
+	Crear empleado no funciona
 	Probar foto de empleado subir y editar
--
--Empleado - Suplidor - Cliente
-	Revisar la actualizacion de las direcciones porque no identifica si se edita solo la direccion
+
 -Usuarios
 	Agregar confirmar password al insertar y editar usuario	
 	Asignar permisos, que puede o no puede ver cada usuario
 	Agregar location al login	
+
+-Empleado - Suplidor - Cliente
+	Revisar la actualizacion de las direcciones porque no identifica si se edita solo la direccion
+
 -Ordenes
 	En lista de ordenes agregar ver detalle de orden
 	ver detalle de una orden por numero de orden
 	Actualizar el masonry cuando selecciones el ajax
-	Para el futuro: filtrar ordenes por cliente, por hora, por usuario
-		agregar imprimir orden
+	Para el futuro: filtrar ordenes por cliente, por hora, por usuario, agregar re-imprimir orden
+
 -Ventas
-	Configurar impresora fiscal Hay que comprar la impresora	
+	Configurar impresion fiscal
+
+-Dashboard 
+	Agregar pantalla de ver lista completa de productos más vendidos
+	Agregar reporte de ventas y metas trimestrales	
+	Argegar Últimas Órdenes
+
+-Crear reportes no esta creado
